@@ -18,7 +18,7 @@ The parser's main role is to create command objects using a commandFactory. (The
 Class hierarchy for the view
 
 	- Evaluation console
-
+	- 
 		- Engine
 
 	- Command line
