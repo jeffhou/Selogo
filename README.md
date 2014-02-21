@@ -5,41 +5,17 @@ Part 1 Design:
 
 Design Goals
 
-For our design, we break the SLogo project into three main modules. These are the Interpreter, the GUI, and the Engine.
+Our project will utilize the model-view paradigm. The view operates indepenently of the model, and contains one setter to issue commands to the engine. The rest of the view only acts as a getter.
 
-The interpreter has several sub-modules. The interpreter contains a parser and factory. The parser uses the factory to create commands. These commands are created by extending an abstract commands class. The four main sub-command classes are turtle commands, math commands, boolean operations, and advanced operations. This makes our code very flexible because you just need to extend the command class to make a new command. The interpreter holds a map of user defined variable names to numeric values. The interpreter, after obtaining the parsed list of commands, will then pass a digested form of the commands to the engines for execution.
-
-[ “-” : uses/contains, “+” : subclass of] 
-
-Class Hierarchy for Interpreter
-
-Interpreter
-
-	- Parser
-
-	- CommandFactory
-
-		- Command
-
-			+ Turtle Command
-
-			+ Math Command
-
-			+ Boolean Command
-
-			+ Advanced Command
-
-				- List of Commands
-
-	- Map of Variables (Or a special database editor)		
-
-For the GUI, we will have a Main Window Class. This class will hold the evaluation console, command line, reset button, command history, and the SLogo graphic window (using JGEngine). The evaluation console only prints the results of the user’s commands and prints errors if the user’s commands don’t correspond to an existing command. The SLogo Graphic Window holds instances of the Turtle Class and the Turtle Path Class. It also holds a variable, color, that is used to set the background color for the turtle’s display area and toggles the reference grid based off of the user’s input.  Because of the functionality of the evaluation Console and the SLogo graphic window, they will only use getters since they do not need to change anything in the Engine.
+For the GUI, we will have a main window class. This class will hold the evaluation console, command line, reset button, command history, and the SLogo graphic window (using JGEngine). The evaluation console only prints the results of the user’s commands and prints errors if the user’s commands don’t correspond to an existing command. The SLogo Graphic Window holds instances of the Turtle Class and the Turtle Path Class. It also holds a variable, color, that is used to set the background color for the turtle’s display area and toggles the reference grid based off of the user’s input.  Because of the functionality of the evaluation Console and the SLogo graphic window, they will only use getters since they do not need to change anything in the Engine.
 
 The command line, unlike the other two classes, will use setters. It responds to user input and therefore modifies the Engine. It evaluates the inputs of the user line by line when the 'enter' button is pressed. Each command will be sent to the parser part of the engine to verify its validity. The commands will only be acted on if the engine returns true for its validity (checking syntax and if the end of a loop has been reached). It also prints the user’s input. The final aspect of the GUI is the reset button, which is just an action listener that triggers a reset. A rough diagram is shown below that displays what we want our GUI to look like.
 
+For the model/engine portion, we'd like extensibility in adding new advanced commands. Advanced commands includes any sort of looping, evaluation for continuation, etc... Therefore, we will create advanced commands objects that can be instantiated. These advanced command objects will break the commands down into simple commands for the turtle to execute. This can be done by passing parts of the advanced command back into the parser to evaluate. For instance, in a while loop, the test statement while(....) must be evaluated in each iteration. This statement may contain variables that change and logic statements that must be evaluated. The parser will recursively evaluate that by passing parts of the statements into the engine and back into the parser if they are not decomposed to the most basic commands.
+
 [ “-” : uses/contains, “+” : subclass of]
 
-Class Hierarchy for Main Window Class
+Class Hierarchy for the view
 
 Main Window
 
