@@ -79,3 +79,6 @@ turtle.obey{
 	offsets()
 }
 ```
+
+Roles:
+Zanele is responsible for developing the parser and working on the data structures. Dan is responsible for working on the data structures and the advanced commands (in the model). Jeff is responsible for working on the view (including the simple commands in the view) and testing. Cody is responsible for the UI and other aspects of the view.
