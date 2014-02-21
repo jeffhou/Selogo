@@ -3,7 +3,7 @@ slogo
 
 Design Goals
 
-Our project will utilize the model-view paradigm. The view operates indepenently of the model, and contains one setter to issue commands to the engine. The rest of the view only acts as a getter.
+Our project will utilize the model-view paradigm. The view operates independently of the model, and contains one setter to issue commands to the engine. The rest of the view only acts as a getter.
 
 For the GUI, we will have a main window class. This class will hold the evaluation console, command line, reset button, command history, and the SLogo graphic window (using JGEngine). The evaluation console only prints the results of the user’s commands and prints errors if the user’s commands don’t correspond to an existing command. The SLogo Graphic Window holds instances of the Turtle Class and the Turtle Path Class. It also holds a variable, color, that is used to set the background color for the turtle’s display area and toggles the reference grid based off of the user’s input.  Because of the functionality of the evaluation Console and the SLogo graphic window, they will only use getters since they do not need to change anything in the Engine.
 
@@ -39,7 +39,7 @@ Class hierarchy for the view
 		- Color
 
 		- Reference Grid
-		
+
 	- Reset
 
 Class hierarchy for the model
@@ -102,8 +102,7 @@ turtle.obey{
 
 
 We discussed various alternatives in coming up with this design. For example, we had initially discussed a method of moving the turtle forward that did not utilize the abstract turtle data structure for the class. Instead, we had initially thought it would be best to write a class for every command. However,  shown above, we ended up implementing a different method for Turtle Commands. Our initial idea was to have a ForwardCommand be created and then be added to a queue, and then the Engine would handle running that ForwardCommand to manipulte the TurtlePhysicalObject. Instead, we decided to implement a Turtle Data Structure that would be responsible for running a TurtleCommand. This TurtleCommand is based upon offsets. 
-We also altered the way that Advanced Commands are run, and instead of writing a class for each type of AdvancedCommand, we decided to utilize a method that would digest diverse advanced commands into queues of simple commands. 
-We decided that this would allow us to have more elegant of a hierarchy, and also allow for much more flexibility in terms of being able to add new Turtle Commands and Advanced Commands easily. 
+We also altered the way that Advanced Commands are run, and instead of writing a class for each type of AdvancedCommand, we decided to utilize a method that would digest diverse advanced commands into queues of simple commands. We decided that this would allow us to have more elegant of a hierarchy, and also allow for much more flexibility in terms of being able to add new Turtle Commands and Advanced Commands easily. 
 
 Roles:_
 
