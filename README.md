@@ -1,8 +1,6 @@
 slogo
 =====
 
-Empty repository for SLogo project
-
 Part 1 Design:
 
 Design Goals
@@ -68,6 +66,9 @@ Main Window
 		- Reference Grid
 
 	- Reset
+
+UI Mockup:
+![UI mockup sketch] (https://raw2.github.com/duke-compsci308-spring2014/slogo_team12/master/design/UISketch.png?token=5981803__eyJzY29wZSI6IlJhd0Jsb2I6ZHVrZS1jb21wc2NpMzA4LXNwcmluZzIwMTQvc2xvZ29fdGVhbTEyL21hc3Rlci9kZXNpZ24vVUlTa2V0Y2gucG5nIiwiZXhwaXJlcyI6MTM5MzU3MDk5Mn0%3D--331bf95ec9d01ee49cb79d27409b9d3381ec7d01)
 
 Example Code (Pseudo-Code):
 ```
