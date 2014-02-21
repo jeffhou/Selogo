@@ -1,9 +1,7 @@
 slogo
 =====
 
-Part 1 Design:
-
-Design Goals
+_Design Goals_
 
 Our project will utilize the model-view paradigm. The view operates indepenently of the model, and contains one setter to issue commands to the engine. The rest of the view only acts as a getter.
 
@@ -17,9 +15,7 @@ The parser's main role is to create command objects using a commandFactory. (The
 
 [ “-” : uses/contains, “+” : subclass of]
 
-Class Hierarchy for the view
-
-Main Window
+Class hierarchy for the view
 
 	- Evaluation console
 
@@ -45,10 +41,16 @@ Main Window
 
 	- Reset
 
-UI Mockup:
+Class hierarchy for the model
+
+	- Item 1
+		- Sub-item 1
+
+
+_UI Mockup:_
 ![UI mockup sketch] (https://raw2.github.com/duke-compsci308-spring2014/slogo_team12/master/design/UISketch.png?token=5981803__eyJzY29wZSI6IlJhd0Jsb2I6ZHVrZS1jb21wc2NpMzA4LXNwcmluZzIwMTQvc2xvZ29fdGVhbTEyL21hc3Rlci9kZXNpZ24vVUlTa2V0Y2gucG5nIiwiZXhwaXJlcyI6MTM5MzU3MDk5Mn0%3D--331bf95ec9d01ee49cb79d27409b9d3381ec7d01)
 
-Example Code (Pseudo-Code):
+_Example Code (Pseudo-Code):_
 ```
 //User Input: “fd 50”
 //GUI:
@@ -80,5 +82,6 @@ turtle.obey{
 }
 ```
 
-Roles:
+_Roles:_
+
 Zanele is responsible for developing the parser and working on the data structures. Dan is responsible for working on the data structures and the advanced commands (in the model). Jeff is responsible for working on the view (including the simple commands in the view) and testing. Cody is responsible for the UI and other aspects of the view.
