@@ -28,14 +28,14 @@ public class Turtle {
 	 * Relative move in both directions.
 	 * xcor += xChange, ycor += yChange
 	 */
-	double move(Tuple posChange){
+	public double move(Tuple posChange){
 		return moveTo(Tuple.sum(posChange, position));
 	}
 	
 	/**
 	 * Sets turtle heading to newHeading.
 	 */
-	void setHeading(double newHeading){
+	public void setHeading(double newHeading){
 		heading = newHeading;
 	}
 	/**
@@ -84,5 +84,24 @@ public class Turtle {
 	}
 	void clearTrails(){
 		trails.clear();
+	}
+	
+	public Tuple getPosition(){
+		return position;
+	}
+
+	public double getHeading() {
+		return heading;
+	}
+	public boolean getPenState(){
+		return penDown;
+	}
+
+	public boolean getVisibility() {
+		return showing;
+	}
+
+	public ArrayList<ArrayList<Tuple>> getPaths() {
+		return trails;
 	}
 }

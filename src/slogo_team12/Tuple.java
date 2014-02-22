@@ -13,7 +13,7 @@ public class Tuple {
 		return new Tuple(t1.x + t2.x, t1.y + t2.y);
 	}
 
-	double x, y;
+	public double x, y;
 
 	public Tuple() {
 		this.x = 0;
