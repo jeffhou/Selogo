@@ -2,11 +2,11 @@ package slogo_team12;
 import java.lang.Math;
 import java.util.ArrayList;
 public class Turtle {
-	private Tuple position;	//position
+	Tuple position;	//position
 	private double heading;		//angle, 0 is north, rotates clockwise
 	private boolean penDown;	//is trail recording?
 	private boolean showing;	//is turtle showing?
-	private ArrayList<ArrayList<Tuple>> trails;
+	ArrayList<ArrayList<Tuple>> trails;
 	public Turtle(){
 		position = new Tuple();
 		trails = new ArrayList<ArrayList<Tuple>>();
