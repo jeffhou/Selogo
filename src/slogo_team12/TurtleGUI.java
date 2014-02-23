@@ -1,31 +1,26 @@
 package slogo_team12;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 import java.awt.Graphics;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class TurtleGUI extends Component{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2252414643063724300L;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
-	private final static String newline = "\n";
 	private Turtle turtle;
-	private Ellipse2D.Double turtleGraphic;
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
 	Dimension dimension;

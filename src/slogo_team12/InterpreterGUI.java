@@ -5,14 +5,22 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import slogo_team12.Interpreter.PluralityOfValuesException;
+
 public class InterpreterGUI extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1112755039756351859L;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
     protected JTextArea historyTextArea;
     private JButton runButton;
     private final static String newline = "\n";
-   
-    public InterpreterGUI() {
+    protected Interpreter interpreter;
+    public InterpreterGUI(Interpreter new_interpreter) {
         super(new GridBagLayout());
+        
+        interpreter = new_interpreter;
         historyTextArea = new JTextArea(25, 20);
         historyTextArea.setEditable(false);
         JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
@@ -29,7 +37,12 @@ public class InterpreterGUI extends JPanel{
         runButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				consoleOutputTextArea.setText(inputTextArea.getText());
+				try {
+					consoleOutputTextArea.setText("" + interpreter.interpret(inputTextArea.getText()));
+				} catch (PluralityOfValuesException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				String text = inputTextArea.getText();
 		        historyTextArea.append(text + newline);
@@ -49,6 +62,7 @@ public class InterpreterGUI extends JPanel{
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1.0;
         c.weighty = 1.0;
+        
         add(historyScrollPane, c);
         add(inputScrollPane, c);
         add(runButton, c);
@@ -70,7 +84,7 @@ public class InterpreterGUI extends JPanel{
         
         JPanel newPanel = new JPanel();
         TurtleGUI newTurtle = new TurtleGUI();
-        InterpreterGUI newIntrepreter = new InterpreterGUI();
+        InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
         
         newPanel.add(newTurtle);
         //Add contents to the window.
