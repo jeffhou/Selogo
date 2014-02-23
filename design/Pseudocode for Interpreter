@@ -1,0 +1,29 @@
+Pseudocode for interpreter
+
+(low)listOfWords = List<String>
+(lov)listOfValues = List<#>
+
+firstMethod = parse(listOfWords):
+	lov = []
+	while len(low) > 0:
+		lov.add(secondMethod())
+		
+secondMethod = parseSingularCommand(): 
+	word = low.pop(0)
+	if word isValue:
+		return word's value
+	elif word isCommand:
+		check command's needed parameters
+		if #param == 0:
+			return command()
+		else:
+			listOfParam = []
+			for i in range(#param):
+				if len(low) > 0:
+					listOfParam.add(secondMethod())
+				else:
+					throw exception
+			return command(listOfParam)	
+				
+	else:
+		throw Exception
