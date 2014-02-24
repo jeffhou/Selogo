@@ -72,7 +72,7 @@ public class Turtle {
 	 */
 	void setPen(boolean down){
 		penDown = down;
-		newTrail();
+		if(penDown) newTrail();
 	}
 	void newTrail(){
 		trails.add(new ArrayList<Tuple>());
