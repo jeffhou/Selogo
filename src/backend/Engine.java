@@ -1,11 +1,11 @@
-package slogo_team12;
+package backend;
 
 import commands.Command;
 
 import exceptions.InvalidCommandException;
 
 public class Engine {
-	Turtle turtle;
+	public Turtle turtle;
 
 	Engine() {
 		turtle = new Turtle();

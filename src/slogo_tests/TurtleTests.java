@@ -1,7 +1,5 @@
 package slogo_tests;
 
-import slogo_team12.Tuple;
-import slogo_team12.Turtle;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -11,6 +9,9 @@ import java.io.IOException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
+import backend.Tuple;
+import backend.Turtle;
 
 public class TurtleTests {
 	@Test

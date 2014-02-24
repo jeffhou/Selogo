@@ -1,14 +1,16 @@
-package slogo_team12;
+package backend;
+
+import gui.TurtleGUI;
 
 import java.lang.Math;
 import java.util.ArrayList;
 
 public class Turtle {
-	Tuple position; // position
+	public Tuple position; // position
 	private double heading; // angle, 0 is north, rotates clockwise
 	private boolean penDown; // is trail recording?
 	private boolean showing; // is turtle showing?
-	ArrayList<ArrayList<Tuple>> trails;
+	public ArrayList<ArrayList<Tuple>> trails;
 
 	public Turtle() {
 		position = new Tuple();

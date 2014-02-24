@@ -1,6 +1,6 @@
 package commands;
 
-import slogo_team12.Turtle;
+import backend.Turtle;
 
 public class RightTurtleCommand extends TurtleCommand {
 

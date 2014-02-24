@@ -1,7 +1,7 @@
 package commands;
 
-import slogo_team12.Tuple;
-import slogo_team12.Turtle;
+import backend.Tuple;
+import backend.Turtle;
 
 public class GotoTurtleCommand extends TurtleCommand {
 

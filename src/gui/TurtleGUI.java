@@ -1,4 +1,4 @@
-package slogo_team12;
+package gui;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -10,22 +10,29 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import backend.Tuple;
+import backend.Turtle;
+
 public class TurtleGUI extends Component {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2252414643063724300L;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
 	private Turtle turtle;
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
 	public static Dimension dimension;
-
+	/**
+	 * TODO: Should read image path and path color from file
+	 */
 	TurtleGUI() { // a way to test
+		/**
+		 * TODO: CREATE TURTLEGUI TESTS
+		 * create actual tests for the TurtleGUI (currently
+		 * non-existent) 
+		 */
 		super();
 		turtle = new Turtle();
 		try {
@@ -85,6 +92,10 @@ public class TurtleGUI extends Component {
 	}
 
 	public Dimension getPreferredSize() {
+		/**
+		 * TODO: REMOVE MAGIC NUMBERS
+		 * I put the TODO here but this applies to everything.
+		 */
 		return new Dimension(553, 553);
 	}
 

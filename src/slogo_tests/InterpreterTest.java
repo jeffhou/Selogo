@@ -11,12 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import backend.Interpreter;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
-import slogo_team12.Interpreter;
 
 /**
  * @author jeffhou

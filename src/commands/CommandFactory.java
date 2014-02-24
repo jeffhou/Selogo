@@ -2,8 +2,8 @@ package commands;
 
 import java.util.HashMap;
 
-import slogo_team12.Engine;
-import slogo_team12.Interpreter;
+import backend.Engine;
+import backend.Interpreter;
 import exceptions.InvalidCommandStringException;
 
 public class CommandFactory {

@@ -1,4 +1,4 @@
-package slogo_team12;
+package backend;
 
 public class Tuple {
 	public static Tuple scalarMultiply(Tuple t1, double d1) {
