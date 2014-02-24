@@ -49,6 +49,8 @@ public class CommandFactory {
 		commandParameters.put("bk", 1);
 		commandParameters.put("lt", 1);
 		commandParameters.put("rt", 1);
+		commandParameters.put("seth", 1);
+		commandParameters.put("goto", 2);
 	}
 
 	public Command createCommand(String firstWord) 
@@ -64,6 +66,12 @@ public class CommandFactory {
 		}
 		if(firstWord.equals("rt")){
 			return new RightTurtleCommand();
+		}
+		if(firstWord.equals("seth")){
+			return new SetHeadingTurtleCommand();
+		}
+		if(firstWord.equals("goto")){
+			return new GotoTurtleCommand();
 		}
 		throw new InvalidCommandStringException();
 	}

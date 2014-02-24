@@ -18,7 +18,7 @@ public class Turtle {
 	/**
 	 * Absolute move to position.
 	 */
-	double moveTo(Tuple newPos){
+	public double moveTo(Tuple newPos){
 		double distanceTraveled = position.distanceTo(newPos);
 		position = Tuple.subtract(Tuple.mod(Tuple.sum(newPos, new Tuple(553.0 / 2, 553.0 / 2)), new Tuple(TurtleGUI.dimension.width, TurtleGUI.dimension.height)), new Tuple(553.0 / 2, 553.0 / 2));
 		return distanceTraveled;
@@ -38,13 +38,18 @@ public class Turtle {
 	/**
 	 * Sets turtle heading to newHeading.
 	 */
-	public double setHeading(double newHeading){
-		heading = (heading + newHeading)%360;
-		return newHeading;
+	public double setHeading(double newHeadingChange){
+		 return setHeadingTo(heading + newHeadingChange);
 	}
 	/**
 	 * Points turtle at point (x,y).
 	 */
+	public double setHeadingTo(double newHeading){
+		double headingChange = (newHeading-heading)%360;
+		heading = newHeading%360;
+		return headingChange;
+	}
+	/*
 	void setHeading(Tuple point){
 		Tuple diff = Tuple.subtract(point, position);
 		if(diff.y == 0){  //prevent division by zero
@@ -53,9 +58,9 @@ public class Turtle {
 			}else if(diff.x < 0){
 				heading = 270;
 			}else{
-				/*
-				 * TODO: What should be the behavior when we say point at yourself?
-				 */
+				
+				 // TODO: What should be the behavior when we say point at yourself?
+				 
 			}
 		}else{
 			double newHeading = 180 + Math.atan(diff.x / diff.y) * 360 / Math.PI;
@@ -69,7 +74,7 @@ public class Turtle {
 			heading = newHeading;
 		}
 	}
-	
+	*/
 	/**
 	 * Sets pen state
 	 */
