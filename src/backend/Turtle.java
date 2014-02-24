@@ -83,7 +83,7 @@ public class Turtle {
 		trails.get(trails.size() - 1).add(getPosition());
 	}
 
-	void setVisibility(boolean show) {
+	public void setVisibility(boolean show) {
 		showing = show;
 	}
 

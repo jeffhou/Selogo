@@ -74,7 +74,6 @@ public class TurtleGUI extends Component {
 	}
 
 	void drawTurtle() {
-
 		if (turtle.getVisibility()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());

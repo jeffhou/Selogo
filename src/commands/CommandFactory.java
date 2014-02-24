@@ -32,6 +32,8 @@ public class CommandFactory {
 		commandClasses.put("goto", "commands.GotoTurtleCommand");
 		commandClasses.put("pd", "commands.PenDownTurtleCommand");
 		commandClasses.put("pu", "commands.PenUpTurtleCommand");
+		commandClasses.put("st", "commands.ShowTurtleTurtleCommand");
+		commandClasses.put("ht", "commands.HideTurtleTurtleCommand");
 	}
 
 	public Command createCommand(String firstWord)
