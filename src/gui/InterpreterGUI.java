@@ -11,7 +11,6 @@ public class InterpreterGUI extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1112755039756351859L;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
 	private JButton runButton;
@@ -118,6 +117,9 @@ public class InterpreterGUI extends JPanel {
 	}
 
 	public static void main(String[] args) {
+		/**
+		 * TODO: PULL OUT INTO A MAIN METHOD
+		 */
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
