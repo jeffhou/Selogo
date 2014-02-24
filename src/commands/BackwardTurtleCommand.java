@@ -1,4 +1,7 @@
-package slogo_team12;
+package commands;
+
+import slogo_team12.Tuple;
+import slogo_team12.Turtle;
 
 public class BackwardTurtleCommand extends TurtleCommand {
 

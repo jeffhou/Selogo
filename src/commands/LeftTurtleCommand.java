@@ -1,4 +1,6 @@
-package slogo_team12;
+package commands;
+
+import slogo_team12.Turtle;
 
 public class LeftTurtleCommand extends TurtleCommand {
 

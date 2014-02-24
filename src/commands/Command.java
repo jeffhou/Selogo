@@ -1,13 +1,14 @@
-package slogo_team12;
+package commands;
 
 import java.util.ArrayList;
 
+import slogo_team12.Turtle;
 import exceptions.NotEnoughParametersException;
 
 public abstract class Command {
-	protected final int NUM_OF_PARAMETERS;
+	public final int NUM_OF_PARAMETERS;
 	protected ArrayList<Double> parameters;
-	protected final String COMMAND_TYPE;
+	public final String COMMAND_TYPE;
 	Command(int numberOfParameters, String commandType){
 		NUM_OF_PARAMETERS = numberOfParameters;
 		COMMAND_TYPE = commandType;

@@ -3,6 +3,9 @@ package slogo_team12;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import commands.Command;
+import commands.CommandFactory;
+
 import exceptions.*;
 public class Interpreter{
 	final static String[] MATH_COMMANDS = {

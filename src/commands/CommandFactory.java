@@ -1,7 +1,9 @@
-package slogo_team12;
+package commands;
 
 import java.util.HashMap;
 
+import slogo_team12.Engine;
+import slogo_team12.Interpreter;
 import exceptions.InvalidCommandStringException;
 
 public class CommandFactory {
@@ -41,7 +43,7 @@ public class CommandFactory {
 	};
 	Interpreter interpreter;
 	Engine engine;
-	HashMap<String, Integer> commandParameters = new HashMap<String, Integer>();
+	public HashMap<String, Integer> commandParameters = new HashMap<String, Integer>();
 	public CommandFactory(Interpreter interpreter, Engine engine){
 		this.interpreter = interpreter;
 		this.engine = engine;

@@ -1,4 +1,4 @@
-package slogo_team12;
+package commands;
 
 public abstract class TurtleCommand extends Command {
 	TurtleCommand(int numberOfParameters) {

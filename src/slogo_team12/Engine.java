@@ -1,5 +1,7 @@
 package slogo_team12;
 
+import commands.Command;
+
 import exceptions.InvalidCommandException;
 
 public class Engine {
