@@ -50,7 +50,7 @@ public class Interpreter{
 		commandFactory = new CommandFactory(this, engine);
 	}
 	public ArrayList<Double> interpret(String text)
-			throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException {
+			throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		ArrayList<String> wordList =  listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
 		while(wordList.size() > 0){
@@ -69,7 +69,7 @@ public class Interpreter{
 	}
 
 	private Double evaluateCommand(ArrayList<String> wordList) 
-			throws InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+			throws InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String firstWord = wordList.remove(0);
 		if(isConstantValue(firstWord)){
 			return Double.parseDouble(firstWord);

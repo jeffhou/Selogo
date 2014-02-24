@@ -32,7 +32,6 @@ public class Turtle {
 						), 
 				new Tuple(553.0 / 2, 553.0 / 2)
 				);
-		System.out.println(position);
 		/** 
 		 *  TODO: When the turtle goes off screen, we should display turtle
 		 *  going to edge and then coming out from the other edge. Instead,

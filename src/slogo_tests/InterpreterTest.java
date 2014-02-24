@@ -62,14 +62,17 @@ public class InterpreterTest {
 	 * @throws NotEnoughParametersException 
 	 * @throws InvalidWordException 
 	 * @throws InvalidCommandStringException 
+	 * @throws ClassNotFoundException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
 	@Test
-	public void testForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+	public void testForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 	
 	@Test
-	public void testForwardForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+	public void testForwardForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
 	

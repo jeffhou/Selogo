@@ -3,9 +3,9 @@ package commands;
 import slogo_team12.Tuple;
 import slogo_team12.Turtle;
 
-public class BackwardTurtleCommand extends TurtleCommand {
+public class BackTurtleCommand extends TurtleCommand {
 
-	BackwardTurtleCommand() {
+	BackTurtleCommand() {
 		super(1);
 	}
 
