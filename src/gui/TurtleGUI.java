@@ -24,14 +24,14 @@ public class TurtleGUI extends Component {
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
 	public static Dimension dimension;
+
 	/**
 	 * TODO: Should read image path and path color from file
 	 */
 	TurtleGUI() { // a way to test
 		/**
-		 * TODO: CREATE TURTLEGUI TESTS
-		 * create actual tests for the TurtleGUI (currently
-		 * non-existent) 
+		 * TODO: CREATE TURTLEGUI TESTS create actual tests for the TurtleGUI
+		 * (currently non-existent)
 		 */
 		super();
 		turtle = new Turtle();
@@ -93,8 +93,8 @@ public class TurtleGUI extends Component {
 
 	public Dimension getPreferredSize() {
 		/**
-		 * TODO: REMOVE MAGIC NUMBERS
-		 * I put the TODO here but this applies to everything.
+		 * TODO: REMOVE MAGIC NUMBERS I put the TODO here but this applies to
+		 * everything.
 		 */
 		return new Dimension(553, 553);
 	}
