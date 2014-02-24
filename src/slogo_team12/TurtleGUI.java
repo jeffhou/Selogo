@@ -42,7 +42,7 @@ public class TurtleGUI extends Component {
 					.nextDouble() * 553 - 553 / 2));
 		}
 		turtle.trails.add(firstPath);
-		turtle.setHeading(305);
+		turtle.turnClockwise(305);
 		turtle.position = new Tuple(50, 29);
 	}
 

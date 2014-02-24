@@ -40,16 +40,17 @@ public class Turtle {
 	 */
 	public double move(Tuple posChange) {
 		Tuple actualPosChange = new Tuple((posChange.y - posChange.x)
-				* Math.sin(heading), (posChange.y + posChange.x)
-				* Math.cos(heading));
+				* Math.sin(Math.toRadians(heading)), (posChange.y + posChange.x)
+				* Math.cos(Math.toRadians(heading)));
 		return moveTo(Tuple.sum(actualPosChange, position));
 	}
 
 	/**
 	 * Sets turtle heading to newHeading.
 	 */
-	public double setHeading(double newHeadingChange) {
-		return setHeadingTo(heading + newHeadingChange);
+	public double turnClockwise(double newHeadingChange) {
+		setHeadingTo(heading + newHeadingChange);
+		return newHeadingChange;
 	}
 
 	/**

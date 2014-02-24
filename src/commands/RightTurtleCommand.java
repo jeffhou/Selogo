@@ -10,7 +10,7 @@ public class RightTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Turtle t) {
-		return t.setHeading(parameters.get(0));
+		return t.turnClockwise(parameters.get(0));
 	}
 
 }

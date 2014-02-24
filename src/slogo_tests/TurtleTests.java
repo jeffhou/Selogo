@@ -58,11 +58,11 @@ public class TurtleTests {
 		assertEquals("Incorrect position after position", position.y, 2.791,
 				0.001);
 
-		turtle.setHeading(163.0);
+		turtle.turnClockwise(163.0);
 		assertEquals("Incorrect heading after rotation", turtle.getHeading(),
 				163, 0.001);
 
-		turtle.setHeading(-26);
+		turtle.turnClockwise(-26);
 		assertEquals("Incorrect heading after rotation", turtle.getHeading(),
 				334, 0.001);
 	}
