@@ -32,6 +32,7 @@ public class Turtle {
 		 * TODO: When the turtle goes off screen, we should display turtle going
 		 * to edge and then coming out from the other edge. Instead, right now
 		 * the trail simply connects the old point and the new point.
+		 * Wrap around also needs to be implemented with correct math.
 		 */
 		if (penDown)
 			updateTrail();

@@ -63,6 +63,8 @@ public class InterpreterGUI extends JPanel {
 					consoleOutputTextArea.setText(""
 							+ interpreter.interpret(inputTextArea.getText()));
 				} catch (Exception e1) {
+					consoleOutputTextArea.setText(""
+							+ e1.getMessage());
 					e1.printStackTrace();
 				}
 
