@@ -20,7 +20,7 @@ import slogo_team12.Interpreter;
 
 /**
  * @author jeffhou
- *
+ * 
  */
 public class InterpreterTest {
 
@@ -29,7 +29,7 @@ public class InterpreterTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		
+
 	}
 
 	/**
@@ -43,6 +43,7 @@ public class InterpreterTest {
 	 * @throws java.lang.Exception
 	 */
 	Interpreter interpreter;
+
 	@Before
 	public void setUp() throws Exception {
 		interpreter = new Interpreter();
@@ -57,25 +58,32 @@ public class InterpreterTest {
 
 	/**
 	 * Test method for forward.logo
-	 * @throws PluralityOfValuesException 
-	 * @throws InvalidCommandException 
-	 * @throws NotEnoughParametersException 
-	 * @throws InvalidWordException 
-	 * @throws InvalidCommandStringException 
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
+	 * 
+	 * @throws PluralityOfValuesException
+	 * @throws InvalidCommandException
+	 * @throws NotEnoughParametersException
+	 * @throws InvalidWordException
+	 * @throws InvalidCommandStringException
+	 * @throws ClassNotFoundException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
 	 */
 	@Test
-	public void testForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public void testForward() throws PluralityOfValuesException,
+			InvalidCommandStringException, InvalidWordException,
+			NotEnoughParametersException, InvalidCommandException,
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
-	
+
 	@Test
-	public void testForwardForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public void testForwardForward() throws PluralityOfValuesException,
+			InvalidCommandStringException, InvalidWordException,
+			NotEnoughParametersException, InvalidCommandException,
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
-	
-	
 
 }

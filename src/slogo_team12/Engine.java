@@ -6,11 +6,13 @@ import exceptions.InvalidCommandException;
 
 public class Engine {
 	Turtle turtle;
-	Engine(){
+
+	Engine() {
 		turtle = new Turtle();
 	}
+
 	public double obey(Command newCommand) throws InvalidCommandException {
-		if(newCommand.COMMAND_TYPE.equals("turtle")){
+		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);
 		}
 		throw new InvalidCommandException();

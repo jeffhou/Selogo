@@ -13,7 +13,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class TurtleGUI extends Component{
+public class TurtleGUI extends Component {
 	/**
 	 * 
 	 */
@@ -24,7 +24,8 @@ public class TurtleGUI extends Component{
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
 	public static Dimension dimension;
-	TurtleGUI(){  // a way to test
+
+	TurtleGUI() { // a way to test
 		super();
 		turtle = new Turtle();
 		try {
@@ -32,23 +33,20 @@ public class TurtleGUI extends Component{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//turtle.setVisibility(false);
+		// turtle.setVisibility(false);
 		ArrayList<Tuple> firstPath = new ArrayList<Tuple>();
 		firstPath.add(new Tuple());
 		Random rand = new Random();
-		for(int i = 0; i < 30; i++){
-			firstPath.add(
-					new Tuple(
-							rand.nextDouble() * 553 - 553 / 2, 
-							rand.nextDouble() * 553 - 553 / 2
-							)
-					);
+		for (int i = 0; i < 30; i++) {
+			firstPath.add(new Tuple(rand.nextDouble() * 553 - 553 / 2, rand
+					.nextDouble() * 553 - 553 / 2));
 		}
 		turtle.trails.add(firstPath);
 		turtle.setHeading(305);
 		turtle.position = new Tuple(50, 29);
 	}
-	TurtleGUI(Turtle t){
+
+	TurtleGUI(Turtle t) {
 		super();
 		turtle = t;
 		try {
@@ -57,50 +55,59 @@ public class TurtleGUI extends Component{
 			e.printStackTrace();
 		}
 	}
-	public void paint(Graphics g){
+
+	public void paint(Graphics g) {
 		graphicsEngine = (Graphics2D) g;
-		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+				RenderingHints.VALUE_ANTIALIAS_ON);
 		dimension = getSize();
 		drawBorder();
 		drawTrails();
 		drawTurtle();
 	}
-	void drawTurtle(){
-		
-		if(turtle.getVisibility()){
+
+	void drawTurtle() {
+
+		if (turtle.getVisibility()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());
 			AffineTransform tx = AffineTransform.getRotateInstance(
-					rotationAngle, 
-					turtleImage.getWidth(this) / 2,
-					turtleImage.getHeight(this) / 2
-					);
-			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-			graphicsEngine.drawImage(
-					op.filter(turtleImage, null), 
-					(int) (center.x + turtle.getPosition().x - turtleImage.getWidth(this) / 2), 
-					(int) (center.y - turtle.getPosition().y - turtleImage.getHeight(this) / 2), null
-					);
+					rotationAngle, turtleImage.getWidth(this) / 2,
+					turtleImage.getHeight(this) / 2);
+			AffineTransformOp op = new AffineTransformOp(tx,
+					AffineTransformOp.TYPE_BILINEAR);
+			graphicsEngine.drawImage(op.filter(turtleImage, null),
+					(int) (center.x + turtle.getPosition().x - turtleImage
+							.getWidth(this) / 2),
+					(int) (center.y - turtle.getPosition().y - turtleImage
+							.getHeight(this) / 2), null);
 		}
 	}
-	public Dimension getPreferredSize(){
+
+	public Dimension getPreferredSize() {
 		return new Dimension(553, 553);
 	}
-	void drawBorder(){
-		graphicsEngine.draw3DRect(0, 0, dimension.width - 1, dimension.height - 1, true);
-		graphicsEngine.draw3DRect(3, 3, dimension.width - 7, dimension.height - 7, false);
+
+	void drawBorder() {
+		graphicsEngine.draw3DRect(0, 0, dimension.width - 1,
+				dimension.height - 1, true);
+		graphicsEngine.draw3DRect(3, 3, dimension.width - 7,
+				dimension.height - 7, false);
 	}
-	void drawTrails(){
+
+	void drawTrails() {
 		Tuple center = getCenter();
-		for(ArrayList<Tuple> path: turtle.trails){
-			for(int i = 0; i < path.size() - 1; i++){
-				graphicsEngine.draw(new Line2D.Double(
-						path.get(i).x + center.x, -path.get(i).y + center.y,
-						path.get(i + 1).x + center.x, -path.get(i + 1).y + center.y));
+		for (ArrayList<Tuple> path : turtle.trails) {
+			for (int i = 0; i < path.size() - 1; i++) {
+				graphicsEngine.draw(new Line2D.Double(path.get(i).x + center.x,
+						-path.get(i).y + center.y,
+						path.get(i + 1).x + center.x, -path.get(i + 1).y
+								+ center.y));
 			}
 		}
 	}
-	Tuple getCenter(){
+
+	Tuple getCenter() {
 		double centerX = dimension.width / 2;
 		double centerY = dimension.height / 2;
 		return new Tuple(centerX, centerY);
