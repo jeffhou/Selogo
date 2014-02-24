@@ -38,8 +38,9 @@ public class Turtle {
 	/**
 	 * Sets turtle heading to newHeading.
 	 */
-	public void setHeading(double newHeading){
-		heading = newHeading;
+	public double setHeading(double newHeading){
+		heading = (heading + newHeading)%360;
+		return newHeading;
 	}
 	/**
 	 * Points turtle at point (x,y).

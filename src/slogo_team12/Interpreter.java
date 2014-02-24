@@ -5,39 +5,6 @@ import java.util.HashMap;
 
 import exceptions.*;
 public class Interpreter{
-	final static String[] TURTLE_COMMANDS = {
-		"forward",
-		"fd",
-		"back",
-		"bk",
-		"left",
-		"lf",
-		"right",
-		"rt",
-		"setheading",
-		"seth",
-		"towards",
-		"setxy",
-		"goto",
-		"pendown",
-		"pd",
-		"penup",
-		"pu",
-		"showturtle",
-		"st",
-		"hideturtle",
-		"ht",
-		"home",
-		"clearscreen",
-		"cs",
-		"xcor",
-		"ycor",
-		"heading",
-		"pendown?",
-		"pendownp",
-		"showing?",
-		"showingp"
-	};
 	final static String[] MATH_COMMANDS = {
 		"sum",
 		"+",
@@ -124,7 +91,7 @@ public class Interpreter{
 	}
 
 	private boolean isCommand(String word){
-		return (word.equals("fd") | word.equals("bk"));
+		return commandFactory.commandParameters.containsKey(word);
 	}
 
 	private boolean isConstantValue(String word){
