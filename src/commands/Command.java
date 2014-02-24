@@ -10,7 +10,7 @@ public abstract class Command {
 	protected ArrayList<Double> parameters;
 	public final String COMMAND_TYPE;
 
-	Command(int numberOfParameters, String commandType) {
+	protected Command(int numberOfParameters, String commandType) {
 		NUM_OF_PARAMETERS = numberOfParameters;
 		COMMAND_TYPE = commandType;
 	}
