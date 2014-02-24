@@ -25,11 +25,14 @@ public class Turtle {
 	}
 	
 	/**
-	 * Relative move in both directions.
-	 * xcor += xChange, ycor += yChange
+	 * Relative move in both directions based on heading.
 	 */
 	public double move(Tuple posChange){
-		return moveTo(Tuple.sum(posChange, position));
+		Tuple actualPosChange = new Tuple(
+				(posChange.y - posChange.x) * Math.sin(heading),
+				(posChange.y + posChange.x) * Math.cos(heading)
+				);
+		return moveTo(Tuple.sum(actualPosChange, position));
 	}
 	
 	/**

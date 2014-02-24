@@ -51,6 +51,11 @@ public class TurtleGUI extends Component{
 	TurtleGUI(Turtle t){
 		super();
 		turtle = t;
+		try {
+			turtleImage = ImageIO.read(new File("img/turtle.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void paint(Graphics g){
 		graphicsEngine = (Graphics2D) g;

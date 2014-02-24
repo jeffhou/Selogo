@@ -5,8 +5,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import slogo_team12.Interpreter.PluralityOfValuesException;
-
 public class InterpreterGUI extends JPanel{
 	/**
 	 * 
@@ -16,7 +14,8 @@ public class InterpreterGUI extends JPanel{
     protected JTextArea historyTextArea;
     private JButton runButton;
     private final static String newline = "\n";
-    protected Interpreter interpreter;
+    protected static Interpreter interpreter;
+    static TurtleGUI newTurtleGUI;
     public InterpreterGUI(Interpreter new_interpreter) {
         super(new GridBagLayout());
         
@@ -39,8 +38,7 @@ public class InterpreterGUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					consoleOutputTextArea.setText("" + interpreter.interpret(inputTextArea.getText()));
-				} catch (PluralityOfValuesException e1) {
-					// TODO Auto-generated catch block
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				
@@ -52,6 +50,7 @@ public class InterpreterGUI extends JPanel{
 		        //was a selection in the text area.
 		        historyTextArea.setCaretPosition(historyTextArea.getDocument().getLength());
 		        inputTextArea.requestFocus();
+		        newTurtleGUI.repaint();
 			}
         });
         
@@ -67,9 +66,6 @@ public class InterpreterGUI extends JPanel{
         add(inputScrollPane, c);
         add(runButton, c);
         add(consoleScrollPane, c);
-
-        
-        
     }
  
     /**
@@ -83,10 +79,10 @@ public class InterpreterGUI extends JPanel{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JPanel newPanel = new JPanel();
-        TurtleGUI newTurtle = new TurtleGUI();
-        InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
         
-        newPanel.add(newTurtle);
+        InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
+        newTurtleGUI = new TurtleGUI(interpreter.engine.turtle);
+        newPanel.add(newTurtleGUI);
         //Add contents to the window.
         newPanel.add(newIntrepreter);
         frame.add(newPanel);

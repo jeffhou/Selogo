@@ -11,8 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandStringException;
+import exceptions.InvalidWordException;
+import exceptions.NotEnoughParametersException;
+import exceptions.PluralityOfValuesException;
 import slogo_team12.Interpreter;
-import slogo_team12.Interpreter.PluralityOfValuesException;
 
 /**
  * @author jeffhou
@@ -54,34 +58,21 @@ public class InterpreterTest {
 	/**
 	 * Test method for forward.logo
 	 * @throws PluralityOfValuesException 
+	 * @throws InvalidCommandException 
+	 * @throws NotEnoughParametersException 
+	 * @throws InvalidWordException 
+	 * @throws InvalidCommandStringException 
 	 */
 	@Test
-	public void testForward() throws PluralityOfValuesException{
-		assertEquals(interpreter.interpret("fd 50"), 50, 0.1);
+	public void testForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 	
-	/**
-	 * Test method for {@link slogo_team12.Interpreter#Interpreter()}.
-	 */
 	@Test
-	public void testInterpreter() {
-		fail("Not yet implemented"); // TODO
+	public void testForwardForward() throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
-
-	/**
-	 * Test method for {@link slogo_team12.Interpreter#parseInput(java.lang.String)}.
-	 */
-	@Test
-	public void testParseInput() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link slogo_team12.Interpreter#interpret(java.lang.String)}.
-	 */
-	@Test
-	public void testInterpret() {
-		fail("Not yet implemented"); // TODO
-	}
+	
+	
 
 }

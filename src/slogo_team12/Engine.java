@@ -1,9 +1,21 @@
 package slogo_team12;
 
-public class Engine {
+import exceptions.InvalidCommandException;
 
-	public double obey(Command newCommand) {
-		return 0.0;
+public class Engine {
+	Turtle turtle;
+	Engine(){
+		turtle = new Turtle();
+	}
+	public double obey(Command newCommand) throws InvalidCommandException {
+		if(newCommand.COMMAND_TYPE.equals("turtle")){
+			return newCommand.execute(turtle);
+		}
+		throw new InvalidCommandException();
+	}
+
+	public Turtle getTurtle() {
+		return turtle;
 	}
 
 }

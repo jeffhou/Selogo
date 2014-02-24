@@ -3,8 +3,7 @@ package slogo_team12;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import slogo_team12.CommandFactory.InvalidCommandStringException;
-
+import exceptions.*;
 public class Interpreter{
 	final static String[] TURTLE_COMMANDS = {
 		"forward",
@@ -78,40 +77,38 @@ public class Interpreter{
 	Engine engine;
 	public Interpreter(){
 		engine = new Engine();
-		CommandFactory commandFactory = new CommandFactory(this);
+		commandFactory = new CommandFactory(this, engine);
 	}
-	
-	
-	
-	public ArrayList<String> listOutCommands(String commands){
-		ArrayList<String> listOfWords = new ArrayList<String>();
-		/**
-		 * TODO: Implement multiline feature
-		 */
-		String[] words = commands.split("^[ \t]+");
-		for(String word: words){
-			listOfWords.add(word);
-		}
-		return listOfWords;
-		
-	}
-	public ArrayList<Double> interpret(String text) throws PluralityOfValuesException {
+	public ArrayList<Double> interpret(String text)
+			throws PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException {
 		ArrayList<String> wordList =  listOutCommands(text);
-		ArrayList<Double> evaluatedValues = evaluateValue(wordList);
+		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
 		while(wordList.size() > 0){
 			evaluatedValues.add(evaluateCommand(wordList));
 		}
 		return evaluatedValues;
 	}
-	
+	public ArrayList<String> listOutCommands(String commands){
+		ArrayList<String> listOfWords = new ArrayList<String>();
+		/**
+		 * TODO: Implement multiline feature
+		 */
+		String[] words = commands.split(" ");
+		for(String word: words){
+			listOfWords.add(word);
+		}
+		return listOfWords;
+
+	}
+
 	private Double evaluateCommand(ArrayList<String> wordList) 
-			throws InvalidCommandStringException, InvalidWordException, NotEnoughParametersException{
+			throws InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
 		String firstWord = wordList.remove(0);
 		if(isConstantValue(firstWord)){
 			return Double.parseDouble(firstWord);
 		}else if(isCommand(firstWord)){
-			Command newCommand = commandFactory.createCommand(firstWord);
 			ArrayList<Double> parameters = new ArrayList<Double>();
+			Command newCommand = commandFactory.createCommand(firstWord);
 			for(int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++){
 				if(wordList.size() > 0){
 					parameters.add(evaluateCommand(wordList));
@@ -126,26 +123,10 @@ public class Interpreter{
 		}
 	}
 
-	public class PluralityOfValuesException extends Exception{}
-	public class NotEnoughParametersException extends Exception{}
-	public class InvalidWordException extends Exception{}
-	
-	public ArrayList<Double> evaluateValue(ArrayList<String> words){
-		ArrayList<Double> values = new ArrayList<Double>();
-		while(words.size() > 0){
-			String firstWord = words.remove(0);
-			if(isConstantValue(firstWord)){
-				values.add(Double.parseDouble(firstWord));
-			}else if(isCommand(firstWord)){
-				values.add(commandFactory.createCommand(firstWord));
-			}
-		}
-		return values;
-		
-	}
 	private boolean isCommand(String word){
-		return commandParameters.containsKey(word);
+		return word.equals("fd");
 	}
+
 	private boolean isConstantValue(String word){
 		try{
 			Double.parseDouble(word);
