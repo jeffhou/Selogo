@@ -31,8 +31,8 @@ public class Turtle {
 		/**
 		 * TODO: When the turtle goes off screen, we should display turtle going
 		 * to edge and then coming out from the other edge. Instead, right now
-		 * the trail simply connects the old point and the new point.
-		 * Wrap around also needs to be implemented with correct math.
+		 * the trail simply connects the old point and the new point. Wrap
+		 * around also needs to be implemented with correct math.
 		 */
 		if (penDown)
 			updateTrail();
@@ -88,17 +88,19 @@ public class Turtle {
 		showing = show;
 	}
 
-	void home() {
-		moveTo(new Tuple());
+	public double home() {
+		return moveTo(new Tuple());
 	}
 
-	void clear() {
+	public double clear() {
+		double distanceTraveled = home();
 		clearTrails();
-		home();
+		return distanceTraveled;
 	}
 
 	void clearTrails() {
 		trails.clear();
+		setPen(penDown);
 	}
 
 	public Tuple getPosition() {

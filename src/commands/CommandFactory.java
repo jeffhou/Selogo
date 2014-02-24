@@ -24,17 +24,24 @@ public class CommandFactory {
 		 * TODO: this is duplicate code. Create a properties file or an XML file
 		 * and make the factory read it instead.
 		 */
-		commandClasses.put("fd", "commands.turtleCommands.ForwardTurtleCommand");
+		commandClasses
+				.put("fd", "commands.turtleCommands.ForwardTurtleCommand");
 		commandClasses.put("bk", "commands.turtleCommands.BackTurtleCommand");
 		commandClasses.put("lt", "commands.turtleCommands.LeftTurtleCommand");
 		commandClasses.put("rt", "commands.turtleCommands.RightTurtleCommand");
-		commandClasses.put("seth", "commands.turtleCommands.SetHeadingTurtleCommand");
+		commandClasses.put("seth",
+				"commands.turtleCommands.SetHeadingTurtleCommand");
 		commandClasses.put("goto", "commands.turtleCommands.GotoTurtleCommand");
-		commandClasses.put("pd", "commands.turtleCommands.PenDownTurtleCommand");
+		commandClasses
+				.put("pd", "commands.turtleCommands.PenDownTurtleCommand");
 		commandClasses.put("pu", "commands.turtleCommands.PenUpTurtleCommand");
-		commandClasses.put("st", "commands.turtleCommands.ShowTurtleTurtleCommand");
-		commandClasses.put("ht", "commands.turtleCommands.HideTurtleTurtleCommand");
+		commandClasses.put("st",
+				"commands.turtleCommands.ShowTurtleTurtleCommand");
+		commandClasses.put("ht",
+				"commands.turtleCommands.HideTurtleTurtleCommand");
 		commandClasses.put("home", "commands.turtleCommands.HomeTurtleCommand");
+		commandClasses.put("cs",
+				"commands.turtleCommands.ClearScreenTurtleCommand");
 	}
 
 	public Command createCommand(String firstWord)

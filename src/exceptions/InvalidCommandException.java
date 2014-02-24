@@ -1,7 +1,7 @@
 package exceptions;
 
 public class InvalidCommandException extends Exception {
-	public InvalidCommandException(){
+	public InvalidCommandException() {
 		super("Invalid command!");
 	}
 }

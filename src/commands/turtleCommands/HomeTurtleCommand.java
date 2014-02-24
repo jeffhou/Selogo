@@ -1,6 +1,5 @@
 package commands.turtleCommands;
 
-import backend.Tuple;
 import backend.Turtle;
 
 public class HomeTurtleCommand extends TurtleCommand {
@@ -11,7 +10,7 @@ public class HomeTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Turtle t) {
-		return t.moveTo(new Tuple());
+		return t.home();
 	}
 
 }
