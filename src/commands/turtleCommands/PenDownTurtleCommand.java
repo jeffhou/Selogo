@@ -4,7 +4,7 @@ import backend.Turtle;
 
 public class PenDownTurtleCommand extends TurtleCommand {
 
-	PenDownTurtleCommand() {
+	public PenDownTurtleCommand() {
 		super(0);
 	}
 

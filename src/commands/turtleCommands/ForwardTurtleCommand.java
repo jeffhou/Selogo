@@ -5,7 +5,7 @@ import backend.Turtle;
 
 public class ForwardTurtleCommand extends TurtleCommand {
 
-	ForwardTurtleCommand() {
+	public ForwardTurtleCommand() {
 		super(1);
 	}
 

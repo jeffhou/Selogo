@@ -4,7 +4,7 @@ import backend.Turtle;
 
 public class HideTurtleTurtleCommand extends TurtleCommand {
 
-	HideTurtleTurtleCommand() {
+	public HideTurtleTurtleCommand() {
 		super(0);
 	}
 

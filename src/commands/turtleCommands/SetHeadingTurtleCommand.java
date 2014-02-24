@@ -4,7 +4,7 @@ import backend.Turtle;
 
 public class SetHeadingTurtleCommand extends TurtleCommand {
 
-	SetHeadingTurtleCommand() {
+	public SetHeadingTurtleCommand() {
 		super(1);
 	}
 

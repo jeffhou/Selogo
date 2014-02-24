@@ -5,7 +5,7 @@ import backend.Turtle;
 
 public class HomeTurtleCommand extends TurtleCommand {
 
-	HomeTurtleCommand() {
+	public HomeTurtleCommand() {
 		super(0);
 	}
 
