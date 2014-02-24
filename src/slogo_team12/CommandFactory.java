@@ -12,12 +12,16 @@ public class CommandFactory {
 		this.interpreter = interpreter;
 		this.engine = engine;
 		commandParameters.put("fd", 1);
+		commandParameters.put("bk", 1);
 	}
 
 	public Command createCommand(String firstWord) 
 			throws InvalidCommandStringException {
 		if(firstWord.equals("fd")){
 			return new ForwardTurtleCommand();
+		}
+		if(firstWord.equals("bk")){
+			return new BackwardTurtleCommand();
 		}
 		throw new InvalidCommandStringException();
 	}

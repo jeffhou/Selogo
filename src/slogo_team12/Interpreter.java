@@ -124,7 +124,7 @@ public class Interpreter{
 	}
 
 	private boolean isCommand(String word){
-		return word.equals("fd");
+		return (word.equals("fd") | word.equals("bk"));
 	}
 
 	private boolean isConstantValue(String word){
