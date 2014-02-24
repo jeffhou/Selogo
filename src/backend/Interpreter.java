@@ -59,6 +59,7 @@ public class Interpreter {
 		if (isConstantValue(firstWord)) {
 			return Double.parseDouble(firstWord);
 		} else if (isCommand(firstWord)) {
+			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
 			Command newCommand = commandFactory.createCommand(firstWord);
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
@@ -76,7 +77,7 @@ public class Interpreter {
 	}
 
 	private boolean isCommand(String word) {
-		return commandFactory.commandClasses.containsKey(word);
+		return commandFactory.commands.containsKey(word.toLowerCase());
 	}
 
 	private boolean isConstantValue(String word) {
