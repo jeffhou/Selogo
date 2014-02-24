@@ -10,7 +10,7 @@ public class LeftTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Turtle t) {
-		return t.setHeading(-parameters.get(0));
+		return -t.setHeading(-parameters.get(0));
 	}
 
 }
