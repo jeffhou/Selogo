@@ -29,7 +29,11 @@ public class Tuple {
 		return (this.x == other.x) && (this.y == other.y);
 	}
 	public static Tuple mod(Tuple t1, Tuple t2){
-		return new Tuple(t1.x % t2.x, t1.y % t2.y);
+		double newX = t1.x % t2.x;
+		if(newX < 0) newX += t2.x;
+		double newY = t1.y % t2.y;
+		if(newY < 0) newY += t2.y;
+		return new Tuple(newX, newY);
 	}
 	@Override
 	public String toString() {

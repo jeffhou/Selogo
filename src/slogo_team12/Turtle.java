@@ -11,7 +11,7 @@ public class Turtle {
 		position = new Tuple();
 		trails = new ArrayList<ArrayList<Tuple>>();
 		heading = 0;
-		penDown = true;
+		setPen(true);
 		showing = true;
 	}
 	
@@ -20,7 +20,25 @@ public class Turtle {
 	 */
 	public double moveTo(Tuple newPos){
 		double distanceTraveled = position.distanceTo(newPos);
-		position = Tuple.subtract(Tuple.mod(Tuple.sum(newPos, new Tuple(553.0 / 2, 553.0 / 2)), new Tuple(TurtleGUI.dimension.width, TurtleGUI.dimension.height)), new Tuple(553.0 / 2, 553.0 / 2));
+		position = Tuple.subtract(
+				Tuple.mod(
+						Tuple.sum(
+								newPos,
+								new Tuple(553.0 / 2, 553.0 / 2)
+								),
+						new Tuple(
+								TurtleGUI.dimension.width, 
+								TurtleGUI.dimension.height)
+						), 
+				new Tuple(553.0 / 2, 553.0 / 2)
+				);
+		System.out.println(position);
+		/** 
+		 *  TODO: When the turtle goes off screen, we should display turtle
+		 *  going to edge and then coming out from the other edge. Instead,
+		 *  right now the trail simply connects the old point and the new point.
+		 */
+		updateTrail();
 		return distanceTraveled;
 	}
 	
@@ -52,8 +70,16 @@ public class Turtle {
 	/**
 	 * Sets pen state
 	 */
-	void setTrail(boolean down){
+	void setPen(boolean down){
 		penDown = down;
+		newTrail();
+	}
+	void newTrail(){
+		trails.add(new ArrayList<Tuple>());
+		updateTrail();
+	}
+	void updateTrail(){
+		trails.get(trails.size() - 1).add(getPosition());
 	}
 	void setVisibility(boolean show){
 		showing = show;
