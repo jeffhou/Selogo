@@ -60,10 +60,7 @@ public class Interpreter{
 	}
 	public ArrayList<String> listOutCommands(String commands){
 		ArrayList<String> listOfWords = new ArrayList<String>();
-		/**
-		 * TODO: Implement multiline feature
-		 */
-		String[] words = commands.split(" ");
+		String[] words = commands.split("\\s+");
 		for(String word: words){
 			listOfWords.add(word);
 		}
