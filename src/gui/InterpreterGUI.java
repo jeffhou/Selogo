@@ -9,7 +9,9 @@ import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
 	/**
-	 * 
+	 * TODO: Add locale-specific data and move all the strings to a resBundle
+	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
+	 * practice we can implement pirate or canadian english.
 	 */
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
@@ -22,17 +24,17 @@ public class InterpreterGUI extends JPanel {
 		super(new GridBagLayout());
 		/**
 		 * TODO: Remove unnecessary whitespace from history, make each entered
-		 * set of commands as a clickable link. 
+		 * set of commands as a clickable link.
 		 */
 		interpreter = new_interpreter;
 		historyTextArea = new JTextArea(25, 20);
 		historyTextArea.setEditable(false);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
-		
+
 		inputTextArea = new JTextArea(3, 20);
 		inputTextArea.setText("Enter code here...");
 		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
-		
+
 		consoleOutputTextArea = new JTextArea(4, 20);
 		consoleOutputTextArea.setEditable(false);
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
@@ -43,23 +45,20 @@ public class InterpreterGUI extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				/**
 				 * TODO: make each part of this actionPerformed into a separate
-				 * method 
+				 * method
 				 */
 				try {
 					/**
 					 * TODO: set the console text so that it says what the
-					 * engine actually did after each command.
-					 * A few ways to do this, this is what I imagined:
-					 * "sum fd fd 54 rt 15" yields:
-					 * 		"""moved forward by 54
-					 * 		   moved forward by 54
-					 * 		   turned right by 15
-					 * 		   sum of 54 and 15 is 69""" 
+					 * engine actually did after each command. A few ways to do
+					 * this, this is what I imagined: "sum fd fd 54 rt 15"
+					 * yields: """moved forward by 54 moved forward by 54 turned
+					 * right by 15 sum of 54 and 15 is 69"""
 					 */
 					/**
-					 * TODO: similarly implement errors in the same way.
-					 * Of course error messages should go into the error class
-					 * and command messages should go into the command class. 
+					 * TODO: similarly implement errors in the same way. Of
+					 * course error messages should go into the error class and
+					 * command messages should go into the command class.
 					 */
 					consoleOutputTextArea.setText(""
 							+ interpreter.interpret(inputTextArea.getText()));

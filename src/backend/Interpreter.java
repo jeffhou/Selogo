@@ -8,8 +8,8 @@ import exceptions.*;
 
 public class Interpreter {
 	/**
-	 * TODO: change the methods so that this looks like a real API
-	 * TODO: Make documentation for all public methods and vars (all classes)
+	 * TODO: change the methods so that this looks like a real API TODO: Make
+	 * documentation for all public methods and vars (all classes)
 	 */
 	final static String[] MATH_COMMANDS = { "sum", "+", "difference", "-",
 			"product", "*", "quotient", "/", "remainder", "%", "minus", "~",
@@ -76,7 +76,7 @@ public class Interpreter {
 	}
 
 	private boolean isCommand(String word) {
-		return commandFactory.commandParameters.containsKey(word);
+		return commandFactory.commandClasses.containsKey(word);
 	}
 
 	private boolean isConstantValue(String word) {

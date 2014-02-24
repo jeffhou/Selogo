@@ -34,7 +34,8 @@ public class Turtle {
 		 * the trail simply connects the old point and the new point.
 		 * Wrap around also needs to be implemented with correct math.
 		 */
-		updateTrail();
+		if (penDown)
+			updateTrail();
 		return distanceTraveled;
 	}
 
@@ -43,8 +44,8 @@ public class Turtle {
 	 */
 	public double move(Tuple posChange) {
 		Tuple actualPosChange = new Tuple((posChange.y - posChange.x)
-				* Math.sin(Math.toRadians(heading)), (posChange.y + posChange.x)
-				* Math.cos(Math.toRadians(heading)));
+				* Math.sin(Math.toRadians(heading)),
+				(posChange.y + posChange.x) * Math.cos(Math.toRadians(heading)));
 		return moveTo(Tuple.sum(actualPosChange, position));
 	}
 
@@ -68,7 +69,7 @@ public class Turtle {
 	/**
 	 * Sets pen state
 	 */
-	void setPen(boolean down) {
+	public void setPen(boolean down) {
 		penDown = down;
 		if (penDown)
 			newTrail();
@@ -83,7 +84,7 @@ public class Turtle {
 		trails.get(trails.size() - 1).add(getPosition());
 	}
 
-	void setVisibility(boolean show) {
+	public void setVisibility(boolean show) {
 		showing = show;
 	}
 
