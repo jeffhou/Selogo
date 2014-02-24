@@ -45,36 +45,10 @@ public class Turtle {
 	 * Points turtle at point (x,y).
 	 */
 	public double setHeadingTo(double newHeading){
-		double headingChange = (newHeading-heading)%360;
-		heading = newHeading%360;
+		double headingChange = (newHeading - heading) % 360;
+		heading = newHeading % 360;
 		return headingChange;
 	}
-	/*
-	void setHeading(Tuple point){
-		Tuple diff = Tuple.subtract(point, position);
-		if(diff.y == 0){  //prevent division by zero
-			if(diff.x > 0){
-				heading = 90;
-			}else if(diff.x < 0){
-				heading = 270;
-			}else{
-				
-				 // TODO: What should be the behavior when we say point at yourself?
-				 
-			}
-		}else{
-			double newHeading = 180 + Math.atan(diff.x / diff.y) * 360 / Math.PI;
-			if(diff.y > 0){
-				if(diff.x >= 0){
-					newHeading -= 180;
-				}else{
-					newHeading += 180;
-				}
-			}
-			heading = newHeading;
-		}
-	}
-	*/
 	/**
 	 * Sets pen state
 	 */
