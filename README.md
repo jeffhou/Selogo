@@ -1,6 +1,17 @@
 slogo
 =====
 
+Currently Implemented Commands (list is here: http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php)
+
+- Constants
+- fd
+- bk
+- lt
+- rt
+- seth
+- goto
+
+
 Design Goals
 
 Our project will utilize the model-view paradigm. The view operates independently of the model, and contains one setter to issue commands to the engine. The rest of the view only acts as a getter.
