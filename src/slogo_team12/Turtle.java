@@ -20,7 +20,7 @@ public class Turtle {
 	 */
 	double moveTo(Tuple newPos){
 		double distanceTraveled = position.distanceTo(newPos);
-		position = newPos;
+		position = Tuple.subtract(Tuple.mod(Tuple.sum(newPos, new Tuple(553.0 / 2, 553.0 / 2)), new Tuple(TurtleGUI.dimension.width, TurtleGUI.dimension.height)), new Tuple(553.0 / 2, 553.0 / 2));
 		return distanceTraveled;
 	}
 	

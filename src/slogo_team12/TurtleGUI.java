@@ -23,7 +23,7 @@ public class TurtleGUI extends Component{
 	private Turtle turtle;
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
-	Dimension dimension;
+	public static Dimension dimension;
 	TurtleGUI(){  // a way to test
 		super();
 		turtle = new Turtle();

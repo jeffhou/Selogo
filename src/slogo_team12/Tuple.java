@@ -28,7 +28,9 @@ public class Tuple {
 	public boolean equals(Tuple other) {
 		return (this.x == other.x) && (this.y == other.y);
 	}
-
+	public static Tuple mod(Tuple t1, Tuple t2){
+		return new Tuple(t1.x % t2.x, t1.y % t2.y);
+	}
 	@Override
 	public String toString() {
 		return "(" + this.x + "," + this.y + ")";
