@@ -1,6 +1,15 @@
 package commands;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
+
+
 
 import backend.Engine;
 import backend.Interpreter;
@@ -9,48 +18,46 @@ import exceptions.InvalidCommandStringException;
 public class CommandFactory {
 
 	final static String[] TURTLE_COMMANDS = { "forward", "fd", "back", "bk",
-			"left", "lf", "right", "rt", "setheading", "seth", "towards",
+			"left", "lt", "right", "rt", "setheading", "seth", "towards",
 			"setxy", "goto", "pendown", "pd", "penup", "pu", "showturtle",
 			"st", "hideturtle", "ht", "home", "clearscreen", "cs", "xcor",
 			"ycor", "heading", "pendown?", "pendownp", "showing?", "showingp" };
 	Interpreter interpreter;
 	Engine engine;
-	public HashMap<String, String> commands = new HashMap<String, String>();
+	public Map<String, String> commands = new HashMap<String, String>();
+	private static final String DEFAULT_RESOURCE_PACKAGE = "res.";
+	private ResourceBundle myResources;
+	
 
-	public CommandFactory(Interpreter interpreter, Engine engine) {
+	
+	public void populateCommandMap() throws IOException{
+		myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "Command");
+		
+		
+		//delete implementedCommands and replace implementedCommands with TURTLE_COMMANDS in forloop once all commands are implemented.
+		String [] implementedCommands = {"forward", "fd", "bk", "back", "lt", "left", "rt","right", 
+				"seth", "setheading", "goto","setxy", "pd", "pendown", "pu", "penup", "st", 
+				"showturtle", "ht", "hideturtle","home", "cs","clearscreen"};
+		for (String command: implementedCommands) {
+			commands.put(command, myResources.getString(command));
+		}
+		
+	}
+
+	public CommandFactory(Interpreter interpreter, Engine engine){
 		this.interpreter = interpreter;
 		this.engine = engine;
 		/**
 		 * TODO: this is duplicate code. Create a properties file or an XML file
 		 * and make the factory read it instead.
 		 */
-		commands.put("fd", "commands.turtleCommands.ForwardTurtleCommand");
-		commands.put("forward", "commands.turtleCommands.ForwardTurtleCommand");
-		commands.put("bk", "commands.turtleCommands.BackTurtleCommand");
-		commands.put("back", "commands.turtleCommands.BackTurtleCommand");
-		commands.put("lt", "commands.turtleCommands.LeftTurtleCommand");
-		commands.put("left", "commands.turtleCommands.LeftTurtleCommand");
-		commands.put("rt", "commands.turtleCommands.RightTurtleCommand");
-		commands.put("right", "commands.turtleCommands.RightTurtleCommand");
-		commands.put("seth", "commands.turtleCommands.SetHeadingTurtleCommand");
-		commands.put("setheading",
-				"commands.turtleCommands.SetHeadingTurtleCommand");
-		commands.put("goto", "commands.turtleCommands.GotoTurtleCommand");
-		commands.put("setxy", "commands.turtleCommands.GotoTurtleCommand");
-		commands.put("pd", "commands.turtleCommands.PenDownTurtleCommand");
-		commands.put("pendown", "commands.turtleCommands.PenDownTurtleCommand");
-		commands.put("pu", "commands.turtleCommands.PenUpTurtleCommand");
-		commands.put("penup", "commands.turtleCommands.PenUpTurtleCommand");
-		commands.put("st", "commands.turtleCommands.ShowTurtleTurtleCommand");
-		commands.put("showturtle",
-				"commands.turtleCommands.ShowTurtleTurtleCommand");
-		commands.put("ht", "commands.turtleCommands.HideTurtleTurtleCommand");
-		commands.put("hideturtle",
-				"commands.turtleCommands.HideTurtleTurtleCommand");
-		commands.put("home", "commands.turtleCommands.HomeTurtleCommand");
-		commands.put("cs", "commands.turtleCommands.ClearScreenTurtleCommand");
-		commands.put("clearscreen",
-				"commands.turtleCommands.ClearScreenTurtleCommand");
+		
+		try {
+			populateCommandMap();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public Command createCommand(String firstWord)

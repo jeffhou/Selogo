@@ -13,6 +13,8 @@ public class InterpreterGUI extends JPanel {
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
 	 * practice we can implement pirate or canadian english.
 	 */
+	
+	
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
 	private JButton runButton;
