@@ -1,15 +1,10 @@
 package commands;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.ResourceBundle;
-
-
-
 
 import backend.Engine;
 import backend.Interpreter;
@@ -25,39 +20,22 @@ public class CommandFactory {
 	Interpreter interpreter;
 	Engine engine;
 	public Map<String, String> commands = new HashMap<String, String>();
-	private static final String DEFAULT_RESOURCE_PACKAGE = "res.";
-	private ResourceBundle myResources;
-	
+	private ResourceBundle myCommands;
 
-	
-	public void populateCommandMap() throws IOException{
-		myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + "Command");
-		
-		
-		//delete implementedCommands and replace implementedCommands with TURTLE_COMMANDS in forloop once all commands are implemented.
-		String [] implementedCommands = {"forward", "fd", "bk", "back", "lt", "left", "rt","right", 
-				"seth", "setheading", "goto","setxy", "pd", "pendown", "pu", "penup", "st", 
-				"showturtle", "ht", "hideturtle","home", "cs","clearscreen"};
-		for (String command: implementedCommands) {
-			commands.put(command, myResources.getString(command));
+	public void populateCommandMap() throws IOException {
+		myCommands = ResourceBundle.getBundle("res.Command");
+		Enumeration<String> bundleKeys = myCommands.getKeys();
+		while (bundleKeys.hasMoreElements()) {
+			String command = (String) bundleKeys.nextElement();
+			commands.put(command, myCommands.getString(command));
 		}
-		
 	}
 
-	public CommandFactory(Interpreter interpreter, Engine engine){
+	public CommandFactory(Interpreter interpreter, Engine engine)
+			throws IOException {
 		this.interpreter = interpreter;
 		this.engine = engine;
-		/**
-		 * TODO: this is duplicate code. Create a properties file or an XML file
-		 * and make the factory read it instead.
-		 */
-		
-		try {
-			populateCommandMap();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		populateCommandMap();
 	}
 
 	public Command createCommand(String firstWord)

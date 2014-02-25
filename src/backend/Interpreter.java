@@ -1,5 +1,6 @@
 package backend;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import commands.Command;
@@ -22,7 +23,7 @@ public class Interpreter {
 	CommandFactory commandFactory;
 	public Engine engine;
 
-	public Interpreter() {
+	public Interpreter() throws IOException {
 		engine = new Engine();
 		commandFactory = new CommandFactory(this, engine);
 	}
