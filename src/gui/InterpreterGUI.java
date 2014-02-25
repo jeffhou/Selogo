@@ -2,12 +2,16 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.*;
 
 import backend.Interpreter;
 
-public class InterpreterGUI extends JPanel {
+import java.awt.Desktop.*;
+
+public class InterpreterGUI extends JPanel{
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
@@ -19,6 +23,9 @@ public class InterpreterGUI extends JPanel {
 	private final static String newline = "\n";
 	protected static Interpreter interpreter;
 	static TurtleGUI newTurtleGUI;
+
+	protected static JMenuBar menuBar;
+	protected static JPopupMenu popUp;
 
 	public InterpreterGUI(Interpreter new_interpreter) {
 		super(new GridBagLayout());
@@ -92,6 +99,7 @@ public class InterpreterGUI extends JPanel {
 		add(inputScrollPane, c);
 		add(runButton, c);
 		add(consoleScrollPane, c);
+
 	}
 
 	/**
@@ -100,7 +108,7 @@ public class InterpreterGUI extends JPanel {
 	 */
 	private static void createAndShowGUI() {
 		// Create and set up the window.
-		JFrame frame = new JFrame("TextDemo");
+		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel newPanel = new JPanel();
@@ -113,7 +121,11 @@ public class InterpreterGUI extends JPanel {
 		frame.add(newPanel);
 		// Display the window.
 		frame.pack();
+		helpMenu();
+		frame.setJMenuBar(menuBar);
+
 		frame.setVisible(true);
+
 	}
 
 	public static void main(String[] args) {
@@ -127,5 +139,42 @@ public class InterpreterGUI extends JPanel {
 				createAndShowGUI();
 			}
 		});
+
 	}
+
+	private static void helpMenu(){
+
+		//Create the menu bar.
+		menuBar = new JMenuBar();
+
+		//Build the first menu.
+		JMenu menu = new JMenu("Help");
+		menu.setMnemonic(KeyEvent.VK_A);
+		menu.getAccessibleContext().setAccessibleDescription("Brings up a help menu");
+		menuBar.add(menu);
+
+		// Submenu
+		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
+		helpSubMenu.setMnemonic(KeyEvent.VK_B);
+		menu.add(helpSubMenu);
+		menuBar.add(menu);
+
+		helpSubMenu.addMouseListener(new MouseAdapter() {
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+	}
+
 }
