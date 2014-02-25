@@ -89,6 +89,7 @@ public class Turtle {
 	}
 
 	public double home() {
+		setHeadingTo(0);
 		return moveTo(new Tuple());
 	}
 
