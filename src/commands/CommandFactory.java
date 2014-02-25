@@ -14,6 +14,7 @@ public class CommandFactory {
 	public void populateCommands(){
 		XMLReader newXMLReader = new XMLReader();
 		newXMLReader.read("assets/turtleCommands.xml", commands);
+		newXMLReader.read("assets/mathCommands.xml", commands);
 	}
 	
 	/* To match multiple strings to the same command.  
