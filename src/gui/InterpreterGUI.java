@@ -17,6 +17,7 @@ public class InterpreterGUI extends JPanel{
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
 	 * practice we can implement pirate or canadian english.
 	 */
+
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
 	private JButton runButton;
@@ -105,8 +106,9 @@ public class InterpreterGUI extends JPanel{
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
 	 * invoked from the event dispatch thread.
+	 * @throws IOException 
 	 */
-	private static void createAndShowGUI() {
+	private static void createAndShowGUI() throws IOException {
 		// Create and set up the window.
 		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,7 +138,12 @@ public class InterpreterGUI extends JPanel{
 		// creating and showing this application's GUI.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				createAndShowGUI();
+				try {
+					createAndShowGUI();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
