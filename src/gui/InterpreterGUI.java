@@ -9,8 +9,6 @@ import javax.swing.*;
 
 import backend.Interpreter;
 
-import java.awt.Desktop.*;
-
 public class InterpreterGUI extends JPanel{
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle

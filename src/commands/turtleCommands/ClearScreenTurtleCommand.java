@@ -1,6 +1,5 @@
 package commands.turtleCommands;
 
-import backend.Tuple;
 import backend.Turtle;
 
 public class ClearScreenTurtleCommand extends TurtleCommand {

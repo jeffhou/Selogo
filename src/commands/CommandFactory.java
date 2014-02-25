@@ -1,11 +1,7 @@
 package commands;
 
-import java.io.IOException;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
+import parser.XMLReader;
 import backend.Engine;
 import backend.Interpreter;
 import exceptions.InvalidCommandStringException;
@@ -19,9 +15,14 @@ public class CommandFactory {
 			"ycor", "heading", "pendown?", "pendownp", "showing?", "showingp" };
 	Interpreter interpreter;
 	Engine engine;
-	public Map<String, String> commands = new HashMap<String, String>();
+	public HashMap<String, String> commands = new HashMap<String, String>();
+	public void populateCommands(){
+		XMLReader newXMLReader = new XMLReader();
+		newXMLReader.read("assets/turtleCommands.xml", commands);
+	}
+	
+	/* To match multiple strings to the same command.  
 	private ResourceBundle myCommands;
-
 	public void populateCommandMap() throws IOException {
 		myCommands = ResourceBundle.getBundle("res.Command");
 		Enumeration<String> bundleKeys = myCommands.getKeys();
@@ -30,12 +31,13 @@ public class CommandFactory {
 			commands.put(command, myCommands.getString(command));
 		}
 	}
-
-	public CommandFactory(Interpreter interpreter, Engine engine)
-			throws IOException {
+	*/
+	
+	
+	public CommandFactory(Interpreter interpreter, Engine engine) {
 		this.interpreter = interpreter;
 		this.engine = engine;
-		populateCommandMap();
+		populateCommands();
 	}
 
 	public Command createCommand(String firstWord)
