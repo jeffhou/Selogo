@@ -10,7 +10,8 @@ public class GotoTurtleCommand extends TurtleCommand {
 	}
 
 	@Override
-	public double execute(Turtle t) {
+	public double execute(Object o) {
+		Turtle t = (Turtle) o;
 		return t.moveTo(new Tuple(parameters.get(0), parameters.get(1)));
 	}
 

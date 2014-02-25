@@ -2,16 +2,16 @@ package commands.turtleCommands;
 
 import backend.Turtle;
 
-public class HomeTurtleCommand extends TurtleCommand {
+public class HeadingQueryTurtleCommand extends TurtleCommand {
 
-	public HomeTurtleCommand() {
+	public HeadingQueryTurtleCommand() {
 		super(0);
 	}
 
 	@Override
 	public double execute(Object o) {
 		Turtle t = (Turtle) o;
-		return t.home();
+		return t.getHeading();
 	}
 
 }

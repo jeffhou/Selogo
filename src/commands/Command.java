@@ -2,7 +2,6 @@ package commands;
 
 import java.util.ArrayList;
 
-import backend.Turtle;
 import exceptions.NotEnoughParametersException;
 
 public abstract class Command {
@@ -23,6 +22,5 @@ public abstract class Command {
 			throw new NotEnoughParametersException();
 		}
 	};
-
-	public abstract double execute(Turtle t);
+	public abstract double execute(Object o);
 }

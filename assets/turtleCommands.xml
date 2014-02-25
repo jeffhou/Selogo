@@ -22,4 +22,13 @@
 	<command code="home" commandClass="commands.turtleCommands.HomeTurtleCommand"/>
 	<command code="cs" commandClass="commands.turtleCommands.ClearScreenTurtleCommand"/>
 	<command code="clearscreen" commandClass="commands.turtleCommands.ClearScreenTurtleCommand"/>
+	
+	<command code="xcor" commandClass="commands.turtleCommands.XCorQueryTurtleCommand"/>
+	<command code="ycor" commandClass="commands.turtleCommands.YCorQueryTurtleCommand"/>
+	<command code="heading" commandClass="commands.turtleCommands.HeadingQueryTurtleCommand"/>
+	<command code="pendown?" commandClass="commands.turtleCommands.PenDownQueryTurtleCommand"/>
+	<command code="pendownp" commandClass="commands.turtleCommands.PenDownQueryTurtleCommand"/>
+	<command code="showing?" commandClass="commands.turtleCommands.ShowingQueryTurtleCommand"/>
+	<command code="showingp" commandClass="commands.turtleCommands.ShowingQueryTurtleCommand"/>
+	
 </model>

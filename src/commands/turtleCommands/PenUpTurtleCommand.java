@@ -9,7 +9,8 @@ public class PenUpTurtleCommand extends TurtleCommand {
 	}
 
 	@Override
-	public double execute(Turtle t) {
+	public double execute(Object o) {
+		Turtle t = (Turtle) o;
 		t.setPen(false);
 		return 0;
 	}

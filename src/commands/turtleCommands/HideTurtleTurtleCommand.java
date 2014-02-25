@@ -9,7 +9,8 @@ public class HideTurtleTurtleCommand extends TurtleCommand {
 	}
 
 	@Override
-	public double execute(Turtle t) {
+	public double execute(Object o) {
+		Turtle t = (Turtle) o;
 		t.setVisibility(false);
 		return 0;
 	}

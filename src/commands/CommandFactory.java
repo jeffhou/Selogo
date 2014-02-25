@@ -8,11 +8,6 @@ import exceptions.InvalidCommandStringException;
 
 public class CommandFactory {
 
-	final static String[] TURTLE_COMMANDS = { "forward", "fd", "back", "bk",
-			"left", "lt", "right", "rt", "setheading", "seth", "towards",
-			"setxy", "goto", "pendown", "pd", "penup", "pu", "showturtle",
-			"st", "hideturtle", "ht", "home", "clearscreen", "cs", "xcor",
-			"ycor", "heading", "pendown?", "pendownp", "showing?", "showingp" };
 	Interpreter interpreter;
 	Engine engine;
 	public HashMap<String, String> commands = new HashMap<String, String>();
@@ -32,7 +27,6 @@ public class CommandFactory {
 		}
 	}
 	*/
-	
 	
 	public CommandFactory(Interpreter interpreter, Engine engine) {
 		this.interpreter = interpreter;
