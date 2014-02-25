@@ -156,8 +156,6 @@ public class InterpreterGUI extends JPanel{
 
 		//Build the first menu.
 		JMenu menu = new JMenu("Help");
-		menu.setMnemonic(KeyEvent.VK_A);
-		menu.getAccessibleContext().setAccessibleDescription("Brings up a help menu");
 		menuBar.add(menu);
 
 		// Submenu
