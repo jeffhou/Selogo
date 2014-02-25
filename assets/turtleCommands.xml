@@ -1,0 +1,25 @@
+<model>
+    <command code="fd" commandClass="commands.turtleCommands.ForwardTurtleCommand"/>
+	<command code="forward" commandClass="commands.turtleCommands.ForwardTurtleCommand"/>
+	<command code="bk" commandClass="commands.turtleCommands.BackTurtleCommand"/>
+	<command code="back" commandClass="commands.turtleCommands.BackTurtleCommand"/>
+	<command code="lt" commandClass="commands.turtleCommands.LeftTurtleCommand"/>
+	<command code="left" commandClass="commands.turtleCommands.LeftTurtleCommand"/>
+	<command code="rt" commandClass="commands.turtleCommands.RightTurtleCommand"/>
+	<command code="right" commandClass="commands.turtleCommands.RightTurtleCommand"/>
+	<command code="seth" commandClass="commands.turtleCommands.SetHeadingTurtleCommand"/>
+	<command code="setheading" commandClass="commands.turtleCommands.SetHeadingTurtleCommand"/>
+	<command code="goto" commandClass="commands.turtleCommands.GotoTurtleCommand"/>
+	<command code="setxy" commandClass="commands.turtleCommands.GotoTurtleCommand"/>
+	<command code="pd" commandClass="commands.turtleCommands.PenDownTurtleCommand"/>
+	<command code="pendown" commandClass="commands.turtleCommands.PenDownTurtleCommand"/>
+	<command code="pu" commandClass="commands.turtleCommands.PenUpTurtleCommand"/>
+	<command code="penup" commandClass="commands.turtleCommands.PenUpTurtleCommand"/>
+	<command code="st" commandClass="commands.turtleCommands.ShowTurtleTurtleCommand"/>
+	<command code="showturtle" commandClass="commands.turtleCommands.ShowTurtleTurtleCommand"/>
+	<command code="ht" commandClass="commands.turtleCommands.HideTurtleTurtleCommand"/>
+	<command code="hideturtle" commandClass="commands.turtleCommands.HideTurtleTurtleCommand"/>
+	<command code="home" commandClass="commands.turtleCommands.HomeTurtleCommand"/>
+	<command code="cs" commandClass="commands.turtleCommands.ClearScreenTurtleCommand"/>
+	<command code="clearscreen" commandClass="commands.turtleCommands.ClearScreenTurtleCommand"/>
+</model>
