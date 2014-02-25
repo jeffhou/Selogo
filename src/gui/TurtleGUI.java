@@ -95,14 +95,14 @@ public class TurtleGUI extends Component {
 		 * TODO: REMOVE MAGIC NUMBERS I put the TODO here but this applies to
 		 * everything.
 		 */
-		return new Dimension(553, 553);
+		return new Dimension(533, 600);
 	}
 
 	void drawBorder() {
 		graphicsEngine.draw3DRect(0, 0, dimension.width - 1,
-				dimension.height - 1, true);
+				dimension.height - 23, true);
 		graphicsEngine.draw3DRect(3, 3, dimension.width - 7,
-				dimension.height - 7, false);
+				dimension.height - 29, false);
 	}
 
 	void drawTrails() {
