@@ -1,9 +1,9 @@
 package commands.advancedCommands;
 
 import backend.Interpreter;
-import backend.Turtle;
+
 import commands.AdvancedCommand;
-import exceptions.EndOfStackException;
+
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
@@ -31,7 +31,7 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 				interpreter.engine.restoreTurtleState();
 			}
 		}
-		
+
 		return ret;
 	}
 

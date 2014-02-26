@@ -1,6 +1,7 @@
 package backend;
 
 import commands.Command;
+
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
@@ -17,12 +18,15 @@ public class Engine {
 		turtle = new Turtle();
 		this.interpreter = interpreter;
 	}
-	public void saveTurtleState(){
+
+	public void saveTurtleState() {
 		turtleState = turtle.clone();
 	}
-	public void restoreTurtleState(){
+
+	public void restoreTurtleState() {
 		turtle = turtleState;
 	}
+
 	public double obey(Command newCommand) throws InvalidCommandException,
 			InvalidSyntaxException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
@@ -30,7 +34,7 @@ public class Engine {
 			NotEnoughParametersException, EndOfStackException {
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);
-		}  else if (newCommand.COMMAND_TYPE.equals("math")) {
+		} else if (newCommand.COMMAND_TYPE.equals("math")) {
 			return newCommand.execute(null);
 		} else if (newCommand.COMMAND_TYPE.equals("boolean")) {
 			return newCommand.execute(null);

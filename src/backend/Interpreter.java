@@ -5,7 +5,14 @@ import java.util.ArrayList;
 
 import commands.Command;
 import commands.CommandFactory;
-import exceptions.*;
+
+import exceptions.EndOfStackException;
+import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandStringException;
+import exceptions.InvalidSyntaxException;
+import exceptions.InvalidWordException;
+import exceptions.NotEnoughParametersException;
+import exceptions.PluralityOfValuesException;
 
 public class Interpreter {
 	/**
@@ -14,6 +21,7 @@ public class Interpreter {
 	 */
 	CommandFactory commandFactory;
 	public Engine engine;
+
 	public Interpreter() throws IOException {
 		engine = new Engine(this);
 		commandFactory = new CommandFactory(this, engine);
@@ -37,8 +45,12 @@ public class Interpreter {
 		}
 		return evaluatedValues;
 	}
-	
-	public double readBrackets() throws InvalidSyntaxException, InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException{
+
+	public double readBrackets() throws InvalidSyntaxException,
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvalidCommandStringException,
+			InvalidWordException, NotEnoughParametersException,
+			InvalidCommandException {
 		Double ret = 0.0;
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();
@@ -52,7 +64,7 @@ public class Interpreter {
 		}
 		return ret;
 	}
-	
+
 	public ArrayList<String> listOfWords;
 
 	public void listOutCommands(String commands) {
@@ -69,7 +81,7 @@ public class Interpreter {
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
-		
+
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
 			return Double.parseDouble(firstWord);

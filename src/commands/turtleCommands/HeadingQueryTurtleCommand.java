@@ -1,8 +1,8 @@
 package commands.turtleCommands;
 
-import commands.TurtleCommand;
-
 import backend.Turtle;
+
+import commands.TurtleCommand;
 
 public class HeadingQueryTurtleCommand extends TurtleCommand {
 

@@ -2,7 +2,6 @@ package backend;
 
 import gui.TurtleGUI;
 
-import java.lang.Math;
 import java.util.ArrayList;
 
 public class Turtle {

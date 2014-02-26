@@ -4,7 +4,6 @@ import commands.MathCommand;
 
 public class QuotientMathCommand extends MathCommand {
 
-
 	public QuotientMathCommand() {
 		super(2);
 	}

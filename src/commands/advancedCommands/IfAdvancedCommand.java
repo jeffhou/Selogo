@@ -1,8 +1,9 @@
 package commands.advancedCommands;
 
 import backend.Interpreter;
-import backend.Turtle;
+
 import commands.AdvancedCommand;
+
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
@@ -23,9 +24,9 @@ public class IfAdvancedCommand extends AdvancedCommand {
 			InvalidCommandException {
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
-		
+
 		Double ret = interpreter.readBrackets();
-		
+
 		if (parameters.get(0) == 0) {
 			interpreter.engine.restoreTurtleState();
 		}

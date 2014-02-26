@@ -1,6 +1,5 @@
 package commands.mathCommands;
 
-
 import java.util.Random;
 
 import commands.MathCommand;
@@ -14,9 +13,9 @@ public class RandomMathCommand extends MathCommand {
 	@Override
 	public double execute(Object o) {
 
-		Random generator = new Random(); 
+		Random generator = new Random();
 		double max = parameters.get(0);
-		double randomDouble = generator.nextDouble()*max;
+		double randomDouble = generator.nextDouble() * max;
 		return randomDouble;
 
 	}

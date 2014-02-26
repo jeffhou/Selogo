@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import backend.Interpreter;
 import backend.StringOps;
-import backend.Turtle;
+
 import commands.AdvancedCommand;
-import exceptions.EndOfStackException;
+
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
@@ -28,15 +28,16 @@ public class ForAdvancedCommand extends AdvancedCommand {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
-		
+
 		Double ret;
-		ArrayList<String> newList = StringOps.deepCopy(interpreter.listOfWords);;
-		do{
+		ArrayList<String> newList = StringOps.deepCopy(interpreter.listOfWords);
+		;
+		do {
 			interpreter.listOfWords = StringOps.deepCopy(newList);
 			ret = interpreter.readBrackets();
 			multiple--;
-		}while(multiple > 0);
-		
+		} while (multiple > 0);
+
 		if (parameters.get(0) < 1) {
 			interpreter.engine.restoreTurtleState();
 		}

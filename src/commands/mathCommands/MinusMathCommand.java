@@ -12,6 +12,6 @@ public class MinusMathCommand extends MathCommand {
 	public double execute(Object o) {
 
 		return -parameters.get(0);
- 	}
+	}
 
 }

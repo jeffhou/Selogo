@@ -1,7 +1,9 @@
 package slogo_tests;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import backend.Tuple;
 import backend.Turtle;
 
