@@ -15,6 +15,8 @@ public class Engine {
 			return newCommand.execute(turtle);
 		}  else if (newCommand.COMMAND_TYPE.equals("math")) {
 			return newCommand.execute(null);
+		} else if (newCommand.COMMAND_TYPE.equals("boolean")) {
+			return newCommand.execute(null);
 		}
 		throw new InvalidCommandException();
 	}

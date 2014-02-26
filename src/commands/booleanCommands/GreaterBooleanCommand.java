@@ -2,7 +2,7 @@ package commands.booleanCommands;
 
 public class GreaterBooleanCommand extends BooleanCommand {
 
-	public GreaterBooleanCommand(int numberOfParameters) {
+	public GreaterBooleanCommand() {
 		super(2);
 	}
 

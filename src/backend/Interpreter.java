@@ -61,6 +61,7 @@ public class Interpreter {
 			return Double.parseDouble(firstWord);
 		} else if (isCommand(firstWord)) {
 			firstWord = firstWord.toLowerCase();
+			System.out.println(firstWord);
 			ArrayList<Double> parameters = new ArrayList<Double>();
 			Command newCommand = commandFactory.createCommand(firstWord);
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {

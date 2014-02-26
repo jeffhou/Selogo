@@ -33,7 +33,6 @@ public class CommandFactory {
 		this.interpreter = interpreter;
 		this.engine = engine;
 		populateCommands();
-		System.out.println(commands.toString());
 	}
 
 	public Command createCommand(String firstWord)
