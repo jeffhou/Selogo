@@ -20,6 +20,9 @@ public class Interpreter {
 	/**
 	 * TODO: add in advanced commands
 	 */
+	/**
+	 * TODO: remove all println statements
+	 */
 	CommandFactory commandFactory;
 	public Engine engine;
 
