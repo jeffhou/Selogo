@@ -166,13 +166,11 @@ public class InterpreterGUI extends JPanel {
 		helpSubMenu.addMouseListener(new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 				File file = new File("src/help.html");
 				Desktop desktop = Desktop.getDesktop();
 				try {
 					desktop.open(file);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
