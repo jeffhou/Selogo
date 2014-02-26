@@ -37,7 +37,8 @@ public class XMLReader {
 			Node nNode = nList.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-				commands.put(eElement.getAttribute("code"), eElement.getAttribute("commandClass"));
+				commands.put(eElement.getAttribute("code"),
+						eElement.getAttribute("commandClass"));
 			}
 		}
 	}

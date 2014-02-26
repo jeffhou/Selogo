@@ -9,7 +9,7 @@ import javax.swing.*;
 
 import backend.Interpreter;
 
-public class InterpreterGUI extends JPanel{
+public class InterpreterGUI extends JPanel {
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
@@ -104,7 +104,8 @@ public class InterpreterGUI extends JPanel{
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
 	 * invoked from the event dispatch thread.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	private static void createAndShowGUI() throws IOException {
 		// Create and set up the window.
@@ -147,12 +148,12 @@ public class InterpreterGUI extends JPanel{
 
 	}
 
-	private static void helpMenu(){
+	private static void helpMenu() {
 
-		//Create the menu bar.
+		// Create the menu bar.
 		menuBar = new JMenuBar();
 
-		//Build the first menu.
+		// Build the first menu.
 		JMenu menu = new JMenu("Help");
 		menuBar.add(menu);
 

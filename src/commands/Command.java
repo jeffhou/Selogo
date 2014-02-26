@@ -22,5 +22,6 @@ public abstract class Command {
 			throw new NotEnoughParametersException();
 		}
 	};
+
 	public abstract double execute(Object o);
 }

@@ -18,4 +18,16 @@
 	<command code="atan" commandClass="commands.mathCommands.ATanMathCommand"/>
 	<command code="log" commandClass="commands.mathCommands.LogMathCommand"/>
 	<command code="pow" commandClass="commands.mathCommands.PowMathCommand"/>
+	
+	<command code="less?" commandClass="commands.mathCommands.LessQueryMathCommand"/>
+	<command code="lessp" commandClass="commands.mathCommands.LessQueryMathCommand"/>
+	<command code="greater?" commandClass="commands.mathCommands.GreaterQueryMathCommand"/>
+	<command code="greaterp" commandClass="commands.mathCommands.GreaterQueryMathCommand"/>
+	<command code="equal?" commandClass="commands.mathCommands.EqualQueryMathCommand"/>
+	<command code="equalp" commandClass="commands.mathCommands.EqualQueryMathCommand"/>
+	<command code="notequal?" commandClass="commands.mathCommands.NotEqualQueryMathCommand"/>
+	<command code="notequalp" commandClass="commands.mathCommands.NotEqualQueryMathCommand"/>
+	<command code="and" commandClass="commands.mathCommands.AndQueryMathCommand"/>
+	<command code="or" commandClass="commands.mathCommands.OrQueryMathCommand"/>
+	<command code="not" commandClass="commands.mathCommands.NotQueryMathCommand"/>
 </model>
