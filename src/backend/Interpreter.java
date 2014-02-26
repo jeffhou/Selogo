@@ -25,6 +25,7 @@ public class Interpreter {
 			InvalidCommandException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
 			InvalidSyntaxException {
+		text = text.trim();
 		listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
 		while (listOfWords.size() > 0) {
