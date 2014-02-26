@@ -41,7 +41,7 @@ public class ForAdvancedCommand extends AdvancedCommand {
 					try {
 						ret = interpreter.evaluateCommand(interpreter.listOfWords);
 					} catch (EndOfStackException e) {
-						continue;
+						break;
 					}
 				}
 			}
