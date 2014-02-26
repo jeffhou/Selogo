@@ -1,23 +1,33 @@
 package slogo_tests;
-import java.util.ArrayList;
 
-import commands.mathCommands.*;
 import static org.junit.Assert.*;
+
+import org.junit.Before;
+
+import backend.Interpreter;
+import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandStringException;
+import exceptions.InvalidSyntaxException;
+import exceptions.InvalidWordException;
+import exceptions.NotEnoughParametersException;
+import exceptions.PluralityOfValuesException;
+
+
 
 public class MathCommandTests {
 	
 
-	@org.junit.Test
-	public void testthatArcTanReturnsCorrectly() {
-		ArcTanMathCommand arctan = new ArcTanMathCommand();
-		ArrayList<Double> testparam = new ArrayList<Double>();
-		testparam.add(90.0);
-		arctan.parameters = testparam;
-		assertEquals("Arctan returns correct double, in degrees", arctan.execute(null), 57.518, 0.01);
-		
+	Interpreter interpreter;
+
+	@Before
+	public void setUp() throws Exception {
+		interpreter = new Interpreter();
 	}
-	
+
+
 	@org.junit.Test
-	public void testthatA
+	public void testthatArcTanReturnsCorrectly() throws InstantiationException, IllegalAccessException, ClassNotFoundException, PluralityOfValuesException, InvalidCommandStringException, InvalidWordException, NotEnoughParametersException, InvalidCommandException, InvalidSyntaxException {
+		assertEquals(interpreter.interpret("atan 10").get(0), Double.valueOf(Math.toDegrees(Math.atan(10))));
+	}
 
 }
