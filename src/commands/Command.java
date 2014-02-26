@@ -2,6 +2,11 @@ package commands;
 
 import java.util.ArrayList;
 
+import exceptions.EndOfStackException;
+import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandStringException;
+import exceptions.InvalidSyntaxException;
+import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 
 public abstract class Command {
@@ -23,5 +28,9 @@ public abstract class Command {
 		}
 	};
 
-	public abstract double execute(Object o);
+	public abstract double execute(Object o) throws InvalidSyntaxException,
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvalidCommandStringException,
+			InvalidWordException, NotEnoughParametersException,
+			InvalidCommandException, EndOfStackException;
 }

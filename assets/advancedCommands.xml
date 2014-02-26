@@ -1,0 +1,4 @@
+<model>
+    <command code="]" commandClass="commands.advancedCommands.BreakAdvancedCommand"/>
+	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand"/>
+</model>

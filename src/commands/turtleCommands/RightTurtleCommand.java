@@ -1,5 +1,7 @@
 package commands.turtleCommands;
 
+import commands.TurtleCommand;
+
 import backend.Turtle;
 
 public class RightTurtleCommand extends TurtleCommand {

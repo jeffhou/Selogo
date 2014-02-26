@@ -16,6 +16,7 @@ public class CommandFactory {
 		XMLReader newXMLReader = new XMLReader();
 		newXMLReader.read("assets/turtleCommands.xml", commands);
 		newXMLReader.read("assets/mathCommands.xml", commands);
+		newXMLReader.read("assets/advancedCommands.xml", commands);
 	}
 
 	/*

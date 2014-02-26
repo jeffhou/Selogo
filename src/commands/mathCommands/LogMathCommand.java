@@ -1,5 +1,7 @@
 package commands.mathCommands;
 
+import commands.MathCommand;
+
 public class LogMathCommand extends MathCommand {
 
 	public LogMathCommand() {

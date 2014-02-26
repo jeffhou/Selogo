@@ -1,5 +1,7 @@
 package commands.mathCommands;
 
+import commands.MathCommand;
+
 public class ATanMathCommand extends MathCommand {
 
 	public ATanMathCommand() {
