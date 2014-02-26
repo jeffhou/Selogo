@@ -1,0 +1,11 @@
+<model>
+    <command code="less?" commandClass="commands.booleanCommands.LessBooleanCommand"/>
+	<command code="lessp" commandClass="commands.booleanCommands.LessBooleanCommand"/>
+	<command code="equal?" commandClass="commands.booleanCommands.EqualBooleanCommand"/>
+	<command code="equalp" commandClass="commands.booleanCommands.EqualBooleanCommand"/>
+	<command code="notequal?" commandClass="commands.booleanCommands.NotEqualBooleanCommand"/>
+	<command code="notequalp" commandClass="commands.booleanCommands.NotEqualBooleanCommand"/>
+	<command code="and" commandClass="commands.booleanCommands.AndBooleanCommand"/>
+	<command code="or" commandClass="commands.booleanCommands.OrBooleanCommand"/>
+	<command code="not" commandClass="commands.booleanCommands.NotBooleanCommand"/>
+</model>
