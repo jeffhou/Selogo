@@ -10,7 +10,7 @@ public class NotBooleanCommand extends BooleanCommand {
 	public double execute(Object o) {
 		double test1 = parameters.get(0);
 	
-		boolean result = (test1 > 0);
+		boolean result = (test1 == 0);
 		
 		return booltoDouble(result);
 	}
