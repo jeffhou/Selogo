@@ -12,17 +12,6 @@ public class Interpreter {
 	 * TODO: change the methods so that this looks like a real API TODO: Make
 	 * documentation for all public methods and vars (all classes)
 	 */
-	final static String[] MATH_COMMANDS = { "sum", "+", "difference", "-",
-			"product", "*", "quotient", "/", "remainder", "%", "minus", "~",
-			"random", "sin", "cos", "tan", "atan", "log", "pow", "less?",
-			"lessp", "greater?", "greaterp", "equal?", "equalp", "notequal?",
-			"notequalp", "and", "or", "not?" };
-	/**
-	 * TODO: add in advanced commands
-	 */
-	/**
-	 * TODO: remove all println statements
-	 */
 	CommandFactory commandFactory;
 	public Engine engine;
 
@@ -48,7 +37,6 @@ public class Interpreter {
 		}
 		return evaluatedValues;
 	}
-
 	public ArrayList<String> listOfWords;
 
 	public void listOutCommands(String commands) {
@@ -65,6 +53,7 @@ public class Interpreter {
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
+		
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
 			return Double.parseDouble(firstWord);

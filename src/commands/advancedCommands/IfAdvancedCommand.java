@@ -29,11 +29,12 @@ public class IfAdvancedCommand extends AdvancedCommand {
 			if (!interpreter.listOfWords.remove(0).equals("[")) {
 				throw new InvalidSyntaxException();
 			}
-			try {
-				ret = interpreter.evaluateCommand(interpreter.listOfWords);
-			} catch (EndOfStackException e) {
-				interpreter.listOfWords.remove(0);
-				continue;
+			while (interpreter.listOfWords.size() > 0) {
+				try {
+					ret = interpreter.evaluateCommand(interpreter.listOfWords);
+				} catch (EndOfStackException e) {
+					continue;
+				}
 			}
 		}
 		if (parameters.get(0) == 0) {
