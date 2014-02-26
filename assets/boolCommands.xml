@@ -1,4 +1,6 @@
 <model>
+    <command code="greater?" commandClass="commands.booleanCommands.GreaterBooleanCommand"/>
+    <command code="greaterp" commandClass="commands.booleanCommands.GreaterBooleanCommand"/>
     <command code="less?" commandClass="commands.booleanCommands.LessBooleanCommand"/>
 	<command code="lessp" commandClass="commands.booleanCommands.LessBooleanCommand"/>
 	<command code="equal?" commandClass="commands.booleanCommands.EqualBooleanCommand"/>

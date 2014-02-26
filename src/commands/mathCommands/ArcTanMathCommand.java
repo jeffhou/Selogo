@@ -9,7 +9,7 @@ public class ArcTanMathCommand extends MathCommand {
 	@Override
 	public double execute(Object o) {
 		double expr = parameters.get(0);
-		return Math.atan(expr);
+		return Math.atan(Math.toRadians(expr));
 	}
 
 }

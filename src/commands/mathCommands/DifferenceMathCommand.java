@@ -1,6 +1,7 @@
 package commands.mathCommands;
 
 public class DifferenceMathCommand extends MathCommand {
+
 	public DifferenceMathCommand() {
 		super(2);
 	}

@@ -1,7 +1,6 @@
 package backend;
 
 import commands.Command;
-
 import exceptions.InvalidCommandException;
 
 public class Engine {
@@ -14,11 +13,9 @@ public class Engine {
 	public double obey(Command newCommand) throws InvalidCommandException {
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);
-		} 
-//		else if (newCommand.COMMAND_TYPE.equals("math")) {
-//			return newCommand.execute();
-//			
-//		}
+		}  else if (newCommand.COMMAND_TYPE.equals("math")) {
+			return newCommand.execute(null);
+		}
 		throw new InvalidCommandException();
 	}
 

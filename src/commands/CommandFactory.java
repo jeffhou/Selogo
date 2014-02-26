@@ -11,25 +11,24 @@ public class CommandFactory {
 	Interpreter interpreter;
 	Engine engine;
 	public HashMap<String, String> commands = new HashMap<String, String>();
-	public void populateCommands(){
+
+	public void populateCommands() {
 		XMLReader newXMLReader = new XMLReader();
 		newXMLReader.read("assets/turtleCommands.xml", commands);
 		newXMLReader.read("assets/mathCommands.xml", commands);
 		newXMLReader.read("assets/boolCommands.xml", commands);
+
 	}
-	
-	/* To match multiple strings to the same command.  
-	private ResourceBundle myCommands;
-	public void populateCommandMap() throws IOException {
-		myCommands = ResourceBundle.getBundle("res.Command");
-		Enumeration<String> bundleKeys = myCommands.getKeys();
-		while (bundleKeys.hasMoreElements()) {
-			String command = (String) bundleKeys.nextElement();
-			commands.put(command, myCommands.getString(command));
-		}
-	}
-	*/
-	
+
+	/*
+	 * To match multiple strings to the same command. private ResourceBundle
+	 * myCommands; public void populateCommandMap() throws IOException {
+	 * myCommands = ResourceBundle.getBundle("res.Command"); Enumeration<String>
+	 * bundleKeys = myCommands.getKeys(); while (bundleKeys.hasMoreElements()) {
+	 * String command = (String) bundleKeys.nextElement(); commands.put(command,
+	 * myCommands.getString(command)); } }
+	 */
+
 	public CommandFactory(Interpreter interpreter, Engine engine) {
 		this.interpreter = interpreter;
 		this.engine = engine;

@@ -1,6 +1,7 @@
 package commands.mathCommands;
 
 public class ProductMathCommand extends MathCommand {
+
 	public ProductMathCommand() {
 		super(2);
 	}

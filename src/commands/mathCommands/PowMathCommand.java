@@ -1,7 +1,8 @@
 package commands.mathCommands;
 
 public class PowMathCommand extends MathCommand {
-	public PowMathCommand(){
+
+	public PowMathCommand() {
 		super(2);
 	}
 
@@ -10,6 +11,7 @@ public class PowMathCommand extends MathCommand {
 		double base = parameters.get(0);
 		double exponent = parameters.get(1);
 		return Math.pow(base, exponent);
+
 	}
 
 }

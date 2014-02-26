@@ -1,7 +1,7 @@
 package commands.mathCommands;
 
 public class CosMathCommand extends MathCommand {
-	
+
 	public CosMathCommand() {
 		super(1);
 	}
@@ -9,8 +9,8 @@ public class CosMathCommand extends MathCommand {
 	@Override
 	public double execute(Object o) {
 		
-		double expr = parameters.get(0);
-		return Math.cos(expr);
+		double degrees = parameters.get(0);
+		return Math.cos(Math.toRadians(degrees));
 		
 	}
 
