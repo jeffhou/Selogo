@@ -25,19 +25,10 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 		Interpreter interpreter = (Interpreter) o;
 		Double ret = 0.0;
 		for (int i = 0; i < 2; i++) {
-			Turtle turtleBefore = interpreter.engine.turtle.clone();
-			if (!interpreter.listOfWords.remove(0).equals("[")) {
-				throw new InvalidSyntaxException();
-			}
-			while (interpreter.listOfWords.size() > 0) {
-				try {
-					ret = interpreter.evaluateCommand(interpreter.listOfWords);
-				} catch (EndOfStackException e) {
-					break;
-				}
-			}
+			interpreter.engine.saveTurtleState();
+			ret = interpreter.readBrackets();
 			if (parameters.get(0) == 0 ^ i == 1) {
-				interpreter.engine.turtle = turtleBefore;
+				interpreter.engine.restoreTurtleState();
 			}
 		}
 		

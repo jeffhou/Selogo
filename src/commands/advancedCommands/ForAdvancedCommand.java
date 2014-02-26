@@ -27,28 +27,18 @@ public class ForAdvancedCommand extends AdvancedCommand {
 			InvalidCommandException {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
-		Turtle turtleBefore = interpreter.engine.turtle.clone();
-		Double ret = 0.0;
+		interpreter.engine.saveTurtleState();
 		
+		Double ret;
 		ArrayList<String> newList = StringOps.deepCopy(interpreter.listOfWords);;
 		do{
 			interpreter.listOfWords = StringOps.deepCopy(newList);
-			for (int i = 0; i < 1; i++) {
-				if (!interpreter.listOfWords.remove(0).equals("[")) {
-					throw new InvalidSyntaxException();
-				}
-				while (interpreter.listOfWords.size() > 0) {
-					try {
-						ret = interpreter.evaluateCommand(interpreter.listOfWords);
-					} catch (EndOfStackException e) {
-						break;
-					}
-				}
-			}
+			ret = interpreter.readBrackets();
 			multiple--;
 		}while(multiple > 0);
+		
 		if (parameters.get(0) < 1) {
-			interpreter.engine.turtle = turtleBefore;
+			interpreter.engine.restoreTurtleState();
 		}
 		return ret;
 	}

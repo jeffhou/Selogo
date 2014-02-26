@@ -3,7 +3,6 @@ package commands.advancedCommands;
 import backend.Interpreter;
 import backend.Turtle;
 import commands.AdvancedCommand;
-import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
@@ -23,22 +22,12 @@ public class IfAdvancedCommand extends AdvancedCommand {
 			InvalidWordException, NotEnoughParametersException,
 			InvalidCommandException {
 		Interpreter interpreter = (Interpreter) o;
-		Turtle turtleBefore = interpreter.engine.turtle.clone();
-		Double ret = 0.0;
-		for (int i = 0; i < 1; i++) {
-			if (!interpreter.listOfWords.remove(0).equals("[")) {
-				throw new InvalidSyntaxException();
-			}
-			while (interpreter.listOfWords.size() > 0) {
-				try {
-					ret = interpreter.evaluateCommand(interpreter.listOfWords);
-				} catch (EndOfStackException e) {
-					continue;
-				}
-			}
-		}
+		interpreter.engine.saveTurtleState();
+		
+		Double ret = interpreter.readBrackets();
+		
 		if (parameters.get(0) == 0) {
-			interpreter.engine.turtle = turtleBefore;
+			interpreter.engine.restoreTurtleState();
 		}
 		return ret;
 	}
