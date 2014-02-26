@@ -14,13 +14,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import backend.Engine;
 import backend.Tuple;
 import backend.Turtle;
 
 public class TurtleGUI extends Component {
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	protected JTextArea historyTextArea;
-	private Turtle turtle;
+	private Engine engine;
 	private BufferedImage turtleImage;
 	Graphics2D graphicsEngine;
 	public static Dimension dimension;
@@ -34,7 +35,7 @@ public class TurtleGUI extends Component {
 		 * (currently non-existent)
 		 */
 		super();
-		turtle = new Turtle();
+		engine.turtle = new Turtle();
 		try {
 			turtleImage = ImageIO.read(new File("img/turtle.png"));
 		} catch (IOException e) {
@@ -48,14 +49,14 @@ public class TurtleGUI extends Component {
 			firstPath.add(new Tuple(rand.nextDouble() * 553 - 553 / 2, rand
 					.nextDouble() * 553 - 553 / 2));
 		}
-		turtle.trails.add(firstPath);
-		turtle.turnClockwise(305);
-		turtle.position = new Tuple(50, 29);
+		engine.turtle.trails.add(firstPath);
+		engine.turtle.turnClockwise(305);
+		engine.turtle.position = new Tuple(50, 29);
 	}
 
-	TurtleGUI(Turtle t) {
+	TurtleGUI(Engine engine) {
 		super();
-		turtle = t;
+		this.engine = engine;
 		try {
 			turtleImage = ImageIO.read(new File("img/turtle.png"));
 		} catch (IOException e) {
@@ -74,6 +75,7 @@ public class TurtleGUI extends Component {
 	}
 
 	void drawTurtle() {
+		Turtle turtle = engine.turtle;
 		if (turtle.getVisibility()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());
@@ -106,6 +108,7 @@ public class TurtleGUI extends Component {
 	}
 
 	void drawTrails() {
+		Turtle turtle = engine.turtle;
 		Tuple center = getCenter();
 		for (ArrayList<Tuple> path : turtle.trails) {
 			for (int i = 0; i < path.size() - 1; i++) {

@@ -3,6 +3,8 @@ package commands.mathCommands;
 
 import java.util.Random;
 
+import commands.MathCommand;
+
 public class RandomMathCommand extends MathCommand {
 
 	public RandomMathCommand() {

@@ -115,7 +115,7 @@ public class InterpreterGUI extends JPanel {
 		JPanel newPanel = new JPanel();
 
 		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
-		newTurtleGUI = new TurtleGUI(interpreter.engine.turtle);
+		newTurtleGUI = new TurtleGUI(interpreter.engine);
 		newPanel.add(newTurtleGUI);
 		// Add contents to the window.
 		newPanel.add(newIntrepreter);

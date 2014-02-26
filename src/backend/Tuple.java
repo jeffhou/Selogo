@@ -25,6 +25,10 @@ public class Tuple {
 		this.y = d2;
 	}
 
+	public Tuple copy() {
+		return new Tuple(x, y);
+	}
+
 	public boolean equals(Tuple other) {
 		return (this.x == other.x) && (this.y == other.y);
 	}

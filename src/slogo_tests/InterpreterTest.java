@@ -12,8 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import backend.Interpreter;
+import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
+import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
@@ -67,13 +69,15 @@ public class InterpreterTest {
 	 * @throws ClassNotFoundException
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
+	 * @throws InvalidSyntaxException
+	 * @throws EndOfStackException
 	 */
 	@Test
 	public void testForward() throws PluralityOfValuesException,
 			InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException {
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 
@@ -82,7 +86,7 @@ public class InterpreterTest {
 			InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException {
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
 

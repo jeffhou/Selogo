@@ -1,5 +1,7 @@
 package commands.mathCommands;
 
+import commands.MathCommand;
+
 public class GreaterQueryMathCommand extends MathCommand {
 
 	public GreaterQueryMathCommand() {

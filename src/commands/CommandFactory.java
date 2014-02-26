@@ -18,6 +18,7 @@ public class CommandFactory {
 		newXMLReader.read("assets/mathCommands.xml", commands);
 		newXMLReader.read("assets/boolCommands.xml", commands);
 
+		newXMLReader.read("assets/advancedCommands.xml", commands);
 	}
 
 	/*

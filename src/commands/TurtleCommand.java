@@ -1,6 +1,4 @@
-package commands.turtleCommands;
-
-import commands.Command;
+package commands;
 
 public abstract class TurtleCommand extends Command {
 	

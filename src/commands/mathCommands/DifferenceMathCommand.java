@@ -1,5 +1,7 @@
 package commands.mathCommands;
 
+import commands.MathCommand;
+
 public class DifferenceMathCommand extends MathCommand {
 
 	public DifferenceMathCommand() {

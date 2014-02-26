@@ -20,6 +20,27 @@ public class Turtle {
 		showing = true;
 	}
 
+	private void setTrails(ArrayList<ArrayList<Tuple>> newTrails) {
+		trails = newTrails;
+	}
+
+	public Turtle clone() {
+		Turtle newTurtle = new Turtle();
+		newTurtle.moveTo(getPosition());
+		newTurtle.setHeadingTo(getHeading());
+		newTurtle.setPen(getPenState());
+		newTurtle.setVisibility(getVisibility());
+		ArrayList<ArrayList<Tuple>> newTrails = new ArrayList<ArrayList<Tuple>>();
+		for (ArrayList<Tuple> trail : getPaths()) {
+			newTrails.add(new ArrayList<Tuple>());
+			for (Tuple t : trail) {
+				newTrails.get(newTrails.size() - 1).add(t.copy());
+			}
+		}
+		newTurtle.setTrails(newTrails);
+		return newTurtle;
+	}
+
 	/**
 	 * Absolute move to position.
 	 */

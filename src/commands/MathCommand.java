@@ -1,6 +1,4 @@
-package commands.mathCommands;
-
-import commands.Command;
+package commands;
 
 public abstract class MathCommand extends Command {
 
