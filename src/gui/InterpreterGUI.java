@@ -110,6 +110,36 @@ public class InterpreterGUI extends JPanel {
 		add(consoleScrollPane, c);
 
 	}
+	
+	private static void helpMenu() {
+
+		// Create the menu bar.
+		menuBar = new JMenuBar();
+
+		// Build the first menu.
+		JMenu menu = new JMenu("Help");
+		menuBar.add(menu);
+
+		// Submenu
+		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
+		menu.add(helpSubMenu);
+		menuBar.add(menu);
+
+		helpSubMenu.addMouseListener(new MouseAdapter() {
+
+			public void mousePressed(MouseEvent e) {
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+	}
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
@@ -155,36 +185,6 @@ public class InterpreterGUI extends JPanel {
 					e.printStackTrace();
 				}
 			}
-		});
-
-	}
-
-	private static void helpMenu() {
-
-		// Create the menu bar.
-		menuBar = new JMenuBar();
-
-		// Build the first menu.
-		JMenu menu = new JMenu("Help");
-		menuBar.add(menu);
-
-		// Submenu
-		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
-		menu.add(helpSubMenu);
-		menuBar.add(menu);
-
-		helpSubMenu.addMouseListener(new MouseAdapter() {
-
-			public void mousePressed(MouseEvent e) {
-				File file = new File("src/help.html");
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-
 		});
 
 	}
