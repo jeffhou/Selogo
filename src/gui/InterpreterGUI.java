@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -20,7 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import gui.TurtleGUI;
 
+import backend.Engine;
 import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
@@ -137,11 +141,33 @@ public class InterpreterGUI extends JPanel {
 
 	}
 
-	private static void turtleMenu() {
+	private static void turtleMenu(final InterpreterGUI interpreter) {
 		JMenu turtle = new JMenu("Turtle");
+
 		JMenuItem turtleImage = new JMenuItem("Set Turtle Image");
+		turtleImage.addMouseListener(new MouseAdapter(){
+
+			public void mousePressed(MouseEvent e) {
+				final JFileChooser chooser = new JFileChooser("img");
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(
+						"JPG, GIF, and PNG images", "jpg", "gif", "png");
+				chooser.setFileFilter(filter);
+				int returnVal = chooser.showOpenDialog(interpreter.getParent());
+				
+				if(returnVal == JFileChooser.APPROVE_OPTION) {
+					File chosenFile = chooser.getSelectedFile();
+					String pathOfFile = chosenFile.getAbsolutePath();
+					newTurtleGUI.updateTurtleImage(pathOfFile);
+				}
+			}
+		});
+
 		JMenuItem penColor = new JMenuItem("Set Pen Color");
+
+
 		JMenuItem turtleStats = new JMenuItem("Get Stats");
+
+
 		turtle.add(turtleImage);
 		turtle.add(penColor);
 		turtle.add(turtleStats);
@@ -164,18 +190,18 @@ public class InterpreterGUI extends JPanel {
 
 		JPanel newPanel = new JPanel();
 
-		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
+		InterpreterGUI newInterpreter = new InterpreterGUI(new Interpreter());
 		newTurtleGUI = new TurtleGUI(interpreter.engine);
 		newPanel.add(newTurtleGUI);
 		// Add contents to the window.
-		newPanel.add(newIntrepreter);
+		newPanel.add(newInterpreter);
 		frame.add(newPanel);
 		// Display the window.
 		frame.pack();
 		frame.setSize(800,580);
 
 		helpMenu();
-		turtleMenu();
+		turtleMenu(newInterpreter);
 
 		frame.setJMenuBar(menuBar);
 
