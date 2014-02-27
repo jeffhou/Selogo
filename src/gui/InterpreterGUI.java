@@ -23,104 +23,12 @@ import javax.swing.JTextArea;
 
 import backend.Interpreter;
 
-@SuppressWarnings("serial")
 public class InterpreterGUI extends JPanel {
 	protected static Interpreter interpreter;
-	protected static JMenuBar menuBar;
+	protected static JMenuBar menuBar =  new JMenuBar();
 	private final static String newline = "\n";
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
-
-	/**
-	 * Create the GUI and show it. For thread safety, this method should be
-	 * invoked from the event dispatch thread.
-	 * 
-	 * @throws IOException
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 */
-	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		// Create and set up the window.
-		JFrame frame = new JFrame("Slogo!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JPanel newPanel = new JPanel();
-
-		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
-		newTurtleGUI = new TurtleGUI(interpreter.engine);
-		newPanel.add(newTurtleGUI);
-		// Add contents to the window.
-		newPanel.add(newIntrepreter);
-		frame.add(newPanel);
-		// Display the window.
-		frame.pack();
-		helpMenu();
-		frame.setJMenuBar(menuBar);
-
-		frame.setVisible(true);
-
-	}
-
-	private static void helpMenu() {
-
-		// Create the menu bar.
-		menuBar = new JMenuBar();
-
-		// Build the first menu.
-		JMenu menu = new JMenu("Help");
-		menuBar.add(menu);
-
-		// Submenu
-		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
-		helpSubMenu.setMnemonic(KeyEvent.VK_B);
-		menu.add(helpSubMenu);
-		menuBar.add(menu);
-
-		helpSubMenu.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				File file = new File("src/help.html");
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-
-		});
-
-	}
-
-	public static void main(String[] args) {
-		/**
-		 * TODO: PULL OUT INTO A MAIN METHOD
-		 */
-		// Schedule a job for the event dispatch thread:
-		// creating and showing this application's GUI.
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-
-	}
 
 	protected JTextArea historyTextArea;
 
@@ -140,15 +48,15 @@ public class InterpreterGUI extends JPanel {
 		 * TODO: make each entered set of commands as a clickable link.
 		 */
 		interpreter = new_interpreter;
-		historyTextArea = new JTextArea(25, 20);
+		historyTextArea = new JTextArea(20, 20);
 		historyTextArea.setEditable(false);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
 
-		inputTextArea = new JTextArea(3, 20);
+		inputTextArea = new JTextArea(5, 20);
 		inputTextArea.setText("Enter code here...");
 		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
 
-		consoleOutputTextArea = new JTextArea(4, 20);
+		consoleOutputTextArea = new JTextArea(5, 20);
 		consoleOutputTextArea.setEditable(false);
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
 
@@ -202,5 +110,103 @@ public class InterpreterGUI extends JPanel {
 		add(consoleScrollPane, c);
 
 	}
+	
+	private static void helpMenu() {
 
+		// Build the first menu.
+		JMenu help = new JMenu("Help");
+
+		// Submenu
+		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
+		help.add(helpSubMenu);
+		menuBar.add(help);
+
+		helpSubMenu.addMouseListener(new MouseAdapter() {
+
+			public void mousePressed(MouseEvent e) {
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+	}
+	
+	private static void turtleMenu() {
+		JMenu turtle = new JMenu("Turtle");
+		
+		JMenuItem turtlePreferences = new JMenuItem("Preferences");
+		JMenuItem turtleStats = new JMenuItem("Stats");
+		turtle.add(turtlePreferences);
+		turtle.add(turtleStats);
+		menuBar.add(turtle);
+	}
+
+	/**
+	 * Create the GUI and show it. For thread safety, this method should be
+	 * invoked from the event dispatch thread.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 */
+	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		// Create and set up the window.
+		JFrame frame = new JFrame("Slogo!");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JPanel newPanel = new JPanel();
+
+		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
+		newTurtleGUI = new TurtleGUI(interpreter.engine);
+		newPanel.add(newTurtleGUI);
+		// Add contents to the window.
+		newPanel.add(newIntrepreter);
+		frame.add(newPanel);
+		// Display the window.
+		frame.pack();
+		frame.setSize(800,580);
+		
+		helpMenu();
+		turtleMenu();
+		
+		frame.setJMenuBar(menuBar);
+
+		frame.setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+		/**
+		 * TODO: PULL OUT INTO A MAIN METHOD
+		 */
+		// Schedule a job for the event dispatch thread:
+		// creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					createAndShowGUI();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
 }

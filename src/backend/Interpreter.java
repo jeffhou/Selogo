@@ -92,7 +92,7 @@ public class Interpreter {
 
 	public void listOutCommands(String commands) {
 		listOfWords = new ArrayList<String>();
-		String[] words = commands.split("\\s+");
+		String[] words = commands.split("[\\s\\n]+");
 		for (String word : words) {
 			listOfWords.add(word);
 		}
