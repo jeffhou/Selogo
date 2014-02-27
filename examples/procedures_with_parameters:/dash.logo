@@ -1,7 +1,0 @@
-to dash [ :count ]
-[
-  repeat :count 
-  [
-    pu fd 4 pd fd 4
-  ]      
-]
