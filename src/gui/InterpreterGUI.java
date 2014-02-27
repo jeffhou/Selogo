@@ -239,6 +239,8 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 	 * @throws InstantiationException 
 	 */
 	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		
+		
 		// Create and set up the window.
 		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -247,20 +249,17 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 
 		InterpreterGUI newInterpreter = new InterpreterGUI(new Interpreter());
 		newTurtleGUI = new TurtleGUI(interpreter.engine);
-		newPanel.add(newTurtleGUI);
-		// Add contents to the window.
-		newPanel.add(newInterpreter);
-		frame.add(newPanel);
-		// Display the window.
-		frame.pack();
-		frame.setSize(800,580);
+		
+		
+		
+		SlogoFrame slogoFrame = new SlogoFrame(newInterpreter, newTurtleGUI);
 
 		helpMenu();
 		turtleMenu(newInterpreter);
 
-		frame.setJMenuBar(menuBar);
+		slogoFrame.setMenu(menuBar);
 
-		frame.setVisible(true);
+		slogoFrame.setVisible();
 
 	}
 

@@ -6,7 +6,6 @@ import commands.Command;
 
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.SlogoException;
 
