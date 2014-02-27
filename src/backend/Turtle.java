@@ -88,18 +88,23 @@ public class Turtle {
 	 */
 	public double moveTo(Tuple newPos) {
 		double distanceTraveled = position.distanceTo(newPos);
-		position = Tuple.subtract(Tuple.mod(Tuple.sum(newPos, new Tuple(
-				553.0 / 2, 553.0 / 2)), new Tuple(TurtleGUI.dimension.width,
-				TurtleGUI.dimension.height)), new Tuple(553.0 / 2, 553.0 / 2));
-		/**
-		 * TODO: When the turtle goes off screen, we should display turtle going
-		 * to edge and then coming out from the other edge. Instead, right now
-		 * the trail simply connects the old point and the new point. Wrap
-		 * around also needs to be implemented with correct math.
-		 */
-		if (penDown) {
-			updateTrail();
-		}
+
+		Tuple newRawPosition = Tuple.sum(newPos,
+				new Tuple(553.0 / 2, 553.0 / 2));
+		Tuple displacement = Tuple.subtract(newPos, position);
+		Tuple onScreenPosition = Tuple.subtract(Tuple
+				.mod(newRawPosition, new Tuple(TurtleGUI.dimension.width,
+						TurtleGUI.dimension.height)), new Tuple(553.0 / 2,
+				553.0 / 2));
+		position = newPos;
+		updateTrail();
+
+		position = Tuple.subtract(onScreenPosition, displacement);
+		setPen(true);
+
+		position = onScreenPosition;
+		updateTrail();
+
 		return distanceTraveled;
 	}
 
@@ -144,6 +149,8 @@ public class Turtle {
 	}
 
 	void updateTrail() {
-		trails.get(trails.size() - 1).add(getPosition());
+		if (penDown) {
+			trails.get(trails.size() - 1).add(getPosition());
+		}
 	}
 }

@@ -25,7 +25,7 @@ import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
 	protected static Interpreter interpreter;
-	protected static JMenuBar menuBar =  new JMenuBar();
+	protected static JMenuBar menuBar = new JMenuBar();
 	private final static String newline = "\n";
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
@@ -110,7 +110,7 @@ public class InterpreterGUI extends JPanel {
 		add(consoleScrollPane, c);
 
 	}
-	
+
 	private static void helpMenu() {
 
 		// Build the first menu.
@@ -136,10 +136,10 @@ public class InterpreterGUI extends JPanel {
 		});
 
 	}
-	
+
 	private static void turtleMenu() {
 		JMenu turtle = new JMenu("Turtle");
-		
+
 		JMenuItem turtlePreferences = new JMenuItem("Preferences");
 		JMenuItem turtleStats = new JMenuItem("Stats");
 		turtle.add(turtlePreferences);
@@ -168,11 +168,11 @@ public class InterpreterGUI extends JPanel {
 		frame.add(newPanel);
 		// Display the window.
 		frame.pack();
-		frame.setSize(800,580);
-		
+		frame.setSize(800, 580);
+
 		helpMenu();
 		turtleMenu();
-		
+
 		frame.setJMenuBar(menuBar);
 
 		frame.setVisible(true);
