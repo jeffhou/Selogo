@@ -18,6 +18,7 @@ import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -182,7 +183,17 @@ public class InterpreterGUI extends JPanel {
 		penColor.addMouseListener(new MouseAdapter(){
 			
 			public void mousePressed(MouseEvent e){
-//				ColorChooserDemo();
+		        JFrame frame = new JFrame("Color Chooser");
+		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 
+		        //Create and set up the content pane.
+		        JComponent newContentPane = new ColorChooser();
+		        newContentPane.setOpaque(true); //content panes must be opaque
+		        frame.setContentPane(newContentPane);
+		 
+		        //Display the window.
+		        frame.pack();
+		        frame.setVisible(true);
 			}
 		});
 
