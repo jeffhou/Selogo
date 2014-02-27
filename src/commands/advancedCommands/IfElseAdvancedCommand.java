@@ -4,12 +4,11 @@ import backend.Interpreter;
 
 import commands.AdvancedCommand;
 
-import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
-import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.SlogoException;
+
+
 
 public class IfElseAdvancedCommand extends AdvancedCommand {
 
@@ -22,6 +21,7 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, SlogoException, NotEnoughParametersException
 			 {
+
 		Interpreter interpreter = (Interpreter) o;
 		Double ret = 0.0;
 		for (int i = 0; i < 2; i++) {

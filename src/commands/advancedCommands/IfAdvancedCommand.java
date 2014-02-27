@@ -5,7 +5,11 @@ import backend.Interpreter;
 import commands.AdvancedCommand;
 
 import exceptions.InvalidSyntaxException;
+
 import exceptions.SlogoException;
+
+import exceptions.InvalidWordException;
+import exceptions.NotEnoughParametersException;
 
 public class IfAdvancedCommand extends AdvancedCommand {
 
@@ -17,6 +21,7 @@ public class IfAdvancedCommand extends AdvancedCommand {
 	public double execute(Object o) throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException,SlogoException {
+
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
 

@@ -12,6 +12,7 @@ import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.SlogoException;
 
+
 public abstract class Command {
 	public final String COMMAND_TYPE;
 	public final int NUM_OF_PARAMETERS;
@@ -25,6 +26,7 @@ public abstract class Command {
 	public abstract double execute(Object o) throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, SlogoException, EndOfStackException;;
+
 
 	public void loadParameters(ArrayList<Double> parameters)
 			throws NotEnoughParametersException {

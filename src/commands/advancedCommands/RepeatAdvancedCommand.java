@@ -1,18 +1,13 @@
 package commands.advancedCommands;
 
 import java.util.ArrayList;
-
 import backend.Interpreter;
 import backend.StringOps;
-
 import commands.AdvancedCommand;
-
-import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
-import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.SlogoException;
+
 
 public class RepeatAdvancedCommand extends AdvancedCommand {
 
@@ -25,6 +20,7 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, SlogoException, NotEnoughParametersException
 		 {
+
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();

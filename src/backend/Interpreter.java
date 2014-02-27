@@ -2,6 +2,7 @@ package backend;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import commands.Command;
 import commands.CommandFactory;
@@ -14,6 +15,8 @@ import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
 import exceptions.SlogoException;
+import exceptions.VariableNotFoundException;
+
 
 public class Interpreter {
 	/**
@@ -24,7 +27,7 @@ public class Interpreter {
 	 */
 	CommandFactory commandFactory;
 	public Engine engine;
-
+	private HashMap<String, Double> variables = new HashMap<String, Double>();
 	public ArrayList<String> listOfWords;
 
 	public Interpreter() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -37,6 +40,7 @@ public class Interpreter {
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
+
 
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
@@ -54,6 +58,8 @@ public class Interpreter {
 			}
 			newCommand.loadParameters(parameters);
 			return engine.obey(newCommand);
+		} else if (isVariable(firstWord)) {
+			return variables.get(firstWord.substring(1));
 		} else {
 			throw new InvalidWordException();
 		}
@@ -88,6 +94,17 @@ public class Interpreter {
 			return false;
 		}
 	}
+	
+	private boolean isVariable(String word) throws SlogoException {
+		if (word.startsWith(":")) {
+			if (!variables.containsKey(word.substring(1))) {
+				throw new VariableNotFoundException();
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void listOutCommands(String commands) {
 		listOfWords = new ArrayList<String>();
@@ -101,6 +118,7 @@ public class Interpreter {
 	public double readBrackets() throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, SlogoException {
+
 		Double ret = 0.0;
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();
@@ -113,5 +131,19 @@ public class Interpreter {
 			}
 		}
 		return ret;
+	}
+	
+	public double addVariable() throws InvalidSyntaxException {
+		double value;
+		if (listOfWords.get(0).charAt(0) != ':') {
+			throw new InvalidSyntaxException();
+		}
+		try {
+			value = Double.valueOf(listOfWords.remove(1));
+		} catch (Exception e) {
+			throw new InvalidSyntaxException();
+		}
+		variables.put(listOfWords.remove(0).substring(1), value);
+		return value;
 	}
 }
