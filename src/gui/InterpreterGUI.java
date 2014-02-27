@@ -43,7 +43,7 @@ import gui.TurtleGUI;
 import backend.Engine;
 import backend.Interpreter;
 
-public class InterpreterGUI extends JPanel implements ChangeListener {
+public class InterpreterGUI extends JPanel {
 	protected static Interpreter interpreter;
 	protected static JMenuBar menuBar = new JMenuBar();
 	private final static String newline = "\n";
@@ -157,7 +157,7 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 
 	}
 
-	private static void turtleMenu(final InterpreterGUI interpreter) {
+	private static void turtleMenu() {
 		JMenu turtle = new JMenu("Turtle");
 
 		JMenuItem turtleImage = new JMenuItem("Set Turtle Image");
@@ -168,7 +168,7 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 				FileNameExtensionFilter filter = new FileNameExtensionFilter(
 						"JPG, GIF, and PNG images", "jpg", "gif", "png");
 				chooser.setFileFilter(filter);
-				int returnVal = chooser.showOpenDialog(interpreter.getParent());
+				int returnVal = chooser.showOpenDialog(null);
 				
 				if(returnVal == JFileChooser.APPROVE_OPTION) {
 					File chosenFile = chooser.getSelectedFile();
@@ -182,7 +182,7 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 		penColor.addMouseListener(new MouseAdapter(){
 			
 			public void mousePressed(MouseEvent e){
-				ColorChooserDemo();
+//				ColorChooserDemo();
 			}
 		});
 
@@ -194,40 +194,6 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 		turtle.add(turtleStats);
 		menuBar.add(turtle);
 	}
-	
-    protected JColorChooser tcc;
-    protected JLabel banner;
- 
-    public void ColorChooserDemo() {
-//        super(new BorderLayout());
- 
-        //Set up the banner at the top of the window
-        banner = new JLabel("Welcome to the Tutorial Zone!",
-                            JLabel.CENTER);
-        banner.setForeground(Color.yellow);
-        banner.setBackground(Color.blue);
-        banner.setOpaque(true);
-        banner.setFont(new Font("SansSerif", Font.BOLD, 24));
-        banner.setPreferredSize(new Dimension(100, 65));
- 
-        JPanel bannerPanel = new JPanel(new BorderLayout());
-        bannerPanel.add(banner, BorderLayout.CENTER);
-        bannerPanel.setBorder(BorderFactory.createTitledBorder("Banner"));
- 
-        //Set up color chooser for setting text color
-        tcc = new JColorChooser(banner.getForeground());
-        tcc.getSelectionModel().addChangeListener(this);
-        tcc.setBorder(BorderFactory.createTitledBorder(
-                                             "Choose Text Color"));
- 
-        add(bannerPanel, BorderLayout.CENTER);
-        add(tcc, BorderLayout.PAGE_END);
-    }
- 
-    public void stateChanged(ChangeEvent e) {
-        Color newColor = tcc.getColor();
-        banner.setForeground(newColor);
-    }
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
@@ -238,9 +204,10 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		
-		
+	
+
+	public void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
 		// Create and set up the window.
 		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -255,39 +222,11 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 		SlogoFrame slogoFrame = new SlogoFrame(newInterpreter, newTurtleGUI);
 
 		helpMenu();
-		turtleMenu(newInterpreter);
+		turtleMenu();
 
 		slogoFrame.setMenu(menuBar);
 
 		slogoFrame.setVisible();
-
-	}
-
-	public static void main(String[] args) {
-		/**
-		 * TODO: PULL OUT INTO A MAIN METHOD
-		 */
-		// Schedule a job for the event dispatch thread:
-		// creating and showing this application's GUI.
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
 
 	}
 }
