@@ -9,11 +9,11 @@ import exceptions.InvalidCommandStringException;
 
 public class CommandFactory {
 
-	public HashMap<String, String> commands = new HashMap<String, String>();
+	public HashMap<String, Command> commands = new HashMap<String, Command>();
 	Engine engine;
 	Interpreter interpreter;
 
-	public CommandFactory(Interpreter interpreter, Engine engine) {
+	public CommandFactory(Interpreter interpreter, Engine engine) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		this.interpreter = interpreter;
 		this.engine = engine;
 		populateCommands();
@@ -32,13 +32,12 @@ public class CommandFactory {
 			throws InvalidCommandStringException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 		if (commands.containsKey(firstWord)) {
-			return (Command) Class.forName(commands.get(firstWord))
-					.newInstance();
+			return commands.get(firstWord);
 		}
 		throw new InvalidCommandStringException();
 	}
 
-	public void populateCommands() {
+	public void populateCommands() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		XMLReader newXMLReader = new XMLReader();
 		newXMLReader.read("assets/turtleCommands.xml", commands);
 		newXMLReader.read("assets/mathCommands.xml", commands);

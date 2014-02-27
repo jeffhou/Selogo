@@ -141,6 +141,19 @@ public class InterpreterGUI extends JPanel {
 		JMenu turtle = new JMenu("Turtle");
 
 		JMenuItem turtlePreferences = new JMenuItem("Preferences");
+		turtlePreferences.addMouseListener(new MouseAdapter() {
+
+			public void mousePressed(MouseEvent e) {
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
 		JMenuItem turtleStats = new JMenuItem("Stats");
 		turtle.add(turtlePreferences);
 		turtle.add(turtleStats);
@@ -152,8 +165,11 @@ public class InterpreterGUI extends JPanel {
 	 * invoked from the event dispatch thread.
 	 * 
 	 * @throws IOException
+	 * @throws ClassNotFoundException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	private static void createAndShowGUI() throws IOException {
+	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		// Create and set up the window.
 		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -190,6 +206,15 @@ public class InterpreterGUI extends JPanel {
 				try {
 					createAndShowGUI();
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

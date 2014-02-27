@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class EqualBooleanCommand extends CheckEqualityBooleanCommand {
 	public EqualBooleanCommand() {
 		super();

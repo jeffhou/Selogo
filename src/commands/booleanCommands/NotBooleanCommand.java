@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class NotBooleanCommand extends BooleanCommand {
 
 	public NotBooleanCommand() {

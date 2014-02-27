@@ -11,6 +11,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import commands.Command;
+
 public class XMLReader {
 
 	public XMLReader() {
@@ -30,7 +32,7 @@ public class XMLReader {
 		}
 	}
 
-	public void read(String filename, Map<String, String> commands) {
+	public void read(String filename, Map<String, Command> commands) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Document doc = this.makeDocumentFromFile(filename);
 		NodeList nList = doc.getElementsByTagName("command");
 		for (int i = 0; i < nList.getLength(); i++) {
@@ -38,7 +40,8 @@ public class XMLReader {
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
 				commands.put(eElement.getAttribute("code"),
-						eElement.getAttribute("commandClass"));
+						(Command) Class.forName(eElement.getAttribute("commandClass"))
+						.newInstance());
 			}
 		}
 	}

@@ -26,7 +26,7 @@ public class Interpreter {
 
 	public ArrayList<String> listOfWords;
 
-	public Interpreter() throws IOException {
+	public Interpreter() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		engine = new Engine(this);
 		commandFactory = new CommandFactory(this, engine);
 	}

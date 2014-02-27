@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class NotEqualBooleanCommand extends CheckEqualityBooleanCommand {
 
 	public NotEqualBooleanCommand() {
