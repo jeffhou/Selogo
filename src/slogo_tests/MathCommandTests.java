@@ -12,6 +12,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.VariableNotFoundException;
 
 public class MathCommandTests {
 
@@ -27,7 +28,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(Math.toDegrees(Math.atan(10))), interpreter
 				.interpret("atan 10").get(0));
 	}
@@ -37,7 +38,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(Math.cos(Math.toRadians(10))), interpreter
 				.interpret("cos 10").get(0));
 	}
@@ -47,7 +48,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(5), interpreter
 				.interpret("difference 10 5").get(0));
 		assertEquals(Double.valueOf(-15),
@@ -59,7 +60,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("log " + Math.E)
 				.get(0));
 	}
@@ -69,7 +70,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(5), interpreter.interpret("minus -5")
 				.get(0));
 		assertEquals(Double.valueOf(-5), interpreter.interpret("minus 5")
@@ -81,7 +82,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(-8),
 				interpreter.interpret("pow -2 3").get(0));
 		assertEquals(Double.valueOf(8), interpreter.interpret("pow 2 3").get(0));
@@ -94,7 +95,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(-3), interpreter
 				.interpret("product -1.5 2").get(0));
 	}
@@ -104,7 +105,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(3), interpreter.interpret("quotient 9 3")
 				.get(0));
 		assertEquals(Double.valueOf(2.5), interpreter.interpret("quotient 5 2")
@@ -118,7 +119,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		double number = interpreter.interpret("random 1").get(0);
 		assertTrue(number >= 0 && number < 1);
 		number = interpreter.interpret("random 25").get(0);
@@ -133,7 +134,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("remainder 5 2")
 				.get(0));
 		assertEquals(Double.valueOf(-1), interpreter
@@ -147,7 +148,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(Math.sin(Math.toRadians(10))), interpreter
 				.interpret("sin 10").get(0));
 	}
@@ -157,7 +158,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(15),
 				interpreter.interpret("sum 10 5").get(0));
 		assertEquals(Double.valueOf(-5), interpreter.interpret("sum -10 5")
@@ -169,7 +170,7 @@ public class MathCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(0),
 				interpreter.interpret("tan " + Math.PI / 2).get(0)); // tan(pi/2)
 																		// is

@@ -2,6 +2,7 @@ package backend;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import commands.Command;
 import commands.CommandFactory;
@@ -13,6 +14,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.VariableNotFoundException;
 
 public class Interpreter {
 	/**
@@ -23,7 +25,7 @@ public class Interpreter {
 	 */
 	CommandFactory commandFactory;
 	public Engine engine;
-
+	private HashMap<String, Double> variables = new HashMap<String, Double>();
 	public ArrayList<String> listOfWords;
 
 	public Interpreter() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
@@ -35,8 +37,7 @@ public class Interpreter {
 			throws InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
-
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, VariableNotFoundException {
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
 			return Double.parseDouble(firstWord);
@@ -53,6 +54,8 @@ public class Interpreter {
 			}
 			newCommand.loadParameters(parameters);
 			return engine.obey(newCommand);
+		} else if (isVariable(firstWord)) {
+			return variables.get(firstWord.substring(1));
 		} else {
 			throw new InvalidWordException();
 		}
@@ -63,7 +66,7 @@ public class Interpreter {
 			InvalidWordException, NotEnoughParametersException,
 			InvalidCommandException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException {
+			InvalidSyntaxException, VariableNotFoundException {
 		text = text.trim();
 		listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
@@ -89,6 +92,17 @@ public class Interpreter {
 			return false;
 		}
 	}
+	
+	private boolean isVariable(String word) throws VariableNotFoundException {
+		if (word.startsWith(":")) {
+			if (!variables.containsKey(word.substring(1))) {
+				throw new VariableNotFoundException();
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void listOutCommands(String commands) {
 		listOfWords = new ArrayList<String>();
@@ -103,7 +117,7 @@ public class Interpreter {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException {
+			InvalidCommandException, VariableNotFoundException {
 		Double ret = 0.0;
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();
@@ -116,5 +130,19 @@ public class Interpreter {
 			}
 		}
 		return ret;
+	}
+	
+	public double addVariable() throws InvalidSyntaxException {
+		double value;
+		if (listOfWords.get(0).charAt(0) != ':') {
+			throw new InvalidSyntaxException();
+		}
+		try {
+			value = Double.valueOf(listOfWords.remove(1));
+		} catch (Exception e) {
+			throw new InvalidSyntaxException();
+		}
+		variables.put(listOfWords.remove(0).substring(1), value);
+		return value;
 	}
 }

@@ -1,5 +1,7 @@
 package backend;
 
+import java.util.HashMap;
+
 import commands.Command;
 
 import exceptions.EndOfStackException;
@@ -8,6 +10,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.VariableNotFoundException;
 
 public class Engine {
 	Interpreter interpreter;
@@ -27,7 +30,7 @@ public class Engine {
 			InvalidSyntaxException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
 			InvalidCommandStringException, InvalidWordException,
-			NotEnoughParametersException, EndOfStackException {
+			NotEnoughParametersException, EndOfStackException, VariableNotFoundException {
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);
 		} else if (newCommand.COMMAND_TYPE.equals("math")) {

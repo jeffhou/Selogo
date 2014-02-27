@@ -19,6 +19,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.VariableNotFoundException;
 
 /**
  * @author jeffhou
@@ -71,13 +72,14 @@ public class InterpreterTest {
 	 * @throws InstantiationException
 	 * @throws InvalidSyntaxException
 	 * @throws EndOfStackException
+	 * @throws VariableNotFoundException 
 	 */
 	@Test
 	public void testForward() throws PluralityOfValuesException,
 			InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, VariableNotFoundException {
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 
@@ -86,7 +88,7 @@ public class InterpreterTest {
 			InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, VariableNotFoundException {
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
 

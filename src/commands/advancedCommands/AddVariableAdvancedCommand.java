@@ -1,20 +1,18 @@
 package commands.advancedCommands;
 
 import backend.Interpreter;
-
 import commands.AdvancedCommand;
-
+import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
-import exceptions.VariableNotFoundException;
 
-public class IfElseAdvancedCommand extends AdvancedCommand {
-
-	public IfElseAdvancedCommand() {
-		super(1);
+public class AddVariableAdvancedCommand extends AdvancedCommand {
+	
+	public AddVariableAdvancedCommand() {
+		super(0);
 	}
 
 	@Override
@@ -22,17 +20,9 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, VariableNotFoundException {
+			InvalidCommandException, EndOfStackException {
 		Interpreter interpreter = (Interpreter) o;
-		Double ret = 0.0;
-		for (int i = 0; i < 2; i++) {
-			interpreter.engine.saveTurtleState();
-			ret = interpreter.readBrackets();
-			if ((parameters.get(0) == 0) ^ (i == 1)) {
-				interpreter.engine.restoreTurtleState();
-			}
-		}
-
+		Double ret = interpreter.addVariable();
 		return ret;
 	}
 

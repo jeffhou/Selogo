@@ -11,6 +11,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.VariableNotFoundException;
 
 public class BooleanCommandTests {
 
@@ -26,7 +27,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("and 9 2").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("and -5 0")
 				.get(0));
@@ -41,7 +42,7 @@ public class BooleanCommandTests {
 			ClassNotFoundException, PluralityOfValuesException,
 			InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
-			InvalidSyntaxException {
+			InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("or 9 2").get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("or -5 -2")
 				.get(0));
@@ -54,7 +55,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("equal? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("equal? 0 0")
@@ -70,7 +71,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(0), interpreter
 				.interpret("notequal? 1 1.0").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("notequal? 0 0")
@@ -86,7 +87,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("greater? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("greater? 5 0")
@@ -102,7 +103,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("less? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(0),
@@ -118,7 +119,7 @@ public class BooleanCommandTests {
 			IllegalAccessException, ClassNotFoundException,
 			PluralityOfValuesException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InvalidSyntaxException {
+			InvalidCommandException, InvalidSyntaxException, VariableNotFoundException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("not 1").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("not -5").get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("not 0").get(0));

@@ -10,6 +10,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.VariableNotFoundException;
 
 public abstract class Command {
 	public final String COMMAND_TYPE;
@@ -25,7 +26,7 @@ public abstract class Command {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, EndOfStackException;;
+			InvalidCommandException, EndOfStackException, VariableNotFoundException;;
 
 	public void loadParameters(ArrayList<Double> parameters)
 			throws NotEnoughParametersException {

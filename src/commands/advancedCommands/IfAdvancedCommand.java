@@ -9,6 +9,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.VariableNotFoundException;
 
 public class IfAdvancedCommand extends AdvancedCommand {
 
@@ -21,7 +22,7 @@ public class IfAdvancedCommand extends AdvancedCommand {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException {
+			InvalidCommandException, VariableNotFoundException {
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
 

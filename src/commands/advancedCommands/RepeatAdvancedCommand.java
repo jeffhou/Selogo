@@ -12,6 +12,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.VariableNotFoundException;
 
 public class RepeatAdvancedCommand extends AdvancedCommand {
 
@@ -24,7 +25,7 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidCommandStringException,
 			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException {
+			InvalidCommandException, VariableNotFoundException {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
