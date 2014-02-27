@@ -141,6 +141,19 @@ public class InterpreterGUI extends JPanel {
 		JMenu turtle = new JMenu("Turtle");
 		
 		JMenuItem turtlePreferences = new JMenuItem("Preferences");
+		turtlePreferences.addMouseListener(new MouseAdapter() {
+
+			public void mousePressed(MouseEvent e) {
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
 		JMenuItem turtleStats = new JMenuItem("Stats");
 		turtle.add(turtlePreferences);
 		turtle.add(turtleStats);
