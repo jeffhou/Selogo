@@ -11,7 +11,9 @@ public class TanMathCommand extends MathCommand {
 	@Override
 	public double execute(Object o) {
 		double expr = parameters.get(0);
-
+		if(expr == Math.PI/2) {
+			return 0;
+		}
 		return Math.tan(Math.toRadians(expr));
 	}
 
