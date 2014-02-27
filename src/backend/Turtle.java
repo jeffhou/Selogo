@@ -93,8 +93,8 @@ public class Turtle {
 				new Tuple(553.0 / 2, 553.0 / 2));
 		Tuple displacement = Tuple.subtract(newPos, position);
 		Tuple onScreenPosition = Tuple.subtract(Tuple
-				.mod(newRawPosition, new Tuple(TurtleGUI.dimension.width,
-						TurtleGUI.dimension.height)), new Tuple(553.0 / 2,
+				.mod(newRawPosition, new Tuple(TurtleGUI.SCREEN_DIMENSION.width,
+						TurtleGUI.SCREEN_DIMENSION.height)), new Tuple(553.0 / 2,
 				553.0 / 2));
 		position = newPos;
 		updateTrail();
