@@ -19,6 +19,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.SlogoException;
 import exceptions.VariableNotFoundException;
 
 /**
@@ -62,33 +63,22 @@ public class InterpreterTest {
 	/**
 	 * Test method for forward.logo
 	 * 
-	 * @throws PluralityOfValuesException
-	 * @throws InvalidCommandException
-	 * @throws NotEnoughParametersException
-	 * @throws InvalidWordException
-	 * @throws InvalidCommandStringException
 	 * @throws ClassNotFoundException
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 * @throws InvalidSyntaxException
 	 * @throws EndOfStackException
-	 * @throws VariableNotFoundException 
+	 * @throws SlogoException 
 	 */
 	@Test
-	public void testForward() throws PluralityOfValuesException,
-			InvalidCommandStringException, InvalidWordException,
-			NotEnoughParametersException, InvalidCommandException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, VariableNotFoundException {
+	public void testForward() throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, SlogoException {
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 
 	@Test
-	public void testForwardForward() throws PluralityOfValuesException,
-			InvalidCommandStringException, InvalidWordException,
-			NotEnoughParametersException, InvalidCommandException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, VariableNotFoundException {
+	public void testForwardForward() throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvalidSyntaxException, EndOfStackException, SlogoException {
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
 
