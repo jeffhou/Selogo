@@ -27,7 +27,7 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 		for (int i = 0; i < 2; i++) {
 			interpreter.engine.saveTurtleState();
 			ret = interpreter.readBrackets();
-			if (parameters.get(0) == 0 ^ i == 1) {
+			if ((parameters.get(0) == 0) ^ (i == 1)) {
 				interpreter.engine.restoreTurtleState();
 			}
 		}

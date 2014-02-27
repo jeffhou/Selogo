@@ -5,9 +5,9 @@ import gui.TurtleGUI;
 import java.util.ArrayList;
 
 public class Turtle {
-	public Tuple position; // position
 	private double heading; // angle, 0 is north, rotates clockwise
 	private boolean penDown; // is trail recording?
+	public Tuple position; // position
 	private boolean showing; // is turtle showing?
 	public ArrayList<ArrayList<Tuple>> trails;
 
@@ -19,10 +19,18 @@ public class Turtle {
 		showing = true;
 	}
 
-	private void setTrails(ArrayList<ArrayList<Tuple>> newTrails) {
-		trails = newTrails;
+	public double clear() {
+		double distanceTraveled = home();
+		clearTrails();
+		return distanceTraveled;
 	}
 
+	void clearTrails() {
+		trails.clear();
+		setPen(penDown);
+	}
+
+	@Override
 	public Turtle clone() {
 		Turtle newTurtle = new Turtle();
 		newTurtle.moveTo(getPosition());
@@ -40,6 +48,41 @@ public class Turtle {
 		return newTurtle;
 	}
 
+	public double getHeading() {
+		return heading;
+	}
+
+	public ArrayList<ArrayList<Tuple>> getPaths() {
+		return trails;
+	}
+
+	public boolean getPenState() {
+		return penDown;
+	}
+
+	public Tuple getPosition() {
+		return position;
+	}
+
+	public boolean getVisibility() {
+		return showing;
+	}
+
+	public double home() {
+		setHeadingTo(0);
+		return moveTo(new Tuple());
+	}
+
+	/**
+	 * Relative move in both directions based on heading.
+	 */
+	public double move(Tuple posChange) {
+		Tuple actualPosChange = new Tuple((posChange.y - posChange.x)
+				* Math.sin(Math.toRadians(heading)),
+				(posChange.y + posChange.x) * Math.cos(Math.toRadians(heading)));
+		return moveTo(Tuple.sum(actualPosChange, position));
+	}
+
 	/**
 	 * Absolute move to position.
 	 */
@@ -54,27 +97,15 @@ public class Turtle {
 		 * the trail simply connects the old point and the new point. Wrap
 		 * around also needs to be implemented with correct math.
 		 */
-		if (penDown)
+		if (penDown) {
 			updateTrail();
+		}
 		return distanceTraveled;
 	}
 
-	/**
-	 * Relative move in both directions based on heading.
-	 */
-	public double move(Tuple posChange) {
-		Tuple actualPosChange = new Tuple((posChange.y - posChange.x)
-				* Math.sin(Math.toRadians(heading)),
-				(posChange.y + posChange.x) * Math.cos(Math.toRadians(heading)));
-		return moveTo(Tuple.sum(actualPosChange, position));
-	}
-
-	/**
-	 * Sets turtle heading to newHeading.
-	 */
-	public double turnClockwise(double newHeadingChange) {
-		setHeadingTo(heading + newHeadingChange);
-		return newHeadingChange;
+	void newTrail() {
+		trails.add(new ArrayList<Tuple>());
+		updateTrail();
 	}
 
 	/**
@@ -91,56 +122,28 @@ public class Turtle {
 	 */
 	public void setPen(boolean down) {
 		penDown = down;
-		if (penDown)
+		if (penDown) {
 			newTrail();
+		}
 	}
 
-	void newTrail() {
-		trails.add(new ArrayList<Tuple>());
-		updateTrail();
-	}
-
-	void updateTrail() {
-		trails.get(trails.size() - 1).add(getPosition());
+	private void setTrails(ArrayList<ArrayList<Tuple>> newTrails) {
+		trails = newTrails;
 	}
 
 	public void setVisibility(boolean show) {
 		showing = show;
 	}
 
-	public double home() {
-		setHeadingTo(0);
-		return moveTo(new Tuple());
+	/**
+	 * Sets turtle heading to newHeading.
+	 */
+	public double turnClockwise(double newHeadingChange) {
+		setHeadingTo(heading + newHeadingChange);
+		return newHeadingChange;
 	}
 
-	public double clear() {
-		double distanceTraveled = home();
-		clearTrails();
-		return distanceTraveled;
-	}
-
-	void clearTrails() {
-		trails.clear();
-		setPen(penDown);
-	}
-
-	public Tuple getPosition() {
-		return position;
-	}
-
-	public double getHeading() {
-		return heading;
-	}
-
-	public boolean getPenState() {
-		return penDown;
-	}
-
-	public boolean getVisibility() {
-		return showing;
-	}
-
-	public ArrayList<ArrayList<Tuple>> getPaths() {
-		return trails;
+	void updateTrail() {
+		trails.get(trails.size() - 1).add(getPosition());
 	}
 }

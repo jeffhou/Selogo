@@ -13,9 +13,9 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 
-public class ForAdvancedCommand extends AdvancedCommand {
+public class RepeatAdvancedCommand extends AdvancedCommand {
 
-	public ForAdvancedCommand() {
+	public RepeatAdvancedCommand() {
 		super(1);
 	}
 
@@ -31,7 +31,7 @@ public class ForAdvancedCommand extends AdvancedCommand {
 
 		Double ret;
 		ArrayList<String> newList = StringOps.deepCopy(interpreter.listOfWords);
-		;
+
 		do {
 			interpreter.listOfWords = StringOps.deepCopy(newList);
 			ret = interpreter.readBrackets();

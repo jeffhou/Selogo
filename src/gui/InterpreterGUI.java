@@ -24,6 +24,14 @@ import javax.swing.JTextArea;
 import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
+	protected static Interpreter interpreter;
+	protected static JMenuBar menuBar;
+	private final static String newline = "\n";
+	static TurtleGUI newTurtleGUI;
+	protected static JPopupMenu popUp;
+
+	protected JTextArea historyTextArea;
+
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
@@ -31,20 +39,13 @@ public class InterpreterGUI extends JPanel {
 	 */
 
 	protected JTextArea inputTextArea, consoleOutputTextArea;
-	protected JTextArea historyTextArea;
-	private JButton runButton;
-	private final static String newline = "\n";
-	protected static Interpreter interpreter;
-	static TurtleGUI newTurtleGUI;
 
-	protected static JMenuBar menuBar;
-	protected static JPopupMenu popUp;
+	private JButton runButton;
 
 	public InterpreterGUI(Interpreter new_interpreter) {
 		super(new GridBagLayout());
 		/**
-		 * TODO: Remove unnecessary whitespace from history, make each entered
-		 * set of commands as a clickable link.
+		 * TODO: make each entered set of commands as a clickable link.
 		 */
 		interpreter = new_interpreter;
 		historyTextArea = new JTextArea(20, 20);
@@ -74,11 +75,6 @@ public class InterpreterGUI extends JPanel {
 					 * this, this is what I imagined: "sum fd fd 54 rt 15"
 					 * yields: """moved forward by 54 moved forward by 54 turned
 					 * right by 15 sum of 54 and 15 is 69"""
-					 */
-					/**
-					 * TODO: similarly implement errors in the same way. Of
-					 * course error messages should go into the error class and
-					 * command messages should go into the command class.
 					 */
 					consoleOutputTextArea.setText(""
 							+ interpreter.interpret(inputTextArea.getText()));
@@ -192,5 +188,4 @@ public class InterpreterGUI extends JPanel {
 		});
 
 	}
-
 }

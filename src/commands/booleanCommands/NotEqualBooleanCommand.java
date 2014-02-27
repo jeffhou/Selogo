@@ -6,6 +6,7 @@ public class NotEqualBooleanCommand extends CheckEqualityBooleanCommand {
 		super();
 	}
 
+	@Override
 	public double execute(Object O) {
 		double expr1 = parameters.get(0);
 		double expr2 = parameters.get(1);
