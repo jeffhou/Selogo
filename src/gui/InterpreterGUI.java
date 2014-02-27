@@ -182,7 +182,7 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 		penColor.addMouseListener(new MouseAdapter(){
 			
 			public void mousePressed(MouseEvent e){
-				ColorChooserDemo();
+//				ColorChooserDemo();
 			}
 		});
 
@@ -238,7 +238,7 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	private static void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		// Create and set up the window.
 		JFrame frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -264,31 +264,31 @@ public class InterpreterGUI extends JPanel implements ChangeListener {
 
 	}
 
-	public static void main(String[] args) {
-		/**
-		 * TODO: PULL OUT INTO A MAIN METHOD
-		 */
-		// Schedule a job for the event dispatch thread:
-		// creating and showing this application's GUI.
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-
-	}
+//	public static void main(String[] args) {
+//		/**
+//		 * TODO: PULL OUT INTO A MAIN METHOD
+//		 */
+//		// Schedule a job for the event dispatch thread:
+//		// creating and showing this application's GUI.
+//		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					createAndShowGUI();
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (InstantiationException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (IllegalAccessException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (ClassNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//
+//	}
 }
