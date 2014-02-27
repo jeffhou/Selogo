@@ -10,6 +10,9 @@ public class QuotientMathCommand extends MathCommand {
 
 	@Override
 	public double execute(Object o) {
+		if(parameters.get(1).equals(Double.valueOf(0))) {
+			return 0;
+		}
 		return parameters.get(0) / parameters.get(1);
 	}
 

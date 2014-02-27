@@ -108,7 +108,9 @@ public class MathCommandTests {
 		assertEquals(Double.valueOf(3), interpreter.interpret("quotient 9 3")
 				.get(0));
 		assertEquals(Double.valueOf(2.5), interpreter.interpret("quotient 5 2")
-				.get(0)); // Integer division
+				.get(0));
+		assertEquals(Double.valueOf(0), interpreter.interpret("quotient 5 0")
+				.get(0));
 	}
 
 	@org.junit.Test
