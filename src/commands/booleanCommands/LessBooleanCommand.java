@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class LessBooleanCommand extends BooleanCommand {
 
 	public LessBooleanCommand() {

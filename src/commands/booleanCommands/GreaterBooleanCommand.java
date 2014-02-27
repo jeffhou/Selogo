@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class GreaterBooleanCommand extends BooleanCommand {
 
 	public GreaterBooleanCommand() {

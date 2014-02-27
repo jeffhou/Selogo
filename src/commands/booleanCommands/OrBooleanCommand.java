@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class OrBooleanCommand extends BooleanCommand {
 
 	public OrBooleanCommand() {

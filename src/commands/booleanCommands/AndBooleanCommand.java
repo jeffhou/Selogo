@@ -1,5 +1,7 @@
 package commands.booleanCommands;
 
+
+
 public class AndBooleanCommand extends BooleanCommand {
 
 	public AndBooleanCommand() {
