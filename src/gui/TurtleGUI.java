@@ -22,7 +22,8 @@ import backend.Tuple;
 import backend.Turtle;
 
 public class TurtleGUI extends Component {
-	public static Dimension dimension;
+	
+	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
 	private Engine engine;
 	Graphics2D graphicsEngine;
 	protected JTextArea historyTextArea;
@@ -57,7 +58,8 @@ public class TurtleGUI extends Component {
 		graphicsEngine = (Graphics2D) g;
 		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		dimension = getSize();
+		//dimension = getSize();
+		
 		drawBorder();
 		updatePenColor(0, 0, 0);
 		drawTrails();
@@ -91,10 +93,10 @@ public class TurtleGUI extends Component {
 	}
 
 	void drawBorder() {
-		graphicsEngine.draw3DRect(0, 0, dimension.width - 1,
-				dimension.height - 10, true);
-		graphicsEngine.draw3DRect(3, 3, dimension.width - 7,
-				dimension.height - 16, false);
+		graphicsEngine.draw3DRect(0, 0, SCREEN_DIMENSION.width - 1,
+				SCREEN_DIMENSION.height - 10, true);
+		graphicsEngine.draw3DRect(3, 3, SCREEN_DIMENSION.width - 7,
+				SCREEN_DIMENSION.height - 16, false);
 	}
 
 	void drawTrails() {
@@ -111,8 +113,8 @@ public class TurtleGUI extends Component {
 	}
 
 	Tuple getCenter() {
-		double centerX = dimension.width / 2;
-		double centerY = dimension.height / 2;
+		double centerX = SCREEN_DIMENSION.width / 2;
+		double centerY = SCREEN_DIMENSION.height / 2;
 		return new Tuple(centerX, centerY);
 	}
 }
