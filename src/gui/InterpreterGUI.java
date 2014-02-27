@@ -50,7 +50,7 @@ public class InterpreterGUI extends JPanel {
 	private final static String newline = "\n";
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
-
+	
 	protected JTextArea historyTextArea;
 
 	/**
@@ -62,7 +62,7 @@ public class InterpreterGUI extends JPanel {
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 
 	private JButton runButton;
-
+	
 	public InterpreterGUI(Interpreter new_interpreter) {
 		super(new GridBagLayout());
 		/**
@@ -184,10 +184,10 @@ public class InterpreterGUI extends JPanel {
 			
 			public void mousePressed(MouseEvent e){
 		        JFrame frame = new JFrame("Color Chooser");
-		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 
 		        //Create and set up the content pane.
-		        JComponent newContentPane = new ColorChooser();
+		        ColorChooser colorChooser = new ColorChooser(newTurtleGUI);
+		        JComponent newContentPane = colorChooser;
 		        newContentPane.setOpaque(true); //content panes must be opaque
 		        frame.setContentPane(newContentPane);
 		 
@@ -198,7 +198,6 @@ public class InterpreterGUI extends JPanel {
 		});
 
 		JMenuItem turtleStats = new JMenuItem("Get Stats");
-
 
 		turtle.add(turtleImage);
 		turtle.add(penColor);
@@ -215,7 +214,6 @@ public class InterpreterGUI extends JPanel {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	
 
 	public void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
@@ -228,16 +226,12 @@ public class InterpreterGUI extends JPanel {
 		InterpreterGUI newInterpreter = new InterpreterGUI(new Interpreter());
 		newTurtleGUI = new TurtleGUI(interpreter.engine);
 		
-		
-		
 		SlogoFrame slogoFrame = new SlogoFrame(newInterpreter, newTurtleGUI);
 
 		helpMenu();
 		turtleMenu();
 
 		slogoFrame.setMenu(menuBar);
-
 		slogoFrame.setVisible();
-
 	}
 }

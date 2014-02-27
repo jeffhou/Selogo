@@ -29,6 +29,7 @@ public class TurtleGUI extends Component {
 	protected JTextArea historyTextArea;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	private BufferedImage turtleImage;
+	private Color penColor = Color.black;
 
 	/**
 	 * TODO: Should read image path and path color from file
@@ -38,6 +39,7 @@ public class TurtleGUI extends Component {
 		super();
 		this.engine = engine;
 		updateTurtleImage("img/turtle.png");
+		
 	}
 	
 	public void updateTurtleImage(String path){
@@ -49,9 +51,8 @@ public class TurtleGUI extends Component {
 		}
 	}
 	
-	public void updatePenColor(int R, int G, int B){
-		graphicsEngine.setColor(new Color(R, G, B));
-		repaint();
+	public void updatePenColor(Color color){
+		penColor = color;
 	}
 
 	public void paint(Graphics g) {
@@ -61,7 +62,7 @@ public class TurtleGUI extends Component {
 		//dimension = getSize();
 		
 		drawBorder();
-		updatePenColor(0, 0, 0);
+		graphicsEngine.setColor(penColor);
 		drawTrails();
 		drawTurtle();
 	}
