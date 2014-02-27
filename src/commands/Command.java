@@ -10,14 +10,20 @@ import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 
 public abstract class Command {
+	public final String COMMAND_TYPE;
 	public final int NUM_OF_PARAMETERS;
 	protected ArrayList<Double> parameters;
-	public final String COMMAND_TYPE;
 
 	protected Command(int numberOfParameters, String commandType) {
 		NUM_OF_PARAMETERS = numberOfParameters;
 		COMMAND_TYPE = commandType;
 	}
+
+	public abstract double execute(Object o) throws InvalidSyntaxException,
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException, InvalidCommandStringException,
+			InvalidWordException, NotEnoughParametersException,
+			InvalidCommandException, EndOfStackException;;
 
 	public void loadParameters(ArrayList<Double> parameters)
 			throws NotEnoughParametersException {
@@ -26,11 +32,5 @@ public abstract class Command {
 		} else {
 			throw new NotEnoughParametersException();
 		}
-	};
-
-	public abstract double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidCommandStringException,
-			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, EndOfStackException;
+	}
 }

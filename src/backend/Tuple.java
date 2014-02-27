@@ -1,6 +1,18 @@
 package backend;
 
 public class Tuple {
+	public static Tuple mod(Tuple t1, Tuple t2) {
+		double newX = t1.x % t2.x;
+		if (newX < 0) {
+			newX += t2.x;
+		}
+		double newY = t1.y % t2.y;
+		if (newY < 0) {
+			newY += t2.y;
+		}
+		return new Tuple(newX, newY);
+	}
+
 	public static Tuple scalarMultiply(Tuple t1, double d1) {
 		return new Tuple(t1.x * d1, t1.y * d1);
 	}
@@ -29,27 +41,17 @@ public class Tuple {
 		return new Tuple(x, y);
 	}
 
-	public boolean equals(Tuple other) {
-		return (this.x == other.x) && (this.y == other.y);
+	public double distanceTo(Tuple other) {
+		return Math.sqrt(((x - other.x) * (x - other.x))
+				+ ((y - other.y) * (y - other.y)));
 	}
 
-	public static Tuple mod(Tuple t1, Tuple t2) {
-		double newX = t1.x % t2.x;
-		if (newX < 0)
-			newX += t2.x;
-		double newY = t1.y % t2.y;
-		if (newY < 0)
-			newY += t2.y;
-		return new Tuple(newX, newY);
+	public boolean equals(Tuple other) {
+		return (this.x == other.x) && (this.y == other.y);
 	}
 
 	@Override
 	public String toString() {
 		return "(" + this.x + "," + this.y + ")";
-	}
-
-	public double distanceTo(Tuple other) {
-		return Math.sqrt((x - other.x) * (x - other.x) + (y - other.y)
-				* (y - other.y));
 	}
 }

@@ -24,6 +24,93 @@ import javax.swing.JTextArea;
 import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
+	protected static Interpreter interpreter;
+	protected static JMenuBar menuBar;
+	private final static String newline = "\n";
+	static TurtleGUI newTurtleGUI;
+	protected static JPopupMenu popUp;
+
+	/**
+	 * Create the GUI and show it. For thread safety, this method should be
+	 * invoked from the event dispatch thread.
+	 * 
+	 * @throws IOException
+	 */
+	private static void createAndShowGUI() throws IOException {
+		// Create and set up the window.
+		JFrame frame = new JFrame("Slogo!");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JPanel newPanel = new JPanel();
+
+		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
+		newTurtleGUI = new TurtleGUI(interpreter.engine);
+		newPanel.add(newTurtleGUI);
+		// Add contents to the window.
+		newPanel.add(newIntrepreter);
+		frame.add(newPanel);
+		// Display the window.
+		frame.pack();
+		helpMenu();
+		frame.setJMenuBar(menuBar);
+
+		frame.setVisible(true);
+
+	}
+
+	private static void helpMenu() {
+
+		// Create the menu bar.
+		menuBar = new JMenuBar();
+
+		// Build the first menu.
+		JMenu menu = new JMenu("Help");
+		menuBar.add(menu);
+
+		// Submenu
+		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
+		helpSubMenu.setMnemonic(KeyEvent.VK_B);
+		menu.add(helpSubMenu);
+		menuBar.add(menu);
+
+		helpSubMenu.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				File file = new File("src/help.html");
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.open(file);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		});
+
+	}
+
+	public static void main(String[] args) {
+		/**
+		 * TODO: PULL OUT INTO A MAIN METHOD
+		 */
+		// Schedule a job for the event dispatch thread:
+		// creating and showing this application's GUI.
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					createAndShowGUI();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
+	protected JTextArea historyTextArea;
+
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle
 	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
@@ -31,20 +118,13 @@ public class InterpreterGUI extends JPanel {
 	 */
 
 	protected JTextArea inputTextArea, consoleOutputTextArea;
-	protected JTextArea historyTextArea;
-	private JButton runButton;
-	private final static String newline = "\n";
-	protected static Interpreter interpreter;
-	static TurtleGUI newTurtleGUI;
 
-	protected static JMenuBar menuBar;
-	protected static JPopupMenu popUp;
+	private JButton runButton;
 
 	public InterpreterGUI(Interpreter new_interpreter) {
 		super(new GridBagLayout());
 		/**
-		 * TODO: Remove unnecessary whitespace from history, make each entered
-		 * set of commands as a clickable link.
+		 * TODO: make each entered set of commands as a clickable link.
 		 */
 		interpreter = new_interpreter;
 		historyTextArea = new JTextArea(25, 20);
@@ -74,11 +154,6 @@ public class InterpreterGUI extends JPanel {
 					 * this, this is what I imagined: "sum fd fd 54 rt 15"
 					 * yields: """moved forward by 54 moved forward by 54 turned
 					 * right by 15 sum of 54 and 15 is 69"""
-					 */
-					/**
-					 * TODO: similarly implement errors in the same way. Of
-					 * course error messages should go into the error class and
-					 * command messages should go into the command class.
 					 */
 					consoleOutputTextArea.setText(""
 							+ interpreter.interpret(inputTextArea.getText()));
@@ -112,84 +187,6 @@ public class InterpreterGUI extends JPanel {
 		add(inputScrollPane, c);
 		add(runButton, c);
 		add(consoleScrollPane, c);
-
-	}
-
-	/**
-	 * Create the GUI and show it. For thread safety, this method should be
-	 * invoked from the event dispatch thread.
-	 * 
-	 * @throws IOException
-	 */
-	private static void createAndShowGUI() throws IOException {
-		// Create and set up the window.
-		JFrame frame = new JFrame("Slogo!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JPanel newPanel = new JPanel();
-
-		InterpreterGUI newIntrepreter = new InterpreterGUI(new Interpreter());
-		newTurtleGUI = new TurtleGUI(interpreter.engine);
-		newPanel.add(newTurtleGUI);
-		// Add contents to the window.
-		newPanel.add(newIntrepreter);
-		frame.add(newPanel);
-		// Display the window.
-		frame.pack();
-		helpMenu();
-		frame.setJMenuBar(menuBar);
-
-		frame.setVisible(true);
-
-	}
-
-	public static void main(String[] args) {
-		/**
-		 * TODO: PULL OUT INTO A MAIN METHOD
-		 */
-		// Schedule a job for the event dispatch thread:
-		// creating and showing this application's GUI.
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-
-	}
-
-	private static void helpMenu() {
-
-		// Create the menu bar.
-		menuBar = new JMenuBar();
-
-		// Build the first menu.
-		JMenu menu = new JMenu("Help");
-		menuBar.add(menu);
-
-		// Submenu
-		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
-		helpSubMenu.setMnemonic(KeyEvent.VK_B);
-		menu.add(helpSubMenu);
-		menuBar.add(menu);
-
-		helpSubMenu.addMouseListener(new MouseAdapter() {
-
-			public void mousePressed(MouseEvent e) {
-				File file = new File("src/help.html");
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-
-		});
 
 	}
 

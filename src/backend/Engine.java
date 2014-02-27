@@ -10,21 +10,17 @@ import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 
 public class Engine {
+	Interpreter interpreter;
 	public Turtle turtle;
 	private Turtle turtleState;
-	Interpreter interpreter;
 
 	Engine(Interpreter interpreter) {
 		turtle = new Turtle();
 		this.interpreter = interpreter;
 	}
 
-	public void saveTurtleState() {
-		turtleState = turtle.clone();
-	}
-
-	public void restoreTurtleState() {
-		turtle = turtleState;
+	public Turtle getTurtle() {
+		return turtle;
 	}
 
 	public double obey(Command newCommand) throws InvalidCommandException,
@@ -44,8 +40,12 @@ public class Engine {
 		throw new InvalidCommandException();
 	}
 
-	public Turtle getTurtle() {
-		return turtle;
+	public void restoreTurtleState() {
+		turtle = turtleState;
+	}
+
+	public void saveTurtleState() {
+		turtleState = turtle.clone();
 	}
 
 }

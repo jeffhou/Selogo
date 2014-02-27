@@ -1,6 +1,6 @@
 <model>
     <command code="]" commandClass="commands.advancedCommands.BreakAdvancedCommand"/>
 	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand"/>
-	<command code="for" commandClass="commands.advancedCommands.ForAdvancedCommand"/>
+	<command code="repeat" commandClass="commands.advancedCommands.RepeatAdvancedCommand"/>
 	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand"/>
 </model>
