@@ -47,15 +47,15 @@ public class InterpreterGUI extends JPanel {
 		 * set of commands as a clickable link.
 		 */
 		interpreter = new_interpreter;
-		historyTextArea = new JTextArea(25, 20);
+		historyTextArea = new JTextArea(20, 20);
 		historyTextArea.setEditable(false);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
 
-		inputTextArea = new JTextArea(3, 20);
+		inputTextArea = new JTextArea(5, 20);
 		inputTextArea.setText("Enter code here...");
 		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
 
-		consoleOutputTextArea = new JTextArea(4, 20);
+		consoleOutputTextArea = new JTextArea(5, 20);
 		consoleOutputTextArea.setEditable(false);
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
 
@@ -136,6 +136,7 @@ public class InterpreterGUI extends JPanel {
 		frame.add(newPanel);
 		// Display the window.
 		frame.pack();
+		frame.setSize(800,580);
 		helpMenu();
 		frame.setJMenuBar(menuBar);
 
@@ -173,7 +174,6 @@ public class InterpreterGUI extends JPanel {
 
 		// Submenu
 		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
-		helpSubMenu.setMnemonic(KeyEvent.VK_B);
 		menu.add(helpSubMenu);
 		menuBar.add(menu);
 
