@@ -25,7 +25,7 @@ import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
 	protected static Interpreter interpreter;
-	protected static JMenuBar menuBar =  new JMenuBar();
+	protected static JMenuBar menuBar = new JMenuBar();
 	private final static String newline = "\n";
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
@@ -139,7 +139,6 @@ public class InterpreterGUI extends JPanel {
 
 	private static void turtleMenu() {
 		JMenu turtle = new JMenu("Turtle");
-
 		JMenuItem turtleImage = new JMenuItem("Set Turtle Image");
 		JMenuItem penColor = new JMenuItem("Set Pen Color");
 		JMenuItem turtleStats = new JMenuItem("Get Stats");

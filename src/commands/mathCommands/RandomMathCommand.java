@@ -17,7 +17,7 @@ public class RandomMathCommand extends MathCommand {
 
 		Random generator = new Random();
 		double max = parameters.get(0);
-		if(max < 0) {
+		if (max < 0) {
 			return 0;
 		}
 		double randomDouble = generator.nextDouble() * max;
