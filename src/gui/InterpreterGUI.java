@@ -110,7 +110,7 @@ public class InterpreterGUI extends JPanel {
 		add(consoleScrollPane, c);
 
 	}
-	
+
 	private static void helpMenu() {
 
 		// Build the first menu.
@@ -136,26 +136,15 @@ public class InterpreterGUI extends JPanel {
 		});
 
 	}
-	
+
 	private static void turtleMenu() {
 		JMenu turtle = new JMenu("Turtle");
-		
-		JMenuItem turtlePreferences = new JMenuItem("Preferences");
-		turtlePreferences.addMouseListener(new MouseAdapter() {
 
-			public void mousePressed(MouseEvent e) {
-				File file = new File("src/help.html");
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-
-		});
-		JMenuItem turtleStats = new JMenuItem("Stats");
-		turtle.add(turtlePreferences);
+		JMenuItem turtleImage = new JMenuItem("Set Turtle Image");
+		JMenuItem penColor = new JMenuItem("Set Pen Color");
+		JMenuItem turtleStats = new JMenuItem("Get Stats");
+		turtle.add(turtleImage);
+		turtle.add(penColor);
 		turtle.add(turtleStats);
 		menuBar.add(turtle);
 	}
@@ -185,10 +174,10 @@ public class InterpreterGUI extends JPanel {
 		// Display the window.
 		frame.pack();
 		frame.setSize(800,580);
-		
+
 		helpMenu();
 		turtleMenu();
-		
+
 		frame.setJMenuBar(menuBar);
 
 		frame.setVisible(true);
