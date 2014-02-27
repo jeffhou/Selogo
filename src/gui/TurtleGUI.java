@@ -35,8 +35,13 @@ public class TurtleGUI extends Component {
 	TurtleGUI(Engine engine) {
 		super();
 		this.engine = engine;
+		updateTurtleImage("img/turtle.png");
+	}
+	
+	public void updateTurtleImage(String path){
 		try {
-			turtleImage = ImageIO.read(new File("img/turtle.png"));
+			turtleImage = ImageIO.read(new File(path));
+			repaint();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
