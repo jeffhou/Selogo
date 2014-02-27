@@ -1,6 +1,10 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -11,9 +15,12 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -21,13 +28,22 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import gui.TurtleGUI;
 
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.colorchooser.*;
+
+import gui.TurtleGUI;
 import backend.Engine;
 import backend.Interpreter;
 
-public class InterpreterGUI extends JPanel {
+public class InterpreterGUI extends JPanel implements ChangeListener {
 	protected static Interpreter interpreter;
 	protected static JMenuBar menuBar = new JMenuBar();
 	private final static String newline = "\n";
@@ -163,7 +179,12 @@ public class InterpreterGUI extends JPanel {
 		});
 
 		JMenuItem penColor = new JMenuItem("Set Pen Color");
-
+		penColor.addMouseListener(new MouseAdapter(){
+			
+			public void mousePressed(MouseEvent e){
+				ColorChooserDemo();
+			}
+		});
 
 		JMenuItem turtleStats = new JMenuItem("Get Stats");
 
@@ -173,6 +194,40 @@ public class InterpreterGUI extends JPanel {
 		turtle.add(turtleStats);
 		menuBar.add(turtle);
 	}
+	
+    protected JColorChooser tcc;
+    protected JLabel banner;
+ 
+    public void ColorChooserDemo() {
+//        super(new BorderLayout());
+ 
+        //Set up the banner at the top of the window
+        banner = new JLabel("Welcome to the Tutorial Zone!",
+                            JLabel.CENTER);
+        banner.setForeground(Color.yellow);
+        banner.setBackground(Color.blue);
+        banner.setOpaque(true);
+        banner.setFont(new Font("SansSerif", Font.BOLD, 24));
+        banner.setPreferredSize(new Dimension(100, 65));
+ 
+        JPanel bannerPanel = new JPanel(new BorderLayout());
+        bannerPanel.add(banner, BorderLayout.CENTER);
+        bannerPanel.setBorder(BorderFactory.createTitledBorder("Banner"));
+ 
+        //Set up color chooser for setting text color
+        tcc = new JColorChooser(banner.getForeground());
+        tcc.getSelectionModel().addChangeListener(this);
+        tcc.setBorder(BorderFactory.createTitledBorder(
+                                             "Choose Text Color"));
+ 
+        add(bannerPanel, BorderLayout.CENTER);
+        add(tcc, BorderLayout.PAGE_END);
+    }
+ 
+    public void stateChanged(ChangeEvent e) {
+        Color newColor = tcc.getColor();
+        banner.setForeground(newColor);
+    }
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be

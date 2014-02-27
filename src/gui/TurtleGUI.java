@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -46,6 +47,11 @@ public class TurtleGUI extends Component {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updatePenColor(int R, int G, int B){
+		graphicsEngine.setColor(new Color(R, G, B));
+		repaint();
+	}
 
 	public void paint(Graphics g) {
 		graphicsEngine = (Graphics2D) g;
@@ -53,6 +59,7 @@ public class TurtleGUI extends Component {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		dimension = getSize();
 		drawBorder();
+		updatePenColor(0, 0, 0);
 		drawTrails();
 		drawTurtle();
 	}
