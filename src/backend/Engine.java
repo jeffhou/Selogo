@@ -8,6 +8,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.SlogoException;
 
 public class Engine {
 	Interpreter interpreter;
@@ -23,11 +24,9 @@ public class Engine {
 		return turtle;
 	}
 
-	public double obey(Command newCommand) throws InvalidCommandException,
-			InvalidSyntaxException, InstantiationException,
+	public double obey(Command newCommand) throws InvalidSyntaxException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
-			InvalidCommandStringException, InvalidWordException,
-			NotEnoughParametersException, EndOfStackException {
+			EndOfStackException, SlogoException {
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);
 		} else if (newCommand.COMMAND_TYPE.equals("math")) {

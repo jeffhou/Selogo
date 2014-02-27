@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidWordException extends Exception {
+public class InvalidWordException extends SlogoException {
 	public InvalidWordException() {
 		super("Invalid word!");
 	}

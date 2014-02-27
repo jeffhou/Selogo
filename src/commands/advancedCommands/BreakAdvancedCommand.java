@@ -8,6 +8,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.SlogoException;
 
 public class BreakAdvancedCommand extends AdvancedCommand {
 
@@ -18,9 +19,7 @@ public class BreakAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidCommandStringException,
-			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, EndOfStackException {
+			ClassNotFoundException, SlogoException, EndOfStackException {
 		throw new EndOfStackException();
 	}
 

@@ -13,6 +13,7 @@ import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
+import exceptions.SlogoException;
 
 public class Interpreter {
 	/**
@@ -35,7 +36,7 @@ public class Interpreter {
 			throws InvalidCommandStringException, InvalidWordException,
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, EndOfStackException {
+			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
 
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
@@ -59,11 +60,9 @@ public class Interpreter {
 	}
 
 	public ArrayList<Double> interpret(String text)
-			throws PluralityOfValuesException, InvalidCommandStringException,
-			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException, InstantiationException,
+			throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException {
+			InvalidSyntaxException, SlogoException {
 		text = text.trim();
 		listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
@@ -101,9 +100,7 @@ public class Interpreter {
 
 	public double readBrackets() throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidCommandStringException,
-			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException {
+			ClassNotFoundException, SlogoException {
 		Double ret = 0.0;
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();

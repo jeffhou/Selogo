@@ -12,6 +12,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.SlogoException;
 
 public class RepeatAdvancedCommand extends AdvancedCommand {
 
@@ -22,9 +23,8 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidCommandStringException,
-			InvalidWordException, NotEnoughParametersException,
-			InvalidCommandException {
+			ClassNotFoundException, SlogoException, NotEnoughParametersException
+		 {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();
