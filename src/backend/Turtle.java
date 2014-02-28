@@ -95,7 +95,7 @@ public class Turtle {
 		Tuple onScreenPosition = Tuple.subtract(Tuple
 				.mod(newRawPosition, new Tuple(TurtleGUI.SCREEN_DIMENSION.width,
 						TurtleGUI.SCREEN_DIMENSION.height)), new Tuple(553.0 / 2,
-				553.0 / 2));
+								553.0 / 2));
 		position = newPos;
 		updateTrail();
 
@@ -153,8 +153,8 @@ public class Turtle {
 			trails.get(trails.size() - 1).add(getPosition());
 		}
 	}
-	
-	
+
+
 	public String stringify() {
 		String myDetails = "";
 		myDetails += "Position: " + position.toString() +'\n';

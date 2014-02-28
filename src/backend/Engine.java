@@ -24,8 +24,8 @@ public class Engine {
 	}
 
 	public double obey(Command newCommand) throws InvalidSyntaxException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			EndOfStackException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	EndOfStackException, SlogoException {
 
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(turtle);

@@ -25,8 +25,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testAnd() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("and 9 2").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("and -5 0")
 				.get(0));
@@ -38,7 +38,7 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testOr() throws InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, SlogoException {
+	ClassNotFoundException, InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("or 9 2").get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("or -5 -2")
 				.get(0));
@@ -48,8 +48,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testEqual() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(1), interpreter.interpret("equal? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("equal? 0 0")
@@ -62,8 +62,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testNotEqual() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(0), interpreter
 				.interpret("notequal? 1 1.0").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("notequal? 0 0")
@@ -76,8 +76,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testGreater() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("greater? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("greater? 5 0")
@@ -90,8 +90,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testLess() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("less? 1 1.0")
 				.get(0));
 		assertEquals(Double.valueOf(0),
@@ -104,8 +104,8 @@ public class BooleanCommandTests {
 
 	@org.junit.Test
 	public void testNot() throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException,
-			InvalidSyntaxException, SlogoException {
+	IllegalAccessException, ClassNotFoundException,
+	InvalidSyntaxException, SlogoException {
 		assertEquals(Double.valueOf(0), interpreter.interpret("not 1").get(0));
 		assertEquals(Double.valueOf(0), interpreter.interpret("not -5").get(0));
 		assertEquals(Double.valueOf(1), interpreter.interpret("not 0").get(0));

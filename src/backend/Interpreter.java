@@ -94,7 +94,7 @@ public class Interpreter {
 			return false;
 		}
 	}
-	
+
 	private boolean isVariable(String word) throws SlogoException {
 		if (word.startsWith(":")) {
 			if (!variables.containsKey(word.substring(1))) {
@@ -116,8 +116,8 @@ public class Interpreter {
 	}
 
 	public double readBrackets() throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, SlogoException {
+	InstantiationException, IllegalAccessException,
+	ClassNotFoundException, SlogoException {
 
 		Double ret = 0.0;
 		if (!listOfWords.remove(0).equals("[")) {
@@ -132,7 +132,7 @@ public class Interpreter {
 		}
 		return ret;
 	}
-	
+
 	public double addVariable() throws InvalidSyntaxException {
 		double value;
 		if (listOfWords.get(0).charAt(0) != ':') {

@@ -10,19 +10,19 @@ import javax.swing.border.TitledBorder;
 import backend.Turtle;
 
 public class TurtleStatsGUI extends JPanel {
-	
+
 
 	String myContent;
 	TurtleStatsGUI(String turtleStats) {
 		myContent = turtleStats;
-		
+
 		this.setBorder(new LineBorder(Color.blue));
 	}
-	
-	 private void drawString(Graphics g, String text, int x, int y) {
-	        for (String line : text.split("\n"))
-	            g.drawString(line, x, y += g.getFontMetrics().getHeight());
-	    }
+
+	private void drawString(Graphics g, String text, int x, int y) {
+		for (String line : text.split("\n"))
+			g.drawString(line, x, y += g.getFontMetrics().getHeight());
+	}
 
 	public void updateTurtle(String turtleStats) {
 		myContent = turtleStats;
@@ -36,7 +36,7 @@ public class TurtleStatsGUI extends JPanel {
 		g.setColor(Color.BLUE);
 		g.setFont(new Font("default", Font.PLAIN, 15)); 
 		drawString(g, myContent, 50, 50);
-		 
+
 	}
 
 }

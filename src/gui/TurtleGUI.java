@@ -22,7 +22,7 @@ import backend.Tuple;
 import backend.Turtle;
 
 public class TurtleGUI extends Component {
-	
+
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
 	private Engine engine;
 	Graphics2D graphicsEngine;
@@ -39,9 +39,9 @@ public class TurtleGUI extends Component {
 		super();
 		this.engine = engine;
 		updateTurtleImage("img/turtle.png");
-		
+
 	}
-	
+
 	public void updateTurtleImage(String path){
 		try {
 			turtleImage = ImageIO.read(new File(path));
@@ -50,7 +50,7 @@ public class TurtleGUI extends Component {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void updatePenColor(Color color){
 		penColor = color;
 	}
@@ -60,7 +60,7 @@ public class TurtleGUI extends Component {
 		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		//dimension = getSize();
-		
+
 		drawBorder();
 		graphicsEngine.setColor(penColor);
 		drawTrails();
@@ -80,8 +80,8 @@ public class TurtleGUI extends Component {
 			graphicsEngine.drawImage(op.filter(turtleImage, null),
 					(int) (center.x + turtle.getPosition().x - turtleImage
 							.getWidth(this) / 2),
-					(int) (center.y - turtle.getPosition().y - turtleImage
-							.getHeight(this) / 2), null);
+							(int) (center.y - turtle.getPosition().y - turtleImage
+									.getHeight(this) / 2), null);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class TurtleGUI extends Component {
 				graphicsEngine.draw(new Line2D.Double(path.get(i).x + center.x,
 						-path.get(i).y + center.y,
 						path.get(i + 1).x + center.x, -path.get(i + 1).y
-								+ center.y));
+						+ center.y));
 			}
 		}
 	}

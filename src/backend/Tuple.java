@@ -7,7 +7,7 @@ public class Tuple {
 		this.x = 0;
 		this.y = 0;
 	}
-	
+
 	public static Tuple mod(Tuple t1, Tuple t2) {
 		double newX = t1.x % t2.x;
 		if (newX < 0) {

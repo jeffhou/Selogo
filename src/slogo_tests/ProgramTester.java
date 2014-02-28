@@ -34,51 +34,51 @@ import exceptions.SlogoException;
 import backend.Interpreter;
 
 public class ProgramTester {
-	
+
 	ArrayList<String> testFiles;
 	Interpreter interpreter;
 
 	@Before
 	public void setUp() throws Exception {
-		
+
 		interpreter = new Interpreter();
-		
+
 		testFiles = new ArrayList<String>();
-	
-		
+
+
 		testFiles.add("examples/loops/circle.logo");
 		//testFiles.add("examples/sums.txt");
-		
+
 		//testFiles.add("sum 5 6");
 	}
-	
-	
-	
+
+
+
 	@org.junit.Test
 	public void testFiles() throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, IOException, SlogoException {
 		for (String file: testFiles) {
 			assertEquals(interpreter.interpret(readFile(file)), new ArrayList<Double>(Arrays.asList(2.0)));
-		
+
 		}
 	}
-	
-	
 
-	
-	
+
+
+
+
 	private String readFile( String file ) throws IOException {
-	    BufferedReader reader = new BufferedReader( new FileReader (file));
-	    String         line = null;
-	    StringBuilder  stringBuilder = new StringBuilder();
-	    String         ls = System.getProperty("line.separator");
-	   
-	    while( ( line = reader.readLine() ) != null ) {
-	        stringBuilder.append( line );
-	        stringBuilder.append( ls );
-	    }
+		BufferedReader reader = new BufferedReader( new FileReader (file));
+		String         line = null;
+		StringBuilder  stringBuilder = new StringBuilder();
+		String         ls = System.getProperty("line.separator");
 
-	    return stringBuilder.toString();
+		while( ( line = reader.readLine() ) != null ) {
+			stringBuilder.append( line );
+			stringBuilder.append( ls );
+		}
+
+		return stringBuilder.toString();
 	}
-	
+
 
 }

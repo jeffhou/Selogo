@@ -10,27 +10,27 @@ public class SlogoFrame {
 	public InterpreterGUI myInterpretGUI;
 	public TurtleGUI myTurtleGUI;
 	public JFrame frame;
-	
+
 	public SlogoFrame(InterpreterGUI newInterpreterGUI, TurtleGUI newTurtleGUI) {
 		myInterpretGUI = newInterpreterGUI;
 		myTurtleGUI = newTurtleGUI;
-		
+
 		init();
 	}
-	
+
 	public void setMenu(JMenuBar menuBar) {
 		frame.setJMenuBar(menuBar);
 	}
-	
-	
+
+
 	public void setVisible() {
 		frame.setVisible(true);
 	}
-	
-	
-	
+
+
+
 	private void init() {
-		
+
 		frame = new JFrame("Slogo!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -42,8 +42,8 @@ public class SlogoFrame {
 		frame.pack();
 		frame.setSize(800,580);
 
-		
-		
+
+
 	}
 
 	private void addGUIs(JPanel newPanel) {
@@ -51,7 +51,7 @@ public class SlogoFrame {
 		// Add contents to the window.
 		newPanel.add(myInterpretGUI);
 	}
-	
-	
+
+
 
 }
