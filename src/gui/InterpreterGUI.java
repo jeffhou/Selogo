@@ -51,7 +51,7 @@ public class InterpreterGUI extends JPanel {
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
 	protected static TurtleStatsGUI turtleStatsGUI;
-	
+
 	protected JTextArea historyTextArea;
 
 	/**
@@ -63,7 +63,7 @@ public class InterpreterGUI extends JPanel {
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 
 	private JButton runButton;
-	
+
 	public InterpreterGUI(Interpreter new_interpreter) {
 		super(new GridBagLayout());
 		/**
@@ -134,7 +134,6 @@ public class InterpreterGUI extends JPanel {
 		add(inputScrollPane, c);
 		add(runButton, c);
 		add(consoleScrollPane, c);
-
 	}
 
 	private static void helpMenu() {
@@ -158,9 +157,7 @@ public class InterpreterGUI extends JPanel {
 					e1.printStackTrace();
 				}
 			}
-
 		});
-
 	}
 
 	private static void turtleMenu() {
@@ -175,7 +172,7 @@ public class InterpreterGUI extends JPanel {
 						"JPG, GIF, and PNG images", "jpg", "gif", "png");
 				chooser.setFileFilter(filter);
 				int returnVal = chooser.showOpenDialog(null);
-				
+
 				if(returnVal == JFileChooser.APPROVE_OPTION) {
 					File chosenFile = chooser.getSelectedFile();
 					String pathOfFile = chosenFile.getAbsolutePath();
@@ -186,41 +183,35 @@ public class InterpreterGUI extends JPanel {
 
 		JMenuItem penColor = new JMenuItem("Set Pen Color");
 		penColor.addMouseListener(new MouseAdapter(){
-			
+
 			public void mousePressed(MouseEvent e){
-		        JFrame frame = new JFrame("Color Chooser");
-		 
-		        //Create and set up the content pane.
-		        ColorChooser colorChooser = new ColorChooser(newTurtleGUI);
-		        JComponent newContentPane = colorChooser;
-		        newContentPane.setOpaque(true); //content panes must be opaque
-		        frame.setContentPane(newContentPane);
-		 
-		        //Display the window.
-		        frame.pack();
-		        frame.setVisible(true);
+				JFrame frame = new JFrame("Color Chooser");
+
+				//Create and set up the content pane.
+				ColorChooser colorChooser = new ColorChooser(newTurtleGUI);
+				JComponent newContentPane = colorChooser;
+				newContentPane.setOpaque(true); //content panes must be opaque
+				frame.setContentPane(newContentPane);
+
+				//Display the window.
+				frame.pack();
+				frame.setVisible(true);
 			}
 		});
 
 		JMenuItem turtleStats = new JMenuItem("Get Stats");
 		turtleStats.addMouseListener(new MouseAdapter() {
-		
-		public void mousePressed(MouseEvent e){
-	       
-	        //Create and set up the content pane.
-	        
-	        JFrame f = new JFrame("Turtle Stats");
-			f.setContentPane(turtleStatsGUI);
-			f.setSize(300,250);
-			f.setVisible(true);
-		}
-	 
-	        
-		
-	});
-		
-		
-		
+
+			public void mousePressed(MouseEvent e){
+
+				//Create and set up the content pane.
+
+				JFrame f = new JFrame("Turtle Stats");
+				f.setContentPane(turtleStatsGUI);
+				f.setSize(300,250);
+				f.setVisible(true);
+			}
+		});
 
 		turtle.add(turtleImage);
 		turtle.add(penColor);
@@ -241,10 +232,10 @@ public class InterpreterGUI extends JPanel {
 	public void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		// Create and set up the window.
-		
+
 		InterpreterGUI newInterpreter = new InterpreterGUI(new Interpreter());
 		newTurtleGUI = new TurtleGUI(interpreter.engine);
-		
+
 		SlogoFrame slogoFrame = new SlogoFrame(newInterpreter, newTurtleGUI);
 
 		helpMenu();
