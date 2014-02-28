@@ -52,6 +52,6 @@ public class Tuple {
 
 	@Override
 	public String toString() {
-		return "(" + this.x + "," + this.y + ")";
+		return String.format("(%1$.2f, %2$.2f)", this.x, this.y);
 	}
 }
