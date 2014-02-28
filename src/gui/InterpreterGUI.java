@@ -210,12 +210,6 @@ public class InterpreterGUI extends JPanel {
 	        //Create and set up the content pane.
 	        
 	        JFrame f = new JFrame("Turtle Stats");
-	        f.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					System.exit(0);
-				}
-			}
-					);
 			f.setContentPane(turtleStatsGUI);
 			f.setSize(300,250);
 			f.setVisible(true);
