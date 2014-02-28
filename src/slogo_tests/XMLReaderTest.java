@@ -31,20 +31,42 @@ public class XMLReaderTest {
 			return null;
 		}
 	}
-
-	public void read(String filename, Map<String, Command> commands) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+	
+	public String getCorrPosition(String filename) {
+		
 		Document doc = this.makeDocumentFromFile(filename);
-		NodeList nList = doc.getElementsByTagName("command");
+		NodeList nList = doc.getElementsByTagName("filetest");
 		for (int i = 0; i < nList.getLength(); i++) {
 			Node nNode = nList.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-				commands.put(eElement.getAttribute("code"),
-						(Command) Class.forName(eElement.getAttribute("commandClass"))
-						.newInstance());
+					return eElement.getAttribute("finturtlePosition") ;
 			}
 		}
+		
+		return "";
+		
 	}
+	
+	public String getConsoleReading(String filename) {
+		Document doc = this.makeDocumentFromFile(filename);
+		NodeList nList = doc.getElementsByTagName("filetest");
+		for (int i = 0; i < nList.getLength(); i++) {
+			Node nNode = nList.item(i);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+					return eElement.getAttribute("evalConsoleReading") ;
+			}
+		}
+		
+		return "";
+		
+	}
+	
+	
+	
+
+	
 
 
 }
