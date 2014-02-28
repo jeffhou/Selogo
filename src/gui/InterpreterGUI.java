@@ -50,6 +50,7 @@ public class InterpreterGUI extends JPanel {
 	private final static String newline = "\n";
 	static TurtleGUI newTurtleGUI;
 	protected static JPopupMenu popUp;
+	protected static TurtleStatsGUI turtleStatsGUI;
 	
 	protected JTextArea historyTextArea;
 
@@ -82,6 +83,7 @@ public class InterpreterGUI extends JPanel {
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
 
 		runButton = new JButton("Run");
+		turtleStatsGUI = new TurtleStatsGUI(interpreter.engine.turtle.stringify());
 		runButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +116,9 @@ public class InterpreterGUI extends JPanel {
 						.getLength());
 				inputTextArea.requestFocus();
 				newTurtleGUI.repaint();
+				turtleStatsGUI.removeAll();
+				turtleStatsGUI.updateTurtle(interpreter.engine.turtle.stringify());
+				turtleStatsGUI.repaint();
 			}
 		});
 
@@ -203,7 +208,7 @@ public class InterpreterGUI extends JPanel {
 		public void mousePressed(MouseEvent e){
 	       
 	        //Create and set up the content pane.
-	        TurtleStatsGUI turtleStatsGUI = new TurtleStatsGUI(interpreter.engine.turtle.stringify());
+	        
 	        JFrame f = new JFrame("Turtle Stats");
 	        f.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {

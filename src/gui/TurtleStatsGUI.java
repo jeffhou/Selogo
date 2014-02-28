@@ -29,8 +29,8 @@ public class TurtleStatsGUI extends JPanel {
 	}
 
 
-	public void paint(Graphics g) {
-		
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		g.setFont(new Font("default", Font.BOLD, 20));
 		drawString(g, "TurtleStats", 20, 20);
 		g.setColor(Color.BLUE);

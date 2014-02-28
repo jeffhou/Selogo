@@ -52,7 +52,7 @@ import backend.Interpreter;
 public class Main {
 	private static InterpreterGUI newInterpreterGUI;
 	public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException{
-		
+
 		newInterpreterGUI = new InterpreterGUI(new Interpreter());
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.
