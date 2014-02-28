@@ -153,4 +153,14 @@ public class Turtle {
 			trails.get(trails.size() - 1).add(getPosition());
 		}
 	}
+	
+	
+	public String stringify() {
+		String myDetails = "";
+		myDetails += "Position: " + position.toString() +'\n';
+		myDetails += "Heading: " + heading + '\n';
+		myDetails += "Pen Status: " + penDown + '\n';
+		myDetails += "Visibility: " + showing + '\n';
+		return myDetails;
+	}
 }

@@ -198,6 +198,30 @@ public class InterpreterGUI extends JPanel {
 		});
 
 		JMenuItem turtleStats = new JMenuItem("Get Stats");
+		turtleStats.addMouseListener(new MouseAdapter() {
+		
+		public void mousePressed(MouseEvent e){
+	       
+	        //Create and set up the content pane.
+	        TurtleDetailsGUI turtleStatsGUI = new TurtleDetailsGUI(interpreter.engine.turtle);
+	        JFrame f = new JFrame("Turtle Details");
+	        f.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent e) {
+					System.exit(0);
+				}
+			}
+					);
+			f.setContentPane(turtleStatsGUI);
+			f.setSize(300,300);
+			f.setVisible(true);
+		}
+	 
+	        
+		
+	});
+		
+		
+		
 
 		turtle.add(turtleImage);
 		turtle.add(penColor);

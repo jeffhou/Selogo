@@ -58,6 +58,7 @@ public class ProgramTester {
 	public void testFiles() throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, IOException, SlogoException {
 		for (String file: testFiles) {
 			assertEquals(interpreter.interpret(readFile(file)), new ArrayList<Double>(Arrays.asList(2.0)));
+		
 		}
 	}
 	
