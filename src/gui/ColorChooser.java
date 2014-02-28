@@ -39,6 +39,6 @@ public class ColorChooser extends JPanel implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 		Color newColor = tcc.getColor();
 		banner.setForeground(newColor);
-			turtleGUI.updatePenColor(newColor);
+		turtleGUI.updatePenColor(newColor);
 	}
 }
