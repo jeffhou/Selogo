@@ -203,8 +203,8 @@ public class InterpreterGUI extends JPanel {
 		public void mousePressed(MouseEvent e){
 	       
 	        //Create and set up the content pane.
-	        TurtleDetailsGUI turtleStatsGUI = new TurtleDetailsGUI(interpreter.engine.turtle);
-	        JFrame f = new JFrame("Turtle Details");
+	        TurtleStatsGUI turtleStatsGUI = new TurtleStatsGUI(interpreter.engine.turtle.stringify());
+	        JFrame f = new JFrame("Turtle Stats");
 	        f.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
 					System.exit(0);
@@ -212,7 +212,7 @@ public class InterpreterGUI extends JPanel {
 			}
 					);
 			f.setContentPane(turtleStatsGUI);
-			f.setSize(300,300);
+			f.setSize(300,250);
 			f.setVisible(true);
 		}
 	 
