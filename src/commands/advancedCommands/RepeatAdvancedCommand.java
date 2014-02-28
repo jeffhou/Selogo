@@ -17,9 +17,9 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, SlogoException, NotEnoughParametersException
-		 {
+	InstantiationException, IllegalAccessException,
+	ClassNotFoundException, SlogoException, NotEnoughParametersException
+	{
 
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;

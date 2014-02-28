@@ -19,8 +19,8 @@ public class IfAdvancedCommand extends AdvancedCommand {
 
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException,SlogoException {
+	InstantiationException, IllegalAccessException,
+	ClassNotFoundException,SlogoException {
 
 		Interpreter interpreter = (Interpreter) o;
 		interpreter.engine.saveTurtleState();

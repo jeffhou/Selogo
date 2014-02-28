@@ -18,9 +18,9 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, SlogoException, NotEnoughParametersException
-			 {
+	InstantiationException, IllegalAccessException,
+	ClassNotFoundException, SlogoException, NotEnoughParametersException
+	{
 
 		Interpreter interpreter = (Interpreter) o;
 		Double ret = 0.0;

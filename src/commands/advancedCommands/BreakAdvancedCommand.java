@@ -18,8 +18,8 @@ public class BreakAdvancedCommand extends AdvancedCommand {
 
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, SlogoException, EndOfStackException {
+	InstantiationException, IllegalAccessException,
+	ClassNotFoundException, SlogoException, EndOfStackException {
 		throw new EndOfStackException();
 	}
 
