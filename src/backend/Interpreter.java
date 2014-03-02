@@ -32,7 +32,7 @@ public class Interpreter {
 
 	public Interpreter() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		engine = new Engine(this);
-		commandFactory = new CommandFactory(this, engine);
+		commandFactory = new CommandFactory();
 	}
 
 	public Double evaluateCommand(ArrayList<String> wordList)
