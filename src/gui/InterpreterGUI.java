@@ -108,16 +108,4 @@ public class InterpreterGUI extends JPanel {
 		add(runButton, c);
 		add(consoleScrollPane, c);
 	}
-
-	
-
-	/**
-	 * Create the GUI and show it. For thread safety, this method should be
-	 * invoked from the event dispatch thread.
-	 * 
-	 * @throws IOException
-	 * @throws ClassNotFoundException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 */
 }
