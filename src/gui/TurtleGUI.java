@@ -35,7 +35,7 @@ public class TurtleGUI extends Component {
 	 * TODO: Should read image path and path color from file
 	 */
 
-	TurtleGUI(Engine engine) {
+	public TurtleGUI(Engine engine) {
 		super();
 		this.engine = engine;
 		updateTurtleImage("img/turtle.png");

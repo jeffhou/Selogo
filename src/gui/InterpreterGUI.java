@@ -1,56 +1,28 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.colorchooser.*;
 
 import gui.TurtleGUI;
-import backend.Engine;
+import gui.menubar.MenuBar;
+import Main.Main;
 import backend.Interpreter;
 
 public class InterpreterGUI extends JPanel {
-	protected static Interpreter interpreter;
-	protected static JMenuBar menuBar = new JMenuBar();
+	public  Interpreter interpreter;
 	private final static String newline = "\n";
-	static TurtleGUI newTurtleGUI;
-	protected static JPopupMenu popUp;
-	protected static TurtleStatsGUI turtleStatsGUI;
+	protected  JPopupMenu popUp;
+	public static  TurtleStatsGUI turtleStatsGUI;
 
 	protected JTextArea historyTextArea;
 
@@ -64,12 +36,13 @@ public class InterpreterGUI extends JPanel {
 
 	private JButton runButton;
 
-	public InterpreterGUI(Interpreter new_interpreter) {
+	public InterpreterGUI() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
+		
 		/**
 		 * TODO: make each entered set of commands as a clickable link.
 		 */
-		interpreter = new_interpreter;
+		interpreter = new Interpreter();
 		historyTextArea = new JTextArea(20, 20);
 		historyTextArea.setEditable(false);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
@@ -115,7 +88,7 @@ public class InterpreterGUI extends JPanel {
 				historyTextArea.setCaretPosition(historyTextArea.getDocument()
 						.getLength());
 				inputTextArea.requestFocus();
-				newTurtleGUI.repaint();
+				Main.updateTurtleGUI();
 				turtleStatsGUI.removeAll();
 				turtleStatsGUI.updateTurtle(interpreter.engine.turtle.stringify());
 				turtleStatsGUI.repaint();
@@ -136,88 +109,7 @@ public class InterpreterGUI extends JPanel {
 		add(consoleScrollPane, c);
 	}
 
-	private static void helpMenu() {
-
-		// Build the first menu.
-		JMenu help = new JMenu("Help");
-
-		// Submenu
-		JMenuItem helpSubMenu = new JMenuItem("Help Menu");
-		help.add(helpSubMenu);
-		menuBar.add(help);
-
-		helpSubMenu.addMouseListener(new MouseAdapter() {
-
-			public void mousePressed(MouseEvent e) {
-				File file = new File("src/help.html");
-				Desktop desktop = Desktop.getDesktop();
-				try {
-					desktop.open(file);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-	}
-
-	private static void turtleMenu() {
-		JMenu turtle = new JMenu("Turtle");
-
-		JMenuItem turtleImage = new JMenuItem("Set Turtle Image");
-		turtleImage.addMouseListener(new MouseAdapter(){
-
-			public void mousePressed(MouseEvent e) {
-				final JFileChooser chooser = new JFileChooser("img");
-				FileNameExtensionFilter filter = new FileNameExtensionFilter(
-						"JPG, GIF, and PNG images", "jpg", "gif", "png");
-				chooser.setFileFilter(filter);
-				int returnVal = chooser.showOpenDialog(null);
-
-				if(returnVal == JFileChooser.APPROVE_OPTION) {
-					File chosenFile = chooser.getSelectedFile();
-					String pathOfFile = chosenFile.getAbsolutePath();
-					newTurtleGUI.updateTurtleImage(pathOfFile);
-				}
-			}
-		});
-
-		JMenuItem penColor = new JMenuItem("Set Pen Color");
-		penColor.addMouseListener(new MouseAdapter(){
-
-			public void mousePressed(MouseEvent e){
-				JFrame frame = new JFrame("Color Chooser");
-
-				//Create and set up the content pane.
-				ColorChooser colorChooser = new ColorChooser(newTurtleGUI);
-				JComponent newContentPane = colorChooser;
-				newContentPane.setOpaque(true); //content panes must be opaque
-				frame.setContentPane(newContentPane);
-
-				//Display the window.
-				frame.pack();
-				frame.setVisible(true);
-			}
-		});
-
-		JMenuItem turtleStats = new JMenuItem("Get Stats");
-		turtleStats.addMouseListener(new MouseAdapter() {
-
-			public void mousePressed(MouseEvent e){
-
-				//Create and set up the content pane.
-
-				JFrame f = new JFrame("Turtle Stats");
-				f.setContentPane(turtleStatsGUI);
-				f.setSize(300,250);
-				f.setVisible(true);
-			}
-		});
-
-		turtle.add(turtleImage);
-		turtle.add(penColor);
-		turtle.add(turtleStats);
-		menuBar.add(turtle);
-	}
+	
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
@@ -228,20 +120,4 @@ public class InterpreterGUI extends JPanel {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-
-	public void createAndShowGUI() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-
-		// Create and set up the window.
-
-		InterpreterGUI newInterpreter = new InterpreterGUI(new Interpreter());
-		newTurtleGUI = new TurtleGUI(interpreter.engine);
-
-		SlogoFrame slogoFrame = new SlogoFrame(newInterpreter, newTurtleGUI);
-
-		helpMenu();
-		turtleMenu();
-
-		slogoFrame.setMenu(menuBar);
-		slogoFrame.setVisible();
-	}
 }

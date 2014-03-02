@@ -10,11 +10,9 @@ public class ColorChooser extends JPanel implements ChangeListener {
 
 	protected JColorChooser tcc;
 	protected JLabel banner;
-	private TurtleGUI turtleGUI;
 
-	public ColorChooser(TurtleGUI newTurtleGUI) {
+	public ColorChooser() {
 		super(new BorderLayout());
-		turtleGUI = newTurtleGUI;
 		//Set up the banner at the top of the window
 		banner = new JLabel("Pick Pen Color!", JLabel.CENTER);
 		banner.setForeground(Color.black);
@@ -39,6 +37,6 @@ public class ColorChooser extends JPanel implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 		Color newColor = tcc.getColor();
 		banner.setForeground(newColor);
-		turtleGUI.updatePenColor(newColor);
+		SlogoFrame.updatePenColor(newColor);
 	}
 }
