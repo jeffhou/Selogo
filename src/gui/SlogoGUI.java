@@ -18,7 +18,7 @@ import gui.menubar.MenuBar;
 import Main.Main;
 import backend.Interpreter;
 
-public class InterpreterGUI extends JPanel {
+public class SlogoGUI extends JPanel {
 	public  Interpreter interpreter;
 	private final static String newline = "\n";
 	protected  JPopupMenu popUp;
@@ -36,7 +36,7 @@ public class InterpreterGUI extends JPanel {
 
 	private JButton runButton;
 
-	public InterpreterGUI() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public SlogoGUI() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
 		
 		/**

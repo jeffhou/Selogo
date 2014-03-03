@@ -1,7 +1,7 @@
 package gui.menubar;
 
 import gui.ColorChooser;
-import gui.InterpreterGUI;
+import gui.SlogoGUI;
 import gui.menubar.PenColorMenuItem.LaunchPenColorSelectorMouseListener;
 
 import java.awt.event.MouseAdapter;
@@ -19,7 +19,7 @@ public class StatsMenuItem extends JMenuItem{
 	class LaunchTurtleStatsDisplayMouseListener extends MouseAdapter{
 		public void mousePressed(MouseEvent e) {
 			JFrame f = new JFrame("Turtle Stats");
-			f.setContentPane(InterpreterGUI.turtleStatsGUI);
+			f.setContentPane(SlogoGUI.turtleStatsGUI);
 			f.setSize(300,250);
 			f.setVisible(true);
 		}

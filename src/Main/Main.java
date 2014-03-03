@@ -1,6 +1,6 @@
 package Main;
 
-import gui.InterpreterGUI;
+import gui.SlogoGUI;
 import gui.SlogoFrame;
 import gui.TurtleGUI;
 import gui.menubar.MenuBar;
@@ -8,12 +8,12 @@ import gui.menubar.MenuBar;
 import java.io.IOException;
 
 public class Main {
-	private static InterpreterGUI interpreterGUI;
+	private static SlogoGUI interpreterGUI;
 	private static TurtleGUI turtleGUI;
 	
 	public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 
-		interpreterGUI = new InterpreterGUI();
+		interpreterGUI = new SlogoGUI();
 		turtleGUI = new TurtleGUI(interpreterGUI.interpreter.engine);
 
 		SlogoFrame slogoFrame = new SlogoFrame(interpreterGUI, turtleGUI);

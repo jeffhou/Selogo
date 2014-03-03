@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import backend.Interpreter;
 
 public class SlogoFrame extends JFrame{
-	public InterpreterGUI myInterpretGUI;
+	public SlogoGUI myInterpretGUI;
 	public static TurtleGUI myTurtleGUI;
 
-	public SlogoFrame(InterpreterGUI newInterpreterGUI, TurtleGUI newTurtleGUI) {
+	public SlogoFrame(SlogoGUI newInterpreterGUI, TurtleGUI newTurtleGUI) {
 		super("Slogo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myInterpretGUI = newInterpreterGUI;
