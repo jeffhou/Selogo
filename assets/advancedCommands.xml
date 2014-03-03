@@ -1,8 +1,10 @@
 <model>
-    <command code="]" commandClass="commands.advancedCommands.BreakAdvancedCommand"/>
-	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand"/>
-	<command code="repeat" commandClass="commands.advancedCommands.RepeatAdvancedCommand"/>
-	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand"/>
-	<command code="make" commandClass="commands.advancedCommands.AddVariableAdvancedCommand"/>
+    <command code="repeat" commandClass="commands.advancedCommands.RepeatAdvancedCommand"/>
+    <command code="make" commandClass="commands.advancedCommands.AddVariableAdvancedCommand"/>
 	<command code="set" commandClass="commands.advancedCommands.AddVariableAdvancedCommand"/>
+	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand"/>
+    <!-- 
+    <command code="]" commandClass="commands.advancedCommands.BreakAdvancedCommand"/>
+	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand"/>
+    -->
 </model>

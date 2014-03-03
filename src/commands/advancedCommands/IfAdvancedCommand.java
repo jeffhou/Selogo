@@ -1,15 +1,10 @@
 package commands.advancedCommands;
 
 import backend.Interpreter;
-
 import commands.AdvancedCommand;
-
+import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
-
 import exceptions.SlogoException;
-
-import exceptions.InvalidWordException;
-import exceptions.NotEnoughParametersException;
 
 public class IfAdvancedCommand extends AdvancedCommand {
 
@@ -19,18 +14,14 @@ public class IfAdvancedCommand extends AdvancedCommand {
 
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException,SlogoException {
-
+			InstantiationException, IllegalAccessException,
+			ClassNotFoundException, SlogoException, EndOfStackException {
+		boolean isTrue = parameters.get(0).intValue() != 0;
 		Interpreter interpreter = (Interpreter) o;
-		interpreter.engine.saveTurtleState();
-
-		Double ret = interpreter.readBrackets();
-
-		if (parameters.get(0) == 0) {
-			interpreter.engine.restoreTurtleState();
+		String bracketContents = interpreter.readBrackets();
+		if(isTrue) {
+			interpreter.interpret(bracketContents);
 		}
-		return ret;
+		return 0;
 	}
-
 }

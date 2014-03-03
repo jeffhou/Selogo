@@ -25,6 +25,9 @@ public class Interpreter {
 	/**
 	 * TODO: Make documentation for all public methods and vars (all classes)
 	 */
+	/**
+	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
+	 */
 	CommandFactory commandFactory;
 	public Engine engine;
 	private HashMap<String, Double> variables = new HashMap<String, Double>();
@@ -115,21 +118,24 @@ public class Interpreter {
 
 	}
 
-	public double readBrackets() throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, SlogoException {
-
-		Double ret = 0.0;
+	public String readBrackets() throws InvalidSyntaxException {
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();
 		}
-		while (listOfWords.size() > 0) {
-			try {
-				ret = evaluateCommand(listOfWords);
-			} catch (EndOfStackException e) {
-				break;
+		int bracketCounter = 1;
+		String ret = "";
+		while (bracketCounter != 0) {
+			String nextWord = listOfWords.remove(0);
+			if (nextWord.startsWith("[")) {
+				bracketCounter++;
 			}
+			if (nextWord.endsWith("]")) {
+				bracketCounter--;
+			}
+			ret += nextWord + " ";
 		}
+		ret = ret.substring(0, ret.length()-3); //3 for space, end bracket, and another space
+		System.out.println(ret);
 		return ret;
 	}
 

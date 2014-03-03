@@ -20,24 +20,13 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 	InstantiationException, IllegalAccessException,
 	ClassNotFoundException, SlogoException, NotEnoughParametersException
 	{
-
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
-		interpreter.engine.saveTurtleState();
-
-		Double ret;
-		ArrayList<String> newList = StringOps.deepCopy(interpreter.listOfWords);
-
-		do {
-			interpreter.listOfWords = StringOps.deepCopy(newList);
-			ret = interpreter.readBrackets();
-			multiple--;
-		} while (multiple > 0);
-
-		if (parameters.get(0) < 1) {
-			interpreter.engine.restoreTurtleState();
+		String bracketContents = interpreter.readBrackets();
+	
+		for(int i = 0; i < multiple; i++) {
+			interpreter.interpret(bracketContents);
 		}
-		return ret;
+		return 0;
 	}
-
 }
