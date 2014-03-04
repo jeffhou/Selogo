@@ -12,9 +12,9 @@ import javax.swing.JMenuItem;
 public class HelpMenuItem extends JMenuItem {
 	HelpMenuItem(){
 		super("Documentation");
-		addMouseListener(new LaunchDocumenationMouseListener());
+		addMouseListener(new LaunchDocumentationMouseListener());
 	}
-	class LaunchDocumenationMouseListener extends MouseAdapter{
+	class LaunchDocumentationMouseListener extends MouseAdapter{
 		public void mousePressed(MouseEvent e) {
 			File file = new File("src/help.html");
 			Desktop desktop = Desktop.getDesktop();
