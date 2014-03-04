@@ -1,6 +1,8 @@
 package gui;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.colorchooser.*;
@@ -23,6 +25,12 @@ public class ColorChooser extends JPanel implements ChangeListener {
 
 	public void stateChanged(ChangeEvent e) {
 		Color newColor = tcc.getColor();
-		SlogoFrame.updatePenColor(newColor);
+		try {
+			SlogoFrame.getInstance().updatePenColor(newColor);
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }

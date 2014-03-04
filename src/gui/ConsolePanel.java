@@ -13,12 +13,12 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import gui.TurtleGUI;
+import main.Runner;
+import gui.WorldGraphicsPanel;
 import gui.menubar.MenuBar;
-import Main.Main;
 import backend.Interpreter;
 
-public class SlogoGUI extends JPanel {
+public class ConsolePanel extends JPanel {
 	public  Interpreter interpreter;
 	private final static String newline = "\n";
 	protected  JPopupMenu popUp;
@@ -36,7 +36,7 @@ public class SlogoGUI extends JPanel {
 
 	private JButton runButton;
 
-	public SlogoGUI() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+	public ConsolePanel() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
 		
 		/**
@@ -88,7 +88,7 @@ public class SlogoGUI extends JPanel {
 				historyTextArea.setCaretPosition(historyTextArea.getDocument()
 						.getLength());
 				inputTextArea.requestFocus();
-				Main.updateTurtleGUI();
+				Runner.updateTurtleGUI();
 				turtleStatsGUI.removeAll();
 				turtleStatsGUI.updateTurtle(interpreter.engine.turtle.stringify());
 				turtleStatsGUI.repaint();

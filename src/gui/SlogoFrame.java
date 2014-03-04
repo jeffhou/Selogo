@@ -1,6 +1,9 @@
 package gui;
 
+import gui.menubar.MenuBar;
+
 import java.awt.Color;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -9,34 +12,45 @@ import javax.swing.JPanel;
 import backend.Interpreter;
 
 public class SlogoFrame extends JFrame{
-	public SlogoGUI myInterpretGUI;
-	public static TurtleGUI myTurtleGUI;
+	// Singleton
+	
+	private static SlogoFrame instance;
+	public ConsolePanel consolePanel;
+	public WorldGraphicsPanel worldGraphicsPanel;
 
-	public SlogoFrame(SlogoGUI newInterpreterGUI, TurtleGUI newTurtleGUI) {
+	private SlogoFrame() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super("Slogo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		myInterpretGUI = newInterpreterGUI;
-		myTurtleGUI = newTurtleGUI;
+		consolePanel = new ConsolePanel();
+		worldGraphicsPanel = new WorldGraphicsPanel(consolePanel.interpreter.engine);
 		JPanel newPanel = new JPanel();
 
 		addGUIs(newPanel);
 		add(newPanel);
-		// Display the window.
+		setJMenuBar(new MenuBar());
+		setVisible(true);
 		pack();
 		setSize(800,580);
+		
 	}
-
+	
+	public static SlogoFrame getInstance() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException{
+		if(instance == null){
+			instance = new SlogoFrame();
+		}
+		return instance;
+	}
 	private void addGUIs(JPanel newPanel) {
-		newPanel.add(myTurtleGUI);
+		newPanel.add(worldGraphicsPanel);
 		// Add contents to the window.
-		newPanel.add(myInterpretGUI);
+		newPanel.add(consolePanel);
 	}
-	public static void updateTurtleImage(String imagePath){
-		myTurtleGUI.updateTurtleImage(imagePath);
+	public void updateTurtleImage(String imagePath){
+		worldGraphicsPanel.updateTurtleImage(imagePath);
 	}
 
-	public static void updatePenColor(Color newColor) {
-		myTurtleGUI.updatePenColor(newColor);
+	public void updatePenColor(Color newColor) {
+		worldGraphicsPanel.updatePenColor(newColor);
 	}
 
 

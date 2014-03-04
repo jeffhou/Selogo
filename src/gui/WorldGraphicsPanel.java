@@ -21,7 +21,7 @@ import backend.Engine;
 import backend.Tuple;
 import backend.Turtle;
 
-public class TurtleGUI extends Component {
+public class WorldGraphicsPanel extends Component {
 
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
 	private Engine engine;
@@ -35,7 +35,7 @@ public class TurtleGUI extends Component {
 	 * TODO: Should read image path and path color from file
 	 */
 
-	public TurtleGUI(Engine engine) {
+	public WorldGraphicsPanel(Engine engine) {
 		super();
 		this.engine = engine;
 		updateTurtleImage("img/turtle.png");

@@ -12,7 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import Main.Main;
+import main.Runner;
 
 public class ImageMenuItem extends JMenuItem{
 	ImageMenuItem(){
@@ -30,7 +30,13 @@ public class ImageMenuItem extends JMenuItem{
 			if(returnVal == JFileChooser.APPROVE_OPTION) {
 				File chosenFile = chooser.getSelectedFile();
 				String pathOfFile = chosenFile.getAbsolutePath();
-				SlogoFrame.updateTurtleImage(pathOfFile);
+				try {
+					SlogoFrame.getInstance().updateTurtleImage(pathOfFile);
+				} catch (InstantiationException | IllegalAccessException
+						| ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
