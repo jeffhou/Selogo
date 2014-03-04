@@ -13,17 +13,18 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import exceptions.SlogoException;
 import main.Runner;
 import gui.WorldGraphicsPanel;
 import gui.menubar.MenuBar;
 import backend.Interpreter;
 
 public class ConsolePanel extends JPanel {
-	public  Interpreter interpreter;
+	public Interpreter interpreter;
 	private final static String newline = "\n";
 	protected  JPopupMenu popUp;
 
-	protected JTextArea historyTextArea;
+	protected JTextArea userHistoryTextArea;
 
 	/**
 	 * TODO: Add locale-specific data and move all the strings to a resBundle
@@ -34,86 +35,82 @@ public class ConsolePanel extends JPanel {
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 
 	private JButton runButton;
-
+	GridBagConstraints c;
 	public ConsolePanel() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
 		
-		/**
-		 * TODO: make each entered set of commands as a clickable link.
-		 */
+		setUpConstraints();
+		
 		interpreter = new Interpreter();
-		historyTextArea = new JTextArea(20, 20);
-		historyTextArea.setEditable(false);
-		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
-
-		inputTextArea = new JTextArea(5, 20);
-		inputTextArea.setText("Enter code here...");
-		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
-
-		consoleOutputTextArea = new JTextArea(5, 20);
-		consoleOutputTextArea.setEditable(false);
-		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
-
+		addUserInputHistoryTextArea();
+		addUserInputTextArea();
+		addRunButton();
+		addConsoleOutputTextArea();
+	}
+	
+	private void addRunButton() {
 		runButton = new JButton("Run");
 		runButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/**
-				 * TODO: make each part of this actionPerformed into a separate
-				 * method
-				 */
 				try {
-					/**
-					 * TODO: set the console text so that it says what the
-					 * engine actually did after each command. A few ways to do
-					 * this, this is what I imagined: "sum fd fd 54 rt 15"
-					 * yields: """moved forward by 54 moved forward by 54 turned
-					 * right by 15 sum of 54 and 15 is 69"""
-					 */
 					consoleOutputTextArea.setText(""
 							+ interpreter.interpret(inputTextArea.getText()));
-				} catch (Exception e1) {
+				} catch (SlogoException e1) {
 					consoleOutputTextArea.setText("" + e1.getMessage());
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 
-				String text = inputTextArea.getText();
-				historyTextArea.append(text + newline);
+				String userInput = inputTextArea.getText();
+				userHistoryTextArea.append(userInput + newline);
 				inputTextArea.selectAll();
 
 				// Make sure the new text is visible, even if there
 				// was a selection in the text area.
-				historyTextArea.setCaretPosition(historyTextArea.getDocument()
+				userHistoryTextArea.setCaretPosition(userHistoryTextArea.getDocument()
 						.getLength());
+				
 				inputTextArea.requestFocus();
+				
 				try {
 					SlogoFrame.getInstance().updateTurtleGUI();
-				} catch (InstantiationException | IllegalAccessException
-						| ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
 					SlogoFrame.getInstance().turtleStatsGUI.repaint();
 				} catch (InstantiationException | IllegalAccessException
 						| ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
 
 		// Add Components to this panel.
-		GridBagConstraints c = new GridBagConstraints();
+		
+		add(runButton, c);
+	}
+	private void addConsoleOutputTextArea() {
+		consoleOutputTextArea = new JTextArea(5, 20);
+		consoleOutputTextArea.setEditable(false);
+		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
+		add(consoleScrollPane, c);
+	}
+	private void addUserInputTextArea() {
+		inputTextArea = new JTextArea(5, 20);
+		inputTextArea.setText("Enter code here...");
+		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
+		add(inputScrollPane, c);
+	}
+	private void setUpConstraints() {
+		c = new GridBagConstraints();
 		c.gridwidth = GridBagConstraints.REMAINDER;
 
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
 		c.weighty = 1.0;
-
-		add(historyScrollPane, c);
-		add(inputScrollPane, c);
-		add(runButton, c);
-		add(consoleScrollPane, c);
+	}
+	private void addUserInputHistoryTextArea(){
+		userHistoryTextArea = new JTextArea(20, 20);
+		userHistoryTextArea.setEditable(false);
+		JScrollPane userHistoryScrollPane = new JScrollPane(userHistoryTextArea);
+		add(userHistoryScrollPane, c);
 	}
 }
