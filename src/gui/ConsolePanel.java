@@ -22,7 +22,6 @@ public class ConsolePanel extends JPanel {
 	public  Interpreter interpreter;
 	private final static String newline = "\n";
 	protected  JPopupMenu popUp;
-	public static  TurtleStatsGUI turtleStatsGUI;
 
 	protected JTextArea historyTextArea;
 
@@ -56,7 +55,6 @@ public class ConsolePanel extends JPanel {
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
 
 		runButton = new JButton("Run");
-		turtleStatsGUI = new TurtleStatsGUI(interpreter.engine.turtle.stringify());
 		runButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,10 +86,20 @@ public class ConsolePanel extends JPanel {
 				historyTextArea.setCaretPosition(historyTextArea.getDocument()
 						.getLength());
 				inputTextArea.requestFocus();
-				Runner.updateTurtleGUI();
-				turtleStatsGUI.removeAll();
-				turtleStatsGUI.updateTurtle(interpreter.engine.turtle.stringify());
-				turtleStatsGUI.repaint();
+				try {
+					SlogoFrame.getInstance().updateTurtleGUI();
+				} catch (InstantiationException | IllegalAccessException
+						| ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					SlogoFrame.getInstance().turtleStatsGUI.repaint();
+				} catch (InstantiationException | IllegalAccessException
+						| ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 

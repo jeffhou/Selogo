@@ -17,12 +17,14 @@ public class SlogoFrame extends JFrame{
 	private static SlogoFrame instance;
 	public ConsolePanel consolePanel;
 	public WorldGraphicsPanel worldGraphicsPanel;
+	public TurtleStatsGUI turtleStatsGUI;
 
 	private SlogoFrame() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super("Slogo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		consolePanel = new ConsolePanel();
 		worldGraphicsPanel = new WorldGraphicsPanel(consolePanel.interpreter.engine);
+		turtleStatsGUI = new TurtleStatsGUI(consolePanel.interpreter.engine.turtle);
 		JPanel newPanel = new JPanel();
 
 		addGUIs(newPanel);
@@ -30,7 +32,7 @@ public class SlogoFrame extends JFrame{
 		setJMenuBar(new MenuBar());
 		setVisible(true);
 		pack();
-		setSize(800,580);
+		//setSize(800,580);
 		
 	}
 	
@@ -41,6 +43,7 @@ public class SlogoFrame extends JFrame{
 		return instance;
 	}
 	private void addGUIs(JPanel newPanel) {
+		newPanel.add(turtleStatsGUI);
 		newPanel.add(worldGraphicsPanel);
 		// Add contents to the window.
 		newPanel.add(consolePanel);
@@ -51,6 +54,10 @@ public class SlogoFrame extends JFrame{
 
 	public void updatePenColor(Color newColor) {
 		worldGraphicsPanel.updatePenColor(newColor);
+	}
+
+	public void updateTurtleGUI() {
+		worldGraphicsPanel.repaint();
 	}
 
 
