@@ -25,13 +25,6 @@ public class ConsolePanel extends JPanel {
 	protected  JPopupMenu popUp;
 
 	protected JTextArea userHistoryTextArea;
-
-	/**
-	 * TODO: Add locale-specific data and move all the strings to a resBundle
-	 * http://docs.oracle.com/javase/tutorial/i18n/resbundle/ for sake of
-	 * practice we can implement pirate or canadian english.
-	 */
-
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 
 	private JButton runButton;
