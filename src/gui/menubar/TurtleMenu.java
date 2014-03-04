@@ -7,6 +7,5 @@ public class TurtleMenu extends JMenu{
 		super("Turtle");
 		add(new ImageMenuItem());
 		add(new PenColorMenuItem());
-		add(new StatsMenuItem());
 	}
 }
