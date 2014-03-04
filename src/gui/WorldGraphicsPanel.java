@@ -59,10 +59,8 @@ public class WorldGraphicsPanel extends Component {
 		graphicsEngine = (Graphics2D) g;
 		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		//dimension = getSize();
 
 		drawBorder();
-		graphicsEngine.setColor(penColor);
 		drawTrails();
 		drawTurtle();
 	}
@@ -86,11 +84,7 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	public Dimension getPreferredSize() {
-		/**
-		 * TODO: REMOVE MAGIC NUMBERS I put the TODO here but this applies to
-		 * everything.
-		 */
-		return new Dimension(533, 533);
+		return SCREEN_DIMENSION;
 	}
 
 	void drawBorder() {
@@ -101,6 +95,7 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTrails() {
+		graphicsEngine.setColor(penColor);
 		Turtle turtle = engine.turtle;
 		Tuple center = getCenter();
 		for (ArrayList<Tuple> path : turtle.trails) {

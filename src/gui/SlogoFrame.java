@@ -17,14 +17,14 @@ public class SlogoFrame extends JFrame{
 	private static SlogoFrame instance;
 	public ConsolePanel consolePanel;
 	public WorldGraphicsPanel worldGraphicsPanel;
-	public TurtleStatsGUI turtleStatsGUI;
+	public TurtleStatsPanel turtleStatsGUI;
 
 	private SlogoFrame() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super("Slogo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		consolePanel = new ConsolePanel();
 		worldGraphicsPanel = new WorldGraphicsPanel(consolePanel.interpreter.engine);
-		turtleStatsGUI = new TurtleStatsGUI(consolePanel.interpreter.engine.turtle);
+		turtleStatsGUI = new TurtleStatsPanel(consolePanel.interpreter.engine.turtle);
 		JPanel newPanel = new JPanel();
 
 		addGUIs(newPanel);

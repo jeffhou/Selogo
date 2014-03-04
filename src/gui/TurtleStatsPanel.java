@@ -10,11 +10,11 @@ import javax.swing.border.TitledBorder;
 
 import backend.Turtle;
 
-public class TurtleStatsGUI extends JPanel {
+public class TurtleStatsPanel extends JPanel {
 
 	Turtle turtle;
 	private JTextArea historyTextArea;
-	TurtleStatsGUI(Turtle turtle) {
+	TurtleStatsPanel(Turtle turtle) {
 		super(new GridBagLayout());
 		this.turtle = turtle;
 		this.setBorder(new LineBorder(Color.blue));
