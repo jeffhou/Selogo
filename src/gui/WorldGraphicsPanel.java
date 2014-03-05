@@ -82,9 +82,7 @@ public class WorldGraphicsPanel extends Component {
 
 	void drawBorder() {
 		graphicsEngine.draw3DRect(0, 0, SCREEN_DIMENSION.width - 1,
-				SCREEN_DIMENSION.height - 10, true);
-		graphicsEngine.draw3DRect(3, 3, SCREEN_DIMENSION.width - 7,
-				SCREEN_DIMENSION.height - 16, false);
+				SCREEN_DIMENSION.height - 1, true);
 	}
 
 	void drawTrails() {
