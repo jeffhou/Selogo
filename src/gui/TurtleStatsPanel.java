@@ -17,7 +17,7 @@ public class TurtleStatsPanel extends JPanel {
 		super(new GridBagLayout());
 		this.setBorder(new LineBorder(Color.blue));
 		historyTextArea = new JTextArea(20, 20);
-		historyTextArea.setEditable(true);
+		historyTextArea.setEditable(false);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
 		add(historyScrollPane, SlogoDefaultConstraints.getInstance());
 	}
