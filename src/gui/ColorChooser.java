@@ -2,8 +2,11 @@ package gui;
 
 import java.awt.*;
 import java.io.IOException;
+
 import javax.swing.*;
 import javax.swing.event.*;
+
+import backend.WorldsCollection;
 
 /* ColorChooserDemo.java requires no other files. */
 public class ColorChooser extends JPanel implements ChangeListener {
@@ -23,11 +26,6 @@ public class ColorChooser extends JPanel implements ChangeListener {
 
 	public void stateChanged(ChangeEvent e) {
 		Color newColor = tcc.getColor();
-		try {
-			SlogoFrame.getInstance().updatePenColor(newColor);
-		} catch (InstantiationException | IllegalAccessException
-				| ClassNotFoundException | IOException e1) {
-			e1.printStackTrace();
-		}
+		WorldsCollection.getInstance().getCurrentWorld().setPenColor(newColor);
 	}
 }

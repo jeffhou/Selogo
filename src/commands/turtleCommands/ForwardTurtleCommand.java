@@ -1,7 +1,7 @@
 package commands.turtleCommands;
 
 import backend.Tuple;
-import backend.Turtle;
+import backend.WorldModel; import backend.WorldsCollection;
 
 import commands.TurtleCommand;
 
@@ -13,7 +13,7 @@ public class ForwardTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Object o) {
-		Turtle t = (Turtle) o;
+		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
 		return t.move(new Tuple(0, parameters.get(0)));
 	}
 

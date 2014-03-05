@@ -1,22 +1,16 @@
 package gui;
 
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.JButton;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import exceptions.SlogoException;
-import main.Runner;
-import gui.WorldGraphicsPanel;
-import gui.menubar.MenuBar;
 import backend.Interpreter;
 
 public class ConsolePanel extends JPanel {
@@ -28,11 +22,8 @@ public class ConsolePanel extends JPanel {
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 
 	private JButton runButton;
-	GridBagConstraints c;
 	public ConsolePanel() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
-		
-		setUpConstraints();
 		
 		interpreter = new Interpreter();
 		addUserInputHistoryTextArea();
@@ -67,8 +58,7 @@ public class ConsolePanel extends JPanel {
 				inputTextArea.requestFocus();
 				
 				try {
-					SlogoFrame.getInstance().updateTurtleGUI();
-					SlogoFrame.getInstance().turtleStatsGUI.repaint();
+					SlogoFrame.getInstance().repaint();
 				} catch (InstantiationException | IllegalAccessException
 						| ClassNotFoundException | IOException e1) {
 					e1.printStackTrace();
@@ -78,32 +68,24 @@ public class ConsolePanel extends JPanel {
 
 		// Add Components to this panel.
 		
-		add(runButton, c);
+		add(runButton, SlogoDefaultConstraints.getInstance());
 	}
 	private void addConsoleOutputTextArea() {
 		consoleOutputTextArea = new JTextArea(5, 20);
 		consoleOutputTextArea.setEditable(false);
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
-		add(consoleScrollPane, c);
+		add(consoleScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 	private void addUserInputTextArea() {
 		inputTextArea = new JTextArea(5, 20);
 		inputTextArea.setText("Enter code here...");
 		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
-		add(inputScrollPane, c);
-	}
-	private void setUpConstraints() {
-		c = new GridBagConstraints();
-		c.gridwidth = GridBagConstraints.REMAINDER;
-
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 1.0;
-		c.weighty = 1.0;
+		add(inputScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 	private void addUserInputHistoryTextArea(){
 		userHistoryTextArea = new JTextArea(20, 20);
 		userHistoryTextArea.setEditable(false);
 		JScrollPane userHistoryScrollPane = new JScrollPane(userHistoryTextArea);
-		add(userHistoryScrollPane, c);
+		add(userHistoryScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 }

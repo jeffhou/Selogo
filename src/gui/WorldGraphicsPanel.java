@@ -19,25 +19,23 @@ import javax.swing.JTextArea;
 
 import backend.CommandInvoker;
 import backend.Tuple;
-import backend.Turtle;
+import backend.TurtleModel;
+import backend.WorldModel; import backend.WorldsCollection;
 
 public class WorldGraphicsPanel extends Component {
 
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
-	private Turtle turtle;
 	Graphics2D graphicsEngine;
 	protected JTextArea historyTextArea;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	private BufferedImage turtleImage;
-	private Color penColor = Color.black;
 
 	/**
 	 * TODO: Should read image path and path color from file
 	 */
 
-	public WorldGraphicsPanel(Turtle turtle) {
+	public WorldGraphicsPanel() {
 		super();
-		this.turtle = turtle;
 		updateTurtleImage("img/turtle.png");
 	}
 
@@ -48,10 +46,6 @@ public class WorldGraphicsPanel extends Component {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void updatePenColor(Color color){
-		penColor = color;
 	}
 
 	public void paint(Graphics g) {
@@ -65,7 +59,8 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTurtle() {
-		if (turtle.getVisibility()) {
+		TurtleModel turtle = WorldsCollection.getInstance().getCurrentWorld().getTurtle();
+		if (turtle.isShowing()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());
 			AffineTransform tx = AffineTransform.getRotateInstance(
@@ -93,9 +88,9 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTrails() {
-		graphicsEngine.setColor(penColor);
+		graphicsEngine.setColor(WorldsCollection.getInstance().getCurrentWorld().getPenColor());
 		Tuple center = getCenter();
-		for (ArrayList<Tuple> path : turtle.trails) {
+		for (ArrayList<Tuple> path : WorldsCollection.getInstance().getCurrentWorld().getPaths()) {
 			for (int i = 0; i < (path.size() - 1); i++) {
 				graphicsEngine.draw(new Line2D.Double(path.get(i).x + center.x,
 						-path.get(i).y + center.y,

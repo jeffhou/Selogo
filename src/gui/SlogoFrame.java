@@ -10,25 +10,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import backend.Interpreter;
+import backend.WorldModel; import backend.WorldsCollection;
+import backend.WorldsCollection;
 
 public class SlogoFrame extends JFrame{
 	// Singleton
 	
 	private static SlogoFrame instance;
-	public ConsolePanel consolePanel;
-	public WorldGraphicsPanel worldGraphicsPanel;
-	public TurtleStatsPanel turtleStatsGUI;
+	private WorldGraphicsPanel worldGraphicsPanel;
 
 	private SlogoFrame() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super("Slogo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		consolePanel = new ConsolePanel();
-		worldGraphicsPanel = new WorldGraphicsPanel(consolePanel.interpreter.commandInvoker.getTurtle());
-		turtleStatsGUI = new TurtleStatsPanel(consolePanel.interpreter.commandInvoker.getTurtle());
-		JPanel newPanel = new JPanel();
-
-		addGUIs(newPanel);
-		add(newPanel);
+		populateDisplays();
 		setJMenuBar(new MenuBar());
 		setVisible(true);
 		pack();
@@ -40,21 +34,15 @@ public class SlogoFrame extends JFrame{
 		}
 		return instance;
 	}
-	private void addGUIs(JPanel newPanel) {
-		newPanel.add(turtleStatsGUI);
-		newPanel.add(worldGraphicsPanel);
-		newPanel.add(consolePanel);
+	private void populateDisplays() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+		JPanel newPanel = new JPanel();
+		newPanel.add(new TurtleStatsPanel());
+		newPanel.add(new WorldGraphicsPanel());
+		newPanel.add(new ConsolePanel());
+		add(newPanel);
 	}
 	public void updateTurtleImage(String imagePath){
 		worldGraphicsPanel.updateTurtleImage(imagePath);
-	}
-
-	public void updatePenColor(Color newColor) {
-		worldGraphicsPanel.updatePenColor(newColor);
-	}
-
-	public void updateTurtleGUI() {
-		worldGraphicsPanel.repaint();
 	}
 
 

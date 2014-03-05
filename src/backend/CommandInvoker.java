@@ -8,14 +8,14 @@ import exceptions.SlogoException;
 
 public class CommandInvoker {
 	Interpreter interpreter;
-	private Turtle turtle;
+	private TurtleModel turtle;
 
 	CommandInvoker(Interpreter interpreter) {
-		turtle = new Turtle();
+		turtle = new TurtleModel();
 		this.interpreter = interpreter;
 	}
 
-	public Turtle getTurtle() {
+	public TurtleModel getTurtle() {
 		return turtle;
 	}
 
@@ -24,7 +24,7 @@ public class CommandInvoker {
 	EndOfStackException, SlogoException {
 
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
-			return newCommand.execute(turtle);
+			return newCommand.execute(null);
 		} else if (newCommand.COMMAND_TYPE.equals("math")) {
 			return newCommand.execute(null);
 		} else if (newCommand.COMMAND_TYPE.equals("boolean")) {
