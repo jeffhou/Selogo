@@ -6,9 +6,9 @@ import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
 import exceptions.SlogoException;
 
-public class DoTimesAdvancedCommand extends AdvancedCommand {
+public class ForAdvancedCommand extends AdvancedCommand {
 
-	public DoTimesAdvancedCommand() {
+	public ForAdvancedCommand() {
 		super(0);
 	}
 
@@ -20,10 +20,12 @@ public class DoTimesAdvancedCommand extends AdvancedCommand {
 		String[] variableAndLimit = interpreter.readBrackets().split(" ");
 		String variable = variableAndLimit[0].substring(1);
 		double oldValue = interpreter.getVariable(variable);
-		try {
-			int limit = Integer.parseInt(variableAndLimit[1]);
+		try{
+			int start = Integer.parseInt(variableAndLimit[1]);
+			int end = Integer.parseInt(variableAndLimit[2]);
+			int increment = Integer.parseInt(variableAndLimit[3]);
 			String commandList = interpreter.readBrackets();
-			for(int i = 0; i < limit; i++) {
+			for(int i = start; i < end; i+=increment) {
 				interpreter.interpret("set :" + variable + " " + i);
 				interpreter.interpret(commandList);
 			}
