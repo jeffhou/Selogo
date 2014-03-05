@@ -1,20 +1,16 @@
 package backend;
 
-import java.util.HashMap;
-
 import commands.Command;
-
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidSyntaxException;
 import exceptions.SlogoException;
 
-public class Engine {
+public class CommandInvoker {
 	Interpreter interpreter;
-	public Turtle turtle;
-	private Turtle turtleState;
+	private Turtle turtle;
 
-	Engine(Interpreter interpreter) {
+	CommandInvoker(Interpreter interpreter) {
 		turtle = new Turtle();
 		this.interpreter = interpreter;
 	}
@@ -37,14 +33,6 @@ public class Engine {
 			return newCommand.execute(interpreter);
 		}
 		throw new InvalidCommandException();
-	}
-
-	public void restoreTurtleState() {
-		turtle = turtleState;
-	}
-
-	public void saveTurtleState() {
-		turtleState = turtle.clone();
 	}
 
 }

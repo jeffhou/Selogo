@@ -10,7 +10,6 @@ public class Turtle {
 	public Tuple position; // position
 	private boolean showing; // is turtle showing?
 	public ArrayList<ArrayList<Tuple>> trails;
-
 	public Turtle() {
 		position = new Tuple();
 		trails = new ArrayList<ArrayList<Tuple>>();
@@ -28,24 +27,6 @@ public class Turtle {
 	void clearTrails() {
 		trails.clear();
 		setPen(penDown);
-	}
-
-	@Override
-	public Turtle clone() {
-		Turtle newTurtle = new Turtle();
-		newTurtle.moveTo(getPosition());
-		newTurtle.setHeadingTo(getHeading());
-		newTurtle.setPen(getPenState());
-		newTurtle.setVisibility(getVisibility());
-		ArrayList<ArrayList<Tuple>> newTrails = new ArrayList<ArrayList<Tuple>>();
-		for (ArrayList<Tuple> trail : getPaths()) {
-			newTrails.add(new ArrayList<Tuple>());
-			for (Tuple t : trail) {
-				newTrails.get(newTrails.size() - 1).add(t.copy());
-			}
-		}
-		newTurtle.setTrails(newTrails);
-		return newTurtle;
 	}
 
 	public double getHeading() {
@@ -153,7 +134,6 @@ public class Turtle {
 			trails.get(trails.size() - 1).add(getPosition());
 		}
 	}
-
 
 	public String stringify() {
 		String myDetails = "";

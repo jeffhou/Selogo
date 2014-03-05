@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JTextArea;
 
-import backend.Engine;
+import backend.CommandInvoker;
 import backend.Tuple;
 import backend.Turtle;
 
 public class WorldGraphicsPanel extends Component {
 
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
-	private Engine engine;
+	private Turtle turtle;
 	Graphics2D graphicsEngine;
 	protected JTextArea historyTextArea;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
@@ -35,9 +35,9 @@ public class WorldGraphicsPanel extends Component {
 	 * TODO: Should read image path and path color from file
 	 */
 
-	public WorldGraphicsPanel(Engine engine) {
+	public WorldGraphicsPanel(Turtle turtle) {
 		super();
-		this.engine = engine;
+		this.turtle = turtle;
 		updateTurtleImage("img/turtle.png");
 	}
 
@@ -65,7 +65,6 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTurtle() {
-		Turtle turtle = engine.turtle;
 		if (turtle.getVisibility()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());
@@ -95,7 +94,6 @@ public class WorldGraphicsPanel extends Component {
 
 	void drawTrails() {
 		graphicsEngine.setColor(penColor);
-		Turtle turtle = engine.turtle;
 		Tuple center = getCenter();
 		for (ArrayList<Tuple> path : turtle.trails) {
 			for (int i = 0; i < (path.size() - 1); i++) {
