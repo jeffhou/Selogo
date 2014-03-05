@@ -48,11 +48,11 @@ public class SlogoFrame extends JFrame{
 	public void addNewTab() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		JPanel newTab = new JPanel();
 		newTab.add(new TurtleStatsPanel());
-		newTab.add(new WorldGraphicsPanel());
+		worldGraphicsPanel = new WorldGraphicsPanel();
+		newTab.add(worldGraphicsPanel);
 		newTab.add(new ConsolePanel());
 
 		tabbedPane.add("New Tab", newTab);
-
 	}
 	
 //	public void actionPerformed(ActionEvent e) {

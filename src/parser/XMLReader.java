@@ -15,10 +15,7 @@ import commands.Command;
 
 public class XMLReader {
 
-	public XMLReader() {
-	}
-
-	protected Document makeDocumentFromFile(String fileName) {
+	private static Document makeDocumentFromFile(String fileName) {
 		try {
 			File fXmlFile = new File(fileName);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
@@ -32,8 +29,8 @@ public class XMLReader {
 		}
 	}
 
-	public void read(String filename, Map<String, Command> commands) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Document doc = this.makeDocumentFromFile(filename);
+	public static void read(String filename, Map<String, Command> commands) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Document doc = makeDocumentFromFile(filename);
 		NodeList nList = doc.getElementsByTagName("command");
 		for (int i = 0; i < nList.getLength(); i++) {
 			Node nNode = nList.item(i);

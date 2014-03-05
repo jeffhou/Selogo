@@ -5,6 +5,8 @@ import gui.WorldGraphicsPanel;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import util.Tuple;
+
 public class WorldModel {
 	private TurtleModel turtle;
 	private ArrayList<ArrayList<Tuple>> trails;
