@@ -1,8 +1,9 @@
 package commands.advancedCommands;
 
 import java.util.ArrayList;
+
+import util.StringOps;
 import backend.Interpreter;
-import backend.StringOps;
 import commands.AdvancedCommand;
 import exceptions.InvalidSyntaxException;
 import exceptions.NotEnoughParametersException;

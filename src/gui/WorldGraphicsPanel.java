@@ -17,27 +17,25 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JTextArea;
 
-import backend.Engine;
+import backend.CommandInvoker;
 import backend.Tuple;
-import backend.Turtle;
+import backend.TurtleModel;
+import backend.WorldModel; import backend.WorldsCollection;
 
 public class WorldGraphicsPanel extends Component {
 
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
-	private Engine engine;
 	Graphics2D graphicsEngine;
 	protected JTextArea historyTextArea;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
 	private BufferedImage turtleImage;
-	private Color penColor = Color.black;
 
 	/**
 	 * TODO: Should read image path and path color from file
 	 */
 
-	public WorldGraphicsPanel(Engine engine) {
+	public WorldGraphicsPanel() {
 		super();
-		this.engine = engine;
 		updateTurtleImage("img/turtle.png");
 	}
 
@@ -48,10 +46,6 @@ public class WorldGraphicsPanel extends Component {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void updatePenColor(Color color){
-		penColor = color;
 	}
 
 	public void paint(Graphics g) {
@@ -65,8 +59,8 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTurtle() {
-		Turtle turtle = engine.turtle;
-		if (turtle.getVisibility()) {
+		TurtleModel turtle = WorldsCollection.getInstance().getCurrentWorld().getTurtle();
+		if (turtle.isShowing()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());
 			AffineTransform tx = AffineTransform.getRotateInstance(
@@ -94,10 +88,9 @@ public class WorldGraphicsPanel extends Component {
 	}
 
 	void drawTrails() {
-		graphicsEngine.setColor(penColor);
-		Turtle turtle = engine.turtle;
+		graphicsEngine.setColor(WorldsCollection.getInstance().getCurrentWorld().getPenColor());
 		Tuple center = getCenter();
-		for (ArrayList<Tuple> path : turtle.trails) {
+		for (ArrayList<Tuple> path : WorldsCollection.getInstance().getCurrentWorld().getPaths()) {
 			for (int i = 0; i < (path.size() - 1); i++) {
 				graphicsEngine.draw(new Line2D.Double(path.get(i).x + center.x,
 						-path.get(i).y + center.y,

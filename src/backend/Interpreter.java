@@ -29,12 +29,12 @@ public class Interpreter {
 	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
 	 */
 	CommandFactory commandFactory;
-	public Engine engine;
+	public CommandInvoker commandInvoker;
 	private HashMap<String, Double> variables = new HashMap<String, Double>();
 	public ArrayList<String> listOfWords;
 
 	public Interpreter() throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		engine = new Engine(this);
+		commandInvoker = new CommandInvoker(this);
 		commandFactory = new CommandFactory();
 	}
 
@@ -43,7 +43,6 @@ public class Interpreter {
 			NotEnoughParametersException, InvalidCommandException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
-
 
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
@@ -60,7 +59,7 @@ public class Interpreter {
 				}
 			}
 			newCommand.loadParameters(parameters);
-			return engine.obey(newCommand);
+			return commandInvoker.obey(newCommand);
 		} else if (isVariable(firstWord)) {
 			return getVariable(firstWord.substring(1));
 		} else {

@@ -1,25 +1,21 @@
 package backend;
 
-import java.util.HashMap;
-
 import commands.Command;
-
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidSyntaxException;
 import exceptions.SlogoException;
 
-public class Engine {
+public class CommandInvoker {
 	Interpreter interpreter;
-	public Turtle turtle;
-	private Turtle turtleState;
+	private TurtleModel turtle;
 
-	Engine(Interpreter interpreter) {
-		turtle = new Turtle();
+	CommandInvoker(Interpreter interpreter) {
+		turtle = new TurtleModel();
 		this.interpreter = interpreter;
 	}
 
-	public Turtle getTurtle() {
+	public TurtleModel getTurtle() {
 		return turtle;
 	}
 
@@ -28,7 +24,7 @@ public class Engine {
 	EndOfStackException, SlogoException {
 
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
-			return newCommand.execute(turtle);
+			return newCommand.execute(null);
 		} else if (newCommand.COMMAND_TYPE.equals("math")) {
 			return newCommand.execute(null);
 		} else if (newCommand.COMMAND_TYPE.equals("boolean")) {
@@ -37,14 +33,6 @@ public class Engine {
 			return newCommand.execute(interpreter);
 		}
 		throw new InvalidCommandException();
-	}
-
-	public void restoreTurtleState() {
-		turtle = turtleState;
-	}
-
-	public void saveTurtleState() {
-		turtleState = turtle.clone();
 	}
 
 }

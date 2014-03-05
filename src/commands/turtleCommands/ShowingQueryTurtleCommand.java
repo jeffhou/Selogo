@@ -1,6 +1,6 @@
 package commands.turtleCommands;
 
-import backend.Turtle;
+import backend.WorldModel; import backend.WorldsCollection;
 
 import commands.TurtleCommand;
 
@@ -12,8 +12,8 @@ public class ShowingQueryTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Object o) {
-		Turtle t = (Turtle) o;
-		return t.getVisibility() ? 1 : 0;
+		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
+		return t.getTurtle().isShowing() ? 1 : 0;
 	}
 
 }

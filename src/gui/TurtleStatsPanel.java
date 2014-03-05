@@ -8,27 +8,18 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import backend.Turtle;
+import backend.WorldModel; import backend.WorldsCollection;
 
 public class TurtleStatsPanel extends JPanel {
-
-	Turtle turtle;
+	
 	private JTextArea historyTextArea;
-	TurtleStatsPanel(Turtle turtle) {
+	TurtleStatsPanel() {
 		super(new GridBagLayout());
-		this.turtle = turtle;
 		this.setBorder(new LineBorder(Color.blue));
 		historyTextArea = new JTextArea(20, 20);
 		historyTextArea.setEditable(true);
 		JScrollPane historyScrollPane = new JScrollPane(historyTextArea);
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridwidth = GridBagConstraints.REMAINDER;
-
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 1.0;
-		c.weighty = 1.0;
-
-		add(historyScrollPane, c);
+		add(historyScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 
 	private void drawString(Graphics g, String text, int x, int y) {
@@ -41,7 +32,7 @@ public class TurtleStatsPanel extends JPanel {
 		drawString(g, "TurtleStats", 20, 20);
 		g.setColor(Color.BLUE);
 		g.setFont(new Font("default", Font.PLAIN, 15)); 
-		drawString(g, turtle.stringify(), 50, 50);
+		drawString(g, WorldsCollection.getInstance().getCurrentWorld().toString(), 50, 50);
 	}
 	
 }

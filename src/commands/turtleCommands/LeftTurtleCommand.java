@@ -1,6 +1,6 @@
 package commands.turtleCommands;
 
-import backend.Turtle;
+import backend.WorldModel; import backend.WorldsCollection;
 
 import commands.TurtleCommand;
 
@@ -12,7 +12,7 @@ public class LeftTurtleCommand extends TurtleCommand {
 
 	@Override
 	public double execute(Object o) {
-		Turtle t = (Turtle) o;
+		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
 		return -t.turnClockwise(-parameters.get(0));
 	}
 
