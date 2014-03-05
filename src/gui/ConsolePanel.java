@@ -59,8 +59,7 @@ public class ConsolePanel extends JPanel {
 				
 				try {
 					SlogoFrame.getInstance().repaint();
-				} catch (InstantiationException | IllegalAccessException
-						| ClassNotFoundException | IOException e1) {
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
