@@ -24,11 +24,10 @@ public class CommandFactory {
 	}
 
 	public void populateCommands() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		XMLReader newXMLReader = new XMLReader();
-		newXMLReader.read("assets/turtleCommands.xml", commands);
-		newXMLReader.read("assets/mathCommands.xml", commands);
-		newXMLReader.read("assets/boolCommands.xml", commands);
-		newXMLReader.read("assets/advancedCommands.xml", commands);
+		XMLReader.read("assets/turtleCommands.xml", commands);
+		XMLReader.read("assets/mathCommands.xml", commands);
+		XMLReader.read("assets/boolCommands.xml", commands);
+		XMLReader.read("assets/advancedCommands.xml", commands);
 	}
 
 }
