@@ -1,6 +1,5 @@
-package gui;
+					package gui;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -18,9 +17,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JTextArea;
 
 import util.Tuple;
-import commands.CommandInvoker;
 import backend.TurtleModel;
-import backend.WorldModel; import backend.WorldsCollection;
+import backend.WorldsCollection;
 
 public class WorldGraphicsPanel extends Component {
 

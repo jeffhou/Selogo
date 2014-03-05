@@ -32,20 +32,9 @@ public class ImageMenuItem extends JMenuItem{
 				String pathOfFile = chosenFile.getAbsolutePath();
 					try {
 						SlogoFrame.getInstance().updateTurtleImage(pathOfFile);
-					} catch (InstantiationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IllegalAccessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
-					// TODO Auto-generated catch block
 			}
 		}
 	}

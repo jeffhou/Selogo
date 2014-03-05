@@ -9,8 +9,6 @@ public class SinMathCommand extends MathCommand {
 
 	@Override
 	public double execute(Object o) {
-		// TODO Auto-generated method stub
-
 		return Math.sin(Math.toRadians(parameters.get(0)));
 	}
 
