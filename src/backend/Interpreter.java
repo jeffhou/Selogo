@@ -76,6 +76,7 @@ public class Interpreter {
 	public ArrayList<Double> interpret(String text)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, SlogoException {
+		System.out.println("interpreting : " + text);
 		text = text.trim();
 		listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
@@ -102,9 +103,18 @@ public class Interpreter {
 			throw new InvalidCommandException();
 		}
 		try { // Set parameters to appropriate variables
+			ArrayList<Double> userCommandParameters = new ArrayList<Double>();
+			for(int i = 0; i < command.parameters.length; i++) {
+				if (listOfWords.size() > 0) {
+					userCommandParameters.add(evaluateCommand(listOfWords));
+				}
+				else {
+					throw new NotEnoughParametersException();
+				}
+			}
+			System.out.println(userCommandParameters.toString());
 			for (int i = 0; i < command.parameters.length; i++) {
-				variables.put(command.parameters[i].substring(1),
-						Double.valueOf(listOfWords.remove(0)));
+				variables.put(command.parameters[i].substring(1), userCommandParameters.remove(0));
 			}
 		} catch (Exception e) {
 			throw new InvalidSyntaxException();
