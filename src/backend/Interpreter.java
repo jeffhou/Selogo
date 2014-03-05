@@ -118,6 +118,8 @@ public class Interpreter {
 	}
 
 	public String readBrackets() throws InvalidSyntaxException {
+		/**TODO: Fix glitch with close bracket not being separated by a space
+		 */
 		if (!listOfWords.remove(0).equals("[")) {
 			throw new InvalidSyntaxException();
 		}
