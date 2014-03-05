@@ -62,7 +62,7 @@ public class Interpreter {
 			newCommand.loadParameters(parameters);
 			return engine.obey(newCommand);
 		} else if (isVariable(firstWord)) {
-			return variables.get(firstWord.substring(1));
+			return getVariable(firstWord.substring(1));
 		} else {
 			throw new InvalidWordException();
 		}
@@ -135,7 +135,6 @@ public class Interpreter {
 			ret += nextWord + " ";
 		}
 		ret = ret.substring(0, ret.length()-3); //3 for space, end bracket, and another space
-		System.out.println(ret);
 		return ret;
 	}
 
@@ -151,5 +150,14 @@ public class Interpreter {
 		}
 		variables.put(listOfWords.remove(0).substring(1), value);
 		return value;
+	}
+	
+	public double getVariable(String s) {
+		if(variables.containsKey(s)) {
+			return variables.get(s);
+		}
+		else {
+			return 0;
+		}
 	}
 }

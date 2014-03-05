@@ -6,4 +6,5 @@
 		commandClass="commands.advancedCommands.AddVariableAdvancedCommand" />
 	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand" />
 	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand" />
+	<command code="dotimes" commandClass="commands.advancedCommands.DoTimesAdvancedCommand" />
 </model>
