@@ -8,7 +8,6 @@
 	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand" />
 	<command code="dotimes"
 		commandClass="commands.advancedCommands.DoTimesAdvancedCommand" />
-	<command code="for"
-		commandClass="commands.advancedCommands.ForAdvancedCommand" />
-
+	<command code="for" commandClass="commands.advancedCommands.ForAdvancedCommand" />
+	<command code="to" commandClass="commands.advancedCommands.ToAdvancedCommand" />
 </model>
