@@ -9,6 +9,7 @@ import java.util.Map;
 import commands.Command;
 import commands.CommandFactory;
 import commands.CommandInvoker;
+import commands.UserCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
