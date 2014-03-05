@@ -17,9 +17,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JTextArea;
 
+import util.Tuple;
 import commands.CommandInvoker;
-
-import backend.Tuple;
 import backend.TurtleModel;
 import backend.WorldModel; import backend.WorldsCollection;
 

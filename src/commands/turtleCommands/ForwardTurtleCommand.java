@@ -1,8 +1,7 @@
 package commands.turtleCommands;
 
-import backend.Tuple;
+import util.Tuple;
 import backend.WorldModel; import backend.WorldsCollection;
-
 import commands.TurtleCommand;
 
 public class ForwardTurtleCommand extends TurtleCommand {

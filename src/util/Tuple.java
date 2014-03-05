@@ -1,4 +1,4 @@
-package backend;
+package util;
 
 public class Tuple {
 	public double x, y;
