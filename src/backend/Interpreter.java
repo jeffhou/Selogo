@@ -102,9 +102,17 @@ public class Interpreter {
 			throw new InvalidCommandException();
 		}
 		try { // Set parameters to appropriate variables
+			ArrayList<Double> userCommandParameters = new ArrayList<Double>();
+			for(int i = 0; i < command.parameters.length; i++) {
+				if (listOfWords.size() > 0) {
+					userCommandParameters.add(evaluateCommand(listOfWords));
+				}
+				else {
+					throw new NotEnoughParametersException();
+				}
+			}
 			for (int i = 0; i < command.parameters.length; i++) {
-				variables.put(command.parameters[i].substring(1),
-						Double.valueOf(listOfWords.remove(0)));
+				variables.put(command.parameters[i].substring(1), userCommandParameters.remove(0));
 			}
 		} catch (Exception e) {
 			throw new InvalidSyntaxException();
@@ -178,10 +186,10 @@ public class Interpreter {
 		return listOfWords.remove(0);
 	}
 
-	public double addVariable(String name, String expression)
+	public double addVariable(String name)
 			throws InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, SlogoException {
-		double value = interpret(expression).get(0);
+			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
+		double value = evaluateCommand(listOfWords);
 		variables.put(name, value);
 		return value;
 	}
