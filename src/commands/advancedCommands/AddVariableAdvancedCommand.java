@@ -8,6 +8,7 @@ import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
+import exceptions.SlogoException;
 
 public class AddVariableAdvancedCommand extends AdvancedCommand {
 
@@ -18,12 +19,20 @@ public class AddVariableAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws InvalidSyntaxException,
 	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, InvalidCommandStringException,
-	InvalidWordException, NotEnoughParametersException,
-	InvalidCommandException, EndOfStackException {
+	ClassNotFoundException, EndOfStackException, SlogoException {
 		Interpreter interpreter = (Interpreter) o;
-		Double ret = interpreter.addVariable();
-		return ret;
+		String expression;
+		String variableName = interpreter.readNextCommand();
+		if (variableName.charAt(0) != ':') {
+			throw new InvalidSyntaxException();
+		}
+		try {
+			expression = interpreter.readNextCommand();
+		}
+		catch (Exception e) {
+			throw new InvalidSyntaxException();
+		}
+		return interpreter.addVariable(variableName.substring(1), expression);
 	}
 
 }

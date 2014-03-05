@@ -138,18 +138,14 @@ public class Interpreter {
 		ret = ret.substring(0, ret.length()-3); //3 for space, end bracket, and another space
 		return ret;
 	}
+	
+	public String readNextCommand() {
+		return listOfWords.remove(0);
+	}
 
-	public double addVariable() throws InvalidSyntaxException {
-		double value;
-		if (listOfWords.get(0).charAt(0) != ':') {
-			throw new InvalidSyntaxException();
-		}
-		try {
-			value = Double.valueOf(listOfWords.remove(1));
-		} catch (Exception e) {
-			throw new InvalidSyntaxException();
-		}
-		variables.put(listOfWords.remove(0).substring(1), value);
+	public double addVariable(String name, String expression) throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, SlogoException {
+		double value = interpret(expression).get(0);
+		variables.put(name, value);
 		return value;
 	}
 	
