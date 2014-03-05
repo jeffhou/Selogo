@@ -1,6 +1,6 @@
-package backend;
+package commands;
 
-import commands.Command;
+import backend.Interpreter;
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidSyntaxException;
@@ -8,15 +8,9 @@ import exceptions.SlogoException;
 
 public class CommandInvoker {
 	Interpreter interpreter;
-	private TurtleModel turtle;
 
-	CommandInvoker(Interpreter interpreter) {
-		turtle = new TurtleModel();
+	public CommandInvoker(Interpreter interpreter) {
 		this.interpreter = interpreter;
-	}
-
-	public TurtleModel getTurtle() {
-		return turtle;
 	}
 
 	public double obey(Command newCommand) throws InvalidSyntaxException, InstantiationException,
