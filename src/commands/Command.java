@@ -36,4 +36,6 @@ public abstract class Command {
 			throw new NotEnoughParametersException();
 		}
 	}
+	
+	//public abstract Command createCommand();
 }
