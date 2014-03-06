@@ -2,7 +2,7 @@ package commands.advancedCommands;
 
 import backend.Interpreter;
 import commands.AdvancedCommand;
-import commands.UserCommand;
+import backend.UserCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
 import exceptions.SlogoException;

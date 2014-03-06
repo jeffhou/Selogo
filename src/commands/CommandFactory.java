@@ -1,12 +1,6 @@
 package commands;
 
-import java.util.HashMap;
-import java.util.Locale;
 import java.util.ResourceBundle;
-
-import parser.XMLReader;
-import backend.Interpreter;
-import exceptions.InvalidCommandStringException;
 
 public class CommandFactory {
 	public ResourceBundle myTranslations;
