@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.MissingResourceException;
 
 import commands.Command;
 import commands.CommandFactory;
@@ -124,7 +125,13 @@ public class Interpreter {
 
 	private boolean isCommand(String word) {
 		//check if it is in our languageresourcebundle
+		
+		try {
 		return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);
+		}
+		catch (MissingResourceException c){
+			return false;
+		}
 	}
 
 	private boolean isUserCommand(String word) {
