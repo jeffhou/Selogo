@@ -39,7 +39,7 @@ public class Interpreter {
 	public Interpreter() throws IOException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 		commandInvoker = new CommandInvoker(this);
-		commandFactory = new CommandFactory();
+		commandFactory = CommandFactory.getInstance();
 	}
 
 	public Double evaluateCommand(ArrayList<String> wordList)
@@ -123,7 +123,8 @@ public class Interpreter {
 	}
 
 	private boolean isCommand(String word) {
-		return commandFactory.commands.containsKey(word.toLowerCase());
+		//check if it is in our languageresourcebundle
+		return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);
 	}
 
 	private boolean isUserCommand(String word) {
