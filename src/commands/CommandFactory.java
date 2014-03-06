@@ -11,7 +11,7 @@ public class CommandFactory {
 	private static final String DEFAULT_RESOURCE_PACKAGE = "util/";
 	
 	private CommandFactory() {	
-		String language = "French";
+		String language = "English";
 		myTranslations = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
 		myCommands= ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+"Command");
 	}
