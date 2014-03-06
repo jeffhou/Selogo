@@ -50,7 +50,7 @@ public class ProgramTester {
 		testFiles.add("examples/sums.txt");
 		
 
-		//testFiles.add("sum 5 6");
+		
 	}
 
 
@@ -59,10 +59,11 @@ public class ProgramTester {
 	public void testFiles() throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, IOException, SlogoException {
 		XMLReaderTest testFileReader = new XMLReaderTest();
 		String resultsXML = "examples/testXML.xml";
-		System.out.println(resultsXML);
+		
 		for (String file: testFiles) {
-			Double corrPosition = Double.parseDouble(testFileReader.getCorrPosition(resultsXML, testFiles.get(0)));
-			Double consoleReading = Double.parseDouble(testFileReader.getConsoleReading(resultsXML, testFiles.get(0)));
+			
+			Double corrPosition = Double.parseDouble(testFileReader.getCorrPosition(resultsXML, file));
+			Double consoleReading = Double.parseDouble(testFileReader.getConsoleReading(resultsXML, file));
 			assertEquals(interpreter.interpret(readFile(testFiles.get(0))).get(0), consoleReading, 0.1);
 
 		}

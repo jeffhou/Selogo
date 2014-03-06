@@ -1,4 +1,4 @@
  <model>   
-    <testfile filename="example/sums.txt" turtleposition="2.0" consolereading=18.0/>
+    <testfile filename="examples/sums.txt" turtleposition="2.0" consolereading="18.0"/>
 	
 </model>

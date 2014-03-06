@@ -35,13 +35,16 @@ public class XMLReaderTest {
 	public String getCorrPosition(String filename, String nameOfTestFile) {
 
 		Document doc = this.makeDocumentFromFile(filename);
-		NodeList nList = doc.getElementsByTagName("filetest");
+		NodeList nList = doc.getElementsByTagName("testfile");
 		for (int i = 0; i < nList.getLength(); i++) {
 			Node nNode = nList.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
+				System.out.println(eElement.getAttribute("filename"));
+				System.out.println(nameOfTestFile);
 				if (eElement.getAttribute("filename").equals(nameOfTestFile)) {
-					return eElement.getAttribute("finturtlePosition") ;
+					
+					return eElement.getAttribute("turtleposition") ;
 				}
 			}
 		}
