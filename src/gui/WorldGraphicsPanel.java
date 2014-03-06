@@ -1,4 +1,4 @@
-					package gui;
+package gui;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -26,7 +26,6 @@ public class WorldGraphicsPanel extends Component {
 	Graphics2D graphicsEngine;
 	protected JTextArea historyTextArea;
 	protected JTextArea inputTextArea, consoleOutputTextArea;
-	private BufferedImage turtleImage;
 
 	/**
 	 * TODO: Should read image path and path color from file
@@ -34,16 +33,6 @@ public class WorldGraphicsPanel extends Component {
 
 	public WorldGraphicsPanel() {
 		super();
-		updateTurtleImage("img/turtle.png");
-	}
-
-	public void updateTurtleImage(String path){
-		try {
-			turtleImage = ImageIO.read(new File(path));
-			repaint();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void paint(Graphics g) {
@@ -58,6 +47,7 @@ public class WorldGraphicsPanel extends Component {
 
 	void drawTurtle() {
 		TurtleModel turtle = WorldsCollection.getInstance().getCurrentWorld().getTurtle();
+		BufferedImage turtleImage = turtle.getImage();
 		if (turtle.isShowing()) {
 			Tuple center = getCenter();
 			double rotationAngle = Math.toRadians(turtle.getHeading());

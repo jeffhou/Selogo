@@ -17,6 +17,10 @@ public class WorldModel {
 		trails = new ArrayList<ArrayList<Tuple>>();
 		setPen(true);
 		setPenColor(Color.black);
+		updateTurtleImage("img/turtle.png");
+	}
+	public void updateTurtleImage(String imagePath){
+		turtle.setImagePath(imagePath);
 	}
 	void clearTrails() {
 		trails.clear();

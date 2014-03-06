@@ -42,9 +42,7 @@ public class SlogoFrame extends JFrame{
 		newPanel.add(new ConsolePanel());
 		add(newPanel);
 	}
-	public void updateTurtleImage(String imagePath){
-		worldGraphicsPanel.updateTurtleImage(imagePath);
-	}
+	
 
 
 }

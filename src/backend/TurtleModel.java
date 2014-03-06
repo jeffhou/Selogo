@@ -2,7 +2,13 @@ package backend;
 
 import gui.WorldGraphicsPanel;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import util.Tuple;
 
@@ -10,6 +16,8 @@ public class TurtleModel {
 	private double heading; // angle, 0 is north, rotates clockwise
 	private Tuple position; // position
 	private boolean showing; // is turtle showing?
+	private String imagePath;
+	private BufferedImage image;
 	
 	public TurtleModel() {
 		position = new Tuple();
@@ -39,5 +47,17 @@ public class TurtleModel {
 
 	public void setShowing(boolean showing) {
 		this.showing = showing;
+	}
+
+	public void setImagePath(String imagePath) {
+		try {
+			image = ImageIO.read(new File(imagePath));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public BufferedImage getImage() {
+		return image;
 	}
 }
