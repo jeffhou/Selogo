@@ -37,7 +37,8 @@ public class SlogoFrame extends JFrame{
 	private void populateDisplays() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		JPanel newPanel = new JPanel();
 		newPanel.add(new TurtleStatsPanel());
-		newPanel.add(new WorldGraphicsPanel());
+		worldGraphicsPanel = new WorldGraphicsPanel();
+		newPanel.add(worldGraphicsPanel);
 		newPanel.add(new ConsolePanel());
 		add(newPanel);
 	}

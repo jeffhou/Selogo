@@ -21,18 +21,11 @@ public class AddVariableAdvancedCommand extends AdvancedCommand {
 	InstantiationException, IllegalAccessException,
 	ClassNotFoundException, EndOfStackException, SlogoException {
 		Interpreter interpreter = (Interpreter) o;
-		String expression;
 		String variableName = interpreter.readNextCommand();
 		if (variableName.charAt(0) != ':') {
 			throw new InvalidSyntaxException();
 		}
-		try {
-			expression = interpreter.readNextCommand();
-		}
-		catch (Exception e) {
-			throw new InvalidSyntaxException();
-		}
-		return interpreter.addVariable(variableName.substring(1), expression);
+		return interpreter.addVariable(variableName.substring(1));
 	}
 
 }

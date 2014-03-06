@@ -4,6 +4,8 @@ import gui.WorldGraphicsPanel;
 
 import java.util.ArrayList;
 
+import util.Tuple;
+
 public class TurtleModel {
 	private double heading; // angle, 0 is north, rotates clockwise
 	private Tuple position; // position

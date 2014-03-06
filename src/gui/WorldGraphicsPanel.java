@@ -1,6 +1,5 @@
-package gui;
+					package gui;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,11 +16,9 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JTextArea;
 
-import commands.CommandInvoker;
-
-import backend.Tuple;
+import util.Tuple;
 import backend.TurtleModel;
-import backend.WorldModel; import backend.WorldsCollection;
+import backend.WorldsCollection;
 
 public class WorldGraphicsPanel extends Component {
 
@@ -83,9 +80,7 @@ public class WorldGraphicsPanel extends Component {
 
 	void drawBorder() {
 		graphicsEngine.draw3DRect(0, 0, SCREEN_DIMENSION.width - 1,
-				SCREEN_DIMENSION.height - 10, true);
-		graphicsEngine.draw3DRect(3, 3, SCREEN_DIMENSION.width - 7,
-				SCREEN_DIMENSION.height - 16, false);
+				SCREEN_DIMENSION.height - 1, true);
 	}
 
 	void drawTrails() {

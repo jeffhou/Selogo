@@ -30,13 +30,11 @@ public class ImageMenuItem extends JMenuItem{
 			if(returnVal == JFileChooser.APPROVE_OPTION) {
 				File chosenFile = chooser.getSelectedFile();
 				String pathOfFile = chosenFile.getAbsolutePath();
-				try {
-					SlogoFrame.getInstance().updateTurtleImage(pathOfFile);
-				} catch (InstantiationException | IllegalAccessException
-						| ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					try {
+						SlogoFrame.getInstance().updateTurtleImage(pathOfFile);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 			}
 		}
 	}
