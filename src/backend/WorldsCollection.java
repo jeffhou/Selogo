@@ -3,7 +3,7 @@ package backend;
 import java.util.ArrayList;
 
 public class WorldsCollection {
-	private ArrayList<WorldModel> allWorlds;
+	public ArrayList<WorldModel> allWorlds;
 	private WorldModel currentWorld;
 	private static WorldsCollection instance;
 	private WorldsCollection(){
@@ -24,4 +24,9 @@ public class WorldsCollection {
 	public WorldModel getCurrentWorld(){
 		return currentWorld;
 	}
+	public void switchCurrentWorld(int index){
+		System.out.println("Switched to World: " + );
+		currentWorld = allWorlds.get(index);
+	}
+	
 }

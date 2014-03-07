@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import backend.Interpreter;
 import backend.WorldModel; import backend.WorldsCollection;
@@ -42,6 +44,12 @@ public class SlogoFrame extends JFrame{
 		tabbedPane = new JTabbedPane();
 		addNewTab();
 		add(tabbedPane);
+		tabbedPane.addChangeListener(new ChangeListener() {
+	        public void stateChanged(ChangeEvent e) {
+	            WorldsCollection.getInstance().switchCurrentWorld(tabbedPane.getSelectedIndex());
+	            System.out.println("Selected: " + tabbedPane.getSelectedIndex());
+	        }
+	    });
 		
 	}
 
@@ -51,8 +59,10 @@ public class SlogoFrame extends JFrame{
 		worldGraphicsPanel = new WorldGraphicsPanel();
 		newTab.add(worldGraphicsPanel);
 		newTab.add(new ConsolePanel());
-
-		tabbedPane.add("New Tab", newTab);
+		tabbedPane.addTab("New Tab " + (WorldsCollection.getInstance().allWorlds.size() - 1), newTab);
+		tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+		WorldsCollection.getInstance().newWorld();
+		
 	}
 	
 //	public void actionPerformed(ActionEvent e) {
