@@ -8,6 +8,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import backend.Interpreter;
 import backend.WorldModel; import backend.WorldsCollection;
 
 public class TurtleStatsPanel extends JPanel {
@@ -33,6 +34,9 @@ public class TurtleStatsPanel extends JPanel {
 		g.setColor(Color.BLUE);
 		g.setFont(new Font("default", Font.PLAIN, 15)); 
 		drawString(g, WorldsCollection.getInstance().getCurrentWorld().toString(), 50, 50);
+		//drawString(g, WorldsCollection.getInstance().getVariables().toString(), );
+		//drawString(g, Interpreter.getInstance().getUserCommands, );
+			
 	}
 	
 }

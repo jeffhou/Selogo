@@ -32,10 +32,10 @@ public class Interpreter {
 	 * TODO: AdvancedCommands such as If and Repeat must return appropriate
 	 * values
 	 */
+	
 	CommandFactory commandFactory;
 	public CommandInvoker commandInvoker;
-	private Map<String, Double> variables = new HashMap<String, Double>();
-	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
+	
 	public ArrayList<String> listOfWords;
 
 	public Interpreter() throws IOException, InstantiationException,
@@ -99,7 +99,10 @@ public class Interpreter {
 		/**
 		 * TODO: Correctly implement return value
 		 */
+		
 		UserCommand command;
+		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		try {
 			command = userCommands.get(commandName);
 		} catch (Exception e) {
@@ -137,6 +140,7 @@ public class Interpreter {
 	}
 
 	private boolean isUserCommand(String word) {
+		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
 		return userCommands.containsKey(word);
 	}
 
@@ -150,6 +154,8 @@ public class Interpreter {
 	}
 
 	private boolean isVariable(String word) throws SlogoException {
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
+		
 		if (word.startsWith(":")) {
 			if (!variables.containsKey(word.substring(1))) {
 				throw new VariableNotFoundException();
@@ -200,12 +206,15 @@ public class Interpreter {
 	public double addVariable(String name)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
+		
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		double value = evaluateCommand(listOfWords);
 		variables.put(name, value);
 		return value;
 	}
 
 	public double getVariable(String s) {
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		if (variables.containsKey(s)) {
 			return variables.get(s);
 		} else {
@@ -214,6 +223,7 @@ public class Interpreter {
 	}
 
 	public double addUserCommand(String commandName, UserCommand command) {
+		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
 		userCommands.put(commandName, command);
 		return 1;
 	}
