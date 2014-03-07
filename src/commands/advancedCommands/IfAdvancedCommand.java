@@ -13,9 +13,7 @@ public class IfAdvancedCommand extends AdvancedCommand {
 	}
 
 	@Override
-	public double execute(Object o) throws InvalidSyntaxException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, SlogoException, EndOfStackException {
+	public double execute(Object o) throws Exception {
 		boolean isTrue = parameters.get(0).intValue() != 0;
 		Interpreter interpreter = (Interpreter) o;
 		String bracketContents = interpreter.readBrackets();

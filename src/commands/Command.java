@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 
+
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
@@ -23,10 +24,7 @@ public abstract class Command {
 		COMMAND_TYPE = commandType;
 	}
 
-	public abstract double execute(Object o) throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, SlogoException, EndOfStackException;;
-
+	public abstract double execute(Object o) throws Exception;
 
 	public void loadParameters(ArrayList<Double> parameters)
 			throws NotEnoughParametersException {

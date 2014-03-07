@@ -5,12 +5,9 @@ import java.util.ResourceBundle;
 public class CommandFactory {
 	public ResourceBundle myTranslations;
 	public ResourceBundle myCommands;
-	private static CommandFactory instance = new CommandFactory(); 
-	
-	
 	private static final String DEFAULT_RESOURCE_PACKAGE = "util/";
 	
-	private CommandFactory() {	
+	public CommandFactory() {	
 		String language = "English";
 		myTranslations = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
 		myCommands= ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+"Command");
@@ -20,13 +17,6 @@ public class CommandFactory {
 		return myTranslations.getString(firstWord);
 	}
 	
-	
-	public static CommandFactory getInstance() 
-	{
-		return instance;
-	}
-	
-
 	public Command createCommand(String firstWord) throws InstantiationException, IllegalAccessException, ClassNotFoundException
 		{
 		

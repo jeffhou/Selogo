@@ -13,9 +13,7 @@ public class AddVariableAdvancedCommand extends AdvancedCommand {
 	}
 
 	@Override
-	public double execute(Object o) throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, EndOfStackException, SlogoException {
+	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
 		String variableName = interpreter.readNextCommand();
 		if (variableName.charAt(0) != ':') {

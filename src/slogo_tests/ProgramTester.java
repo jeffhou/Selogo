@@ -22,7 +22,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import commands.Command;
-
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
@@ -30,7 +29,6 @@ import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
 import exceptions.PluralityOfValuesException;
 import exceptions.SlogoException;
-
 import backend.Interpreter;
 
 public class ProgramTester {
@@ -42,21 +40,14 @@ public class ProgramTester {
 	public void setUp() throws Exception {
 
 		interpreter = new Interpreter();
-
 		testFiles = new ArrayList<String>();
-
 
 		//testFiles.add("examples/loops/circle.logo");
 		testFiles.add("examples/sums.txt");
-		
-
-		
 	}
-
-
-
+	
 	@org.junit.Test
-	public void testFiles() throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, IOException, SlogoException {
+	public void testFiles() throws Exception {
 		XMLReaderTest testFileReader = new XMLReaderTest();
 		String resultsXML = "examples/testXML.xml";
 		
@@ -68,10 +59,6 @@ public class ProgramTester {
 
 		}
 	}
-
-
-
-
 
 	private String readFile( String file ) throws IOException {
 		BufferedReader reader = new BufferedReader( new FileReader (file));
