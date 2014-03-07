@@ -4,14 +4,22 @@ import gui.WorldGraphicsPanel;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import commands.UserCommand;
 
 import util.Tuple;
 
 public class WorldModel {
+	
 	private TurtleModel turtle;
 	private ArrayList<ArrayList<Tuple>> trails;
 	private boolean penDown; // is trail recording?
 	private Color penColor;
+	private Map<String, Double> variables = new HashMap<String, Double>();
+	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
+	
 	public WorldModel(){
 		turtle = new TurtleModel();
 		trails = new ArrayList<ArrayList<Tuple>>();
@@ -31,6 +39,14 @@ public class WorldModel {
 		clearTrails();
 		double distanceTraveled = home();
 		return distanceTraveled;
+	}
+	
+	public Map<String, Double> getVariables() {	
+		return variables;
+	}
+	
+	public Map<String, UserCommand> getUserCommands() {
+		return userCommands;	
 	}
 	
 	public ArrayList<ArrayList<Tuple>> getPaths() {

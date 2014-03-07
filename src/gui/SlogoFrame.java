@@ -2,22 +2,14 @@ package gui;
 
 import gui.menubar.MenuBar;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import backend.Interpreter;
-import backend.WorldModel; import backend.WorldsCollection;
 import backend.WorldsCollection;
 
 public class SlogoFrame extends JFrame{
@@ -61,7 +53,7 @@ public class SlogoFrame extends JFrame{
 		worldGraphicsPanel = new WorldGraphicsPanel();
 		newTab.add(worldGraphicsPanel);
 		newTab.add(new ConsolePanel());
-		tabbedPane.addTab("New Tab " + (WorldsCollection.getInstance().allWorlds.size() - 1), newTab);
+		tabbedPane.addTab("New Tab", newTab);
 		tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 	}
 

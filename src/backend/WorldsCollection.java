@@ -3,7 +3,7 @@ package backend;
 import java.util.ArrayList;
 
 public class WorldsCollection {
-	public ArrayList<WorldModel> allWorlds;
+	private ArrayList<WorldModel> allWorlds;
 	private WorldModel currentWorld;
 	private static WorldsCollection instance;
 	private WorldsCollection(){
