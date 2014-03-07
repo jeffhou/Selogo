@@ -1,5 +1,7 @@
 package commands.advancedCommands;
 
+import java.util.ArrayList;
+
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import exceptions.InvalidSyntaxException;
@@ -13,19 +15,17 @@ public class ForAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
-		String[] variableAndLimit = interpreter.readBrackets().split(" ");
-		String variable = variableAndLimit[0].substring(1);
-		double oldValue = interpreter.getVariable(variable);
+		ArrayList<String> variableAndLimit = interpreter.readBrackets();
+		String variable = variableAndLimit.get(0).substring(1);
 		try{
-			int start = Integer.parseInt(variableAndLimit[1]);
-			int end = Integer.parseInt(variableAndLimit[2]);
-			int increment = Integer.parseInt(variableAndLimit[3]);
-			String commandList = interpreter.readBrackets();
+			int start = Integer.parseInt(variableAndLimit.get(1));
+			int end = Integer.parseInt(variableAndLimit.get(2));
+			int increment = Integer.parseInt(variableAndLimit.get(3));
+			ArrayList<String> commandList = interpreter.readBrackets();
 			for(int i = start; i < end; i+=increment) {
-				interpreter.interpret("set :" + variable + " " + i);
-				interpreter.interpret(commandList);
+				interpreter.addVariable(variable, i);
+				interpreter.addCommandToQueue(commandList);
 			}
-			interpreter.interpret("set :" + variable + " " + oldValue);
 		}
 		catch (Exception e) {
 			throw new InvalidSyntaxException();

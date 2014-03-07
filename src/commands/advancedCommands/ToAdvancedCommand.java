@@ -1,5 +1,7 @@
 package commands.advancedCommands;
 
+import java.util.ArrayList;
+
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import commands.UserCommand;
@@ -19,6 +21,9 @@ public class ToAdvancedCommand extends AdvancedCommand {
 	ClassNotFoundException, SlogoException, EndOfStackException {
 		Interpreter interpreter = (Interpreter) o;
 		String commandName = interpreter.readNextCommand();
+		ArrayList<String> parameters = interpreter.readBrackets();
+		ArrayList<String> commandsList = interpreter.readBrackets();
+
 		try {
 			return interpreter.addUserCommand(commandName, new UserCommand(interpreter.readBrackets(), interpreter.readBrackets()));
 		}
