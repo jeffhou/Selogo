@@ -43,16 +43,15 @@ public class SlogoFrame extends JFrame{
 		return instance;
 	}
 	private void populateDisplays() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
-		
+
 		tabbedPane = new JTabbedPane();
 		addNewTab();
 		add(tabbedPane);
 		tabbedPane.addChangeListener(new ChangeListener() {
-	        public void stateChanged(ChangeEvent e) {
-	            WorldsCollection.getInstance().switchCurrentWorld(tabbedPane.getSelectedIndex());
-	        }
-	    });
-		
+			public void stateChanged(ChangeEvent e) {
+				WorldsCollection.getInstance().switchCurrentWorld(tabbedPane.getSelectedIndex());
+			}
+		});
 	}
 
 	public void addNewTab() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
@@ -65,12 +64,12 @@ public class SlogoFrame extends JFrame{
 		tabbedPane.addTab("New Tab " + (WorldsCollection.getInstance().allWorlds.size() - 1), newTab);
 		tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 	}
-//	public void actionPerformed(ActionEvent e) {
-//        int i = tabbedPane.indexOfTabComponent(ButtonTabComponent.this);
-//        if (i != -1) {
-//            tabbedPane.remove(i);
-//        }
-//    }
 
-
+	public void closeCurrentTab() {
+		if(tabbedPane.getTabCount() > 1){
+			WorldsCollection.getInstance().deleteWorldAt(tabbedPane.getSelectedIndex());
+			tabbedPane.remove(tabbedPane.getSelectedComponent());
+			WorldsCollection.getInstance().switchCurrentWorld(tabbedPane.getSelectedIndex());
+		}
+	}
 }
