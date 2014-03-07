@@ -54,6 +54,7 @@ public class SlogoFrame extends JFrame{
 	}
 
 	public void addNewTab() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+		WorldsCollection.getInstance().newWorld();
 		JPanel newTab = new JPanel();
 		newTab.add(new TurtleStatsPanel());
 		worldGraphicsPanel = new WorldGraphicsPanel();
@@ -61,8 +62,6 @@ public class SlogoFrame extends JFrame{
 		newTab.add(new ConsolePanel());
 		tabbedPane.addTab("New Tab " + (WorldsCollection.getInstance().allWorlds.size() - 1), newTab);
 		tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
-		WorldsCollection.getInstance().newWorld();
-		
 	}
 	
 //	public void actionPerformed(ActionEvent e) {

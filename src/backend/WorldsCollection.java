@@ -8,7 +8,6 @@ public class WorldsCollection {
 	private static WorldsCollection instance;
 	private WorldsCollection(){
 		allWorlds = new ArrayList<WorldModel>();
-		newWorld();
 	}
 	public void newWorld(){
 		WorldModel newWorld = new WorldModel();
@@ -25,7 +24,7 @@ public class WorldsCollection {
 		return currentWorld;
 	}
 	public void switchCurrentWorld(int index){
-		System.out.println("Switched to World: " + );
+		System.out.println("Switched to World: " + index);
 		currentWorld = allWorlds.get(index);
 	}
 	
