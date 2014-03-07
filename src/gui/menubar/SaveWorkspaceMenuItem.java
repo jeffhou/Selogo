@@ -2,9 +2,8 @@ package gui.menubar;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import javax.swing.JMenuItem;
-
+import javax.swing.JOptionPane;
 import util.Serializer;
 import backend.WorldsCollection;
 
@@ -16,11 +15,13 @@ public class SaveWorkspaceMenuItem extends JMenuItem {
 	}
 	class LaunchNewTabMouseListener extends MouseAdapter{
 		public void mousePressed(MouseEvent e) {
+			
+			String s = (String) JOptionPane.showInputDialog(null, "Name the serialization file: (no extension needed)", "Save Workspace...", JOptionPane.QUESTION_MESSAGE, null, null, "file name");
 			try {
-				Serializer.serialize("userCommands.ser", WorldsCollection.getInstance().getCurrentWorld().getUserCommands());
-				Serializer.serialize("userVariables.ser", WorldsCollection.getInstance().getCurrentWorld().getVariables());
-			} catch(IOException i) {
-				i.printStackTrace();
+				Serializer.serialize("serializedFiles/" + s + ".ser", WorldsCollection.getInstance().getCurrentWorld().getUserCommands());
+				Serializer.serialize("serializedFiles/" + s + ".ser" + "v", WorldsCollection.getInstance().getCurrentWorld().getVariables());
+			} catch (Exception e1) {
+				e1.printStackTrace();
 			}
 		}
 	}
