@@ -13,9 +13,7 @@ public class ForAdvancedCommand extends AdvancedCommand {
 	}
 
 	@Override
-	public double execute(Object o) throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, SlogoException, EndOfStackException {
+	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
 		String[] variableAndLimit = interpreter.readBrackets().split(" ");
 		String variable = variableAndLimit[0].substring(1);

@@ -3,11 +3,7 @@ package commands.advancedCommands;
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import exceptions.EndOfStackException;
-import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
-import exceptions.InvalidWordException;
-import exceptions.NotEnoughParametersException;
 import exceptions.SlogoException;
 
 public class AddVariableAdvancedCommand extends AdvancedCommand {
@@ -17,9 +13,7 @@ public class AddVariableAdvancedCommand extends AdvancedCommand {
 	}
 
 	@Override
-	public double execute(Object o) throws InvalidSyntaxException,
-	InstantiationException, IllegalAccessException,
-	ClassNotFoundException, EndOfStackException, SlogoException {
+	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
 		String variableName = interpreter.readNextCommand();
 		if (variableName.charAt(0) != ':') {

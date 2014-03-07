@@ -1,10 +1,7 @@
 package commands;
 
 import backend.Interpreter;
-import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
-import exceptions.InvalidSyntaxException;
-import exceptions.SlogoException;
 
 public class CommandInvoker {
 	Interpreter interpreter;
@@ -13,9 +10,7 @@ public class CommandInvoker {
 		this.interpreter = interpreter;
 	}
 
-	public double obey(Command newCommand) throws InvalidSyntaxException, InstantiationException,
-	IllegalAccessException, ClassNotFoundException,
-	EndOfStackException, SlogoException {
+	public double obey(Command newCommand) throws Exception {
 
 		if (newCommand.COMMAND_TYPE.equals("turtle")) {
 			return newCommand.execute(null);

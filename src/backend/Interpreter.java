@@ -2,7 +2,6 @@ package backend;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -11,7 +10,6 @@ import commands.Command;
 import commands.CommandFactory;
 import commands.CommandInvoker;
 import commands.UserCommand;
-
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandStringException;
@@ -24,32 +22,26 @@ import exceptions.VariableNotFoundException;
 public class Interpreter {
 	/**
 	 * TODO: change the methods so that this looks like a real API
-	 */
-	/**
 	 * TODO: Make documentation for all public methods and vars (all classes)
-	 */
-	/**
-	 * TODO: AdvancedCommands such as If and Repeat must return appropriate
-	 * values
+	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
 	 */
 	
-	CommandFactory commandFactory;
-	public CommandInvoker commandInvoker;
 	
-	public ArrayList<String> listOfWords;
+
+	private CommandFactory commandFactory;
+	private CommandInvoker commandInvoker;
+	private Map<String, Double> variables = new HashMap<String, Double>();
+	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
+	private ArrayList<String> listOfWords;
+
 
 	public Interpreter() throws IOException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 		commandInvoker = new CommandInvoker(this);
-		commandFactory = CommandFactory.getInstance();
+		commandFactory = new CommandFactory();
 	}
 
-	public Double evaluateCommand(ArrayList<String> wordList)
-			throws InvalidCommandStringException, InvalidWordException,
-			NotEnoughParametersException, InvalidCommandException,
-			InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, SlogoException,
-			EndOfStackException {
+	private Double evaluateCommand(ArrayList<String> wordList) throws Exception {
 
 		String firstWord = wordList.remove(0);
 		if (isConstantValue(firstWord)) {
@@ -58,7 +50,6 @@ public class Interpreter {
 			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
 			Command newCommand = commandFactory.createCommand(firstWord);
-			
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
 				if (wordList.size() > 0) {
 					parameters.add(evaluateCommand(wordList));
@@ -77,9 +68,7 @@ public class Interpreter {
 		}
 	}
 
-	public ArrayList<Double> interpret(String text)
-			throws InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, SlogoException {
+	public ArrayList<Double> interpret(String text) throws Exception {
 		text = text.trim();
 		listOutCommands(text);
 		ArrayList<Double> evaluatedValues = new ArrayList<Double>();
@@ -93,9 +82,7 @@ public class Interpreter {
 		return evaluatedValues;
 	}
 
-	private double getAndExecuteUserCommand(String commandName)
-			throws InvalidSyntaxException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException, SlogoException {
+	private double getAndExecuteUserCommand(String commandName) throws Exception {
 		/**
 		 * TODO: Correctly implement return value
 		 */
@@ -129,10 +116,9 @@ public class Interpreter {
 	}
 
 	private boolean isCommand(String word) {
-		//check if it is in our languageresourcebundle
-		
+		//check if it is in our language resource bundle
 		try {
-		return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);
+			return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);
 		}
 		catch (MissingResourceException c){
 			return false;
@@ -203,11 +189,10 @@ public class Interpreter {
 		return listOfWords.remove(0);
 	}
 
-	public double addVariable(String name)
-			throws InstantiationException, IllegalAccessException,
-			ClassNotFoundException, InvalidSyntaxException, SlogoException, EndOfStackException {
-		
-		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
+
+
+	public double addVariable(String name) throws Exception {
+	Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		double value = evaluateCommand(listOfWords);
 		variables.put(name, value);
 		return value;

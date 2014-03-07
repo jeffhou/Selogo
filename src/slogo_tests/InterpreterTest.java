@@ -62,23 +62,15 @@ public class InterpreterTest {
 
 	/**
 	 * Test method for forward.logo
-	 * 
-	 * @throws ClassNotFoundException
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
-	 * @throws InvalidSyntaxException
-	 * @throws EndOfStackException
-	 * @throws SlogoException 
+	 * @throws Exception 
 	 */
 	@Test
-	public void testForward() throws InstantiationException, IllegalAccessException,
-	ClassNotFoundException, InvalidSyntaxException, EndOfStackException, SlogoException {
+	public void testForward() throws Exception {
 		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
 	}
 
 	@Test
-	public void testForwardForward() throws InstantiationException, IllegalAccessException,
-	ClassNotFoundException, InvalidSyntaxException, EndOfStackException, SlogoException {
+	public void testForwardForward() throws Exception {
 		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
 	}
 
