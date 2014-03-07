@@ -1,5 +1,7 @@
 package commands.guiCommands;
 
+import java.awt.Color;
+
 import commands.GuiCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
