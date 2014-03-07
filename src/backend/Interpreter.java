@@ -2,7 +2,6 @@ package backend;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -24,19 +23,16 @@ import exceptions.VariableNotFoundException;
 public class Interpreter {
 	/**
 	 * TODO: change the methods so that this looks like a real API
-	 */
-	/**
+	 *
 	 * TODO: Make documentation for all public methods and vars (all classes)
+	 *
+	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
 	 */
-	/**
-	 * TODO: AdvancedCommands such as If and Repeat must return appropriate
-	 * values
-	 */
-	CommandFactory commandFactory;
-	public CommandInvoker commandInvoker;
+	private CommandFactory commandFactory;
+	private CommandInvoker commandInvoker;
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
-	public ArrayList<String> listOfWords;
+	private ArrayList<String> listOfWords;
 
 	public Interpreter() throws IOException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
@@ -126,7 +122,7 @@ public class Interpreter {
 	}
 
 	private boolean isCommand(String word) {
-		//check if it is in our languageresourcebundle
+		//check if it is in our language resource bundle
 		
 		try {
 		return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);

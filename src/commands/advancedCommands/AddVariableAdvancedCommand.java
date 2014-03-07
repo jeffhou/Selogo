@@ -3,11 +3,7 @@ package commands.advancedCommands;
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import exceptions.EndOfStackException;
-import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
-import exceptions.InvalidWordException;
-import exceptions.NotEnoughParametersException;
 import exceptions.SlogoException;
 
 public class AddVariableAdvancedCommand extends AdvancedCommand {
