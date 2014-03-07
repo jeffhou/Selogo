@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import commands.UserCommand;
-
 import util.Tuple;
 
 public class WorldModel {
@@ -140,5 +139,14 @@ public class WorldModel {
 	}
 	public Color getPenColor() {
 		return penColor;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void setUserCommands(Object o) {
+		userCommands = (Map<String, UserCommand>) o; 
+	}
+	@SuppressWarnings("unchecked")
+	public void setVariables(Object o) {
+		variables = (Map<String, Double>) o; 
 	}
 }

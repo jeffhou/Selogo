@@ -12,7 +12,6 @@ import commands.CommandInvoker;
 import commands.UserCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
@@ -170,6 +169,7 @@ public class Interpreter {
 		}
 		int bracketCounter = 1;
 		String ret = "";
+		
 		while (bracketCounter != 0) {
 			String nextWord = listOfWords.remove(0);
 			if (nextWord.startsWith("[")) {
@@ -180,6 +180,7 @@ public class Interpreter {
 			}
 			ret += nextWord + " ";
 		}
+		
 		ret = ret.substring(0, ret.length() - 3); // 3 for space, end bracket,
 		// and another space
 		return ret;

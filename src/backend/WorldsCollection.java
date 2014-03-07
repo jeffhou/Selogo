@@ -26,5 +26,8 @@ public class WorldsCollection {
 	public void switchCurrentWorld(int index){
 		currentWorld = allWorlds.get(index);
 	}
-	
+	public void deleteWorldAt(int index){
+		allWorlds.remove(index);
+	}
+
 }
