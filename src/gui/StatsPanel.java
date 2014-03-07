@@ -22,19 +22,22 @@ public class StatsPanel extends JPanel {
 	
 	StatsPanel() {
 		super(new GridBagLayout());
-		this.setBorder(new LineBorder(Color.blue));
+		//this.setBorder(new LineBorder(Color.blue));
 		turtleStatsTextArea = new JTextArea(10, 15);
 		turtleStatsTextArea.setEditable(false);
+		turtleStatsTextArea.setMaximumSize(getMaximumSize());
 		JScrollPane turtleStatsScrollPane = new JScrollPane(turtleStatsTextArea);
 		add(turtleStatsScrollPane, SlogoDefaultConstraints.getInstance());
 		
 		variablesTextArea = new JTextArea(10, 15);
 		variablesTextArea.setEditable(false);
+		variablesTextArea.setMaximumSize(getMaximumSize());
 		JScrollPane variablesScrollPane = new JScrollPane(variablesTextArea);
 		add(variablesScrollPane, SlogoDefaultConstraints.getInstance());
 		
 		userCommandsTextArea = new JTextArea(10, 15);
 		userCommandsTextArea.setEditable(false);
+		userCommandsTextArea.setMaximumSize(getMaximumSize());
 		JScrollPane userCommandsScrollPane = new JScrollPane(userCommandsTextArea);
 		add(userCommandsScrollPane, SlogoDefaultConstraints.getInstance());
 	
