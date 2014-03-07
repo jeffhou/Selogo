@@ -5,7 +5,11 @@ import java.util.Arrays;
 public class UserCommand {
 	public String[] parameters;
 	public String commands;
-
+	
+	public UserCommand() {}
+	
+	
+	
 	public UserCommand(String parameterString, String commandString) {
 		commands = commandString;
 		parameters = parameterString.split(" ");
