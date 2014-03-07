@@ -1,5 +1,7 @@
 package commands.advancedCommands;
 
+import java.util.ArrayList;
+
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import exceptions.EndOfStackException;
@@ -16,9 +18,10 @@ public class IfAdvancedCommand extends AdvancedCommand {
 	public double execute(Object o) throws Exception {
 		boolean isTrue = parameters.get(0).intValue() != 0;
 		Interpreter interpreter = (Interpreter) o;
-		String bracketContents = interpreter.readBrackets();
+		ArrayList<String> bracketContents = interpreter.readBrackets();
+		System.out.println(bracketContents.toString());
 		if(isTrue) {
-			interpreter.interpret(bracketContents);
+			interpreter.addCommandToQueue(bracketContents);
 		}
 		return 0;
 	}

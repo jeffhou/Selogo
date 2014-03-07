@@ -20,10 +20,10 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 	public double execute(Object o) throws Exception {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
-		String bracketContents = interpreter.readBrackets();
+		ArrayList<String> bracketContents = interpreter.readBrackets();
 	
 		for(int i = 0; i < multiple; i++) {
-			interpreter.interpret(bracketContents);
+			interpreter.addCommandToQueue(bracketContents);
 		}
 		return 0;
 	}

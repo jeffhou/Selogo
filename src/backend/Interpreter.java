@@ -160,7 +160,7 @@ public class Interpreter {
 
 	}
 
-	public String readBrackets() throws InvalidSyntaxException {
+	public ArrayList<String> readBrackets() throws InvalidSyntaxException {
 		/**
 		 * TODO: Fix glitch with close bracket not being separated by a space
 		 */
@@ -168,7 +168,7 @@ public class Interpreter {
 			throw new InvalidSyntaxException();
 		}
 		int bracketCounter = 1;
-		String ret = "";
+		ArrayList<String> ret = new ArrayList<String>();
 		
 		while (bracketCounter != 0) {
 			String nextWord = listOfWords.remove(0);
@@ -178,19 +178,19 @@ public class Interpreter {
 			if (nextWord.endsWith("]")) {
 				bracketCounter--;
 			}
-			ret += nextWord + " ";
+			ret.add(nextWord);
 		}
-		
-		ret = ret.substring(0, ret.length() - 3); // 3 for space, end bracket,
-		// and another space
+		ret.remove(ret.size()-1);
 		return ret;
 	}
 
 	public String readNextCommand() {
 		return listOfWords.remove(0);
 	}
-
-
+	
+	public void addCommandToQueue(ArrayList<String> commands) {
+		listOfWords.addAll(0, commands);
+	}
 
 	public double addVariable(String name) throws Exception {
 	Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
