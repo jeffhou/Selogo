@@ -1,5 +1,7 @@
 package commands.advancedCommands;
 
+import java.util.ArrayList;
+
 import backend.Interpreter;
 import commands.AdvancedCommand;
 import exceptions.InvalidSyntaxException;
@@ -13,19 +15,18 @@ public class DoTimesAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
-		String[] variableAndLimit = interpreter.readBrackets().split(" ");
-		String variable = variableAndLimit[0].substring(1);
-		double oldValue = interpreter.getVariable(variable);
+		ArrayList<String> variableAndLimit = interpreter.readBrackets();
+		String variable = variableAndLimit.get(0).substring(1);
 		try {
-			int limit = Integer.parseInt(variableAndLimit[1]);
-			String commandList = interpreter.readBrackets();
-			for(int i = 0; i < limit; i++) {
-				interpreter.interpret("set :" + variable + " " + i);
-				interpreter.interpret(commandList);
+			int limit = Integer.parseInt(variableAndLimit.get(1));
+			System.out.println(variable + "\n" + limit);
+			ArrayList<String> commandList = interpreter.readBrackets();
+			System.out.println(commandList.toString());
+			for (int i = 0; i < limit; i++) {
+				interpreter.addVariable(variable, i);
+				interpreter.addCommandToQueue(commandList);
 			}
-			interpreter.interpret("set :" + variable + " " + oldValue);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new InvalidSyntaxException();
 		}
 		return 0;

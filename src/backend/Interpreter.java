@@ -208,6 +208,12 @@ public class Interpreter {
 		variables.put(name, value);
 		return value;
 	}
+	
+	public double addVariable(String name, double value) {
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
+		variables.put(name, value);
+		return value;
+	}
 
 	public double getVariable(String s) {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
