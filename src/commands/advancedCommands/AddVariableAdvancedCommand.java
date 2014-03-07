@@ -2,9 +2,7 @@ package commands.advancedCommands;
 
 import backend.Interpreter;
 import commands.AdvancedCommand;
-import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
-import exceptions.SlogoException;
 
 public class AddVariableAdvancedCommand extends AdvancedCommand {
 

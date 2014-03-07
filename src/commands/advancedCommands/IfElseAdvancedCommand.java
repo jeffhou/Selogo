@@ -2,9 +2,6 @@ package commands.advancedCommands;
 
 import backend.Interpreter;
 import commands.AdvancedCommand;
-import exceptions.EndOfStackException;
-import exceptions.InvalidSyntaxException;
-import exceptions.SlogoException;
 
 public class IfElseAdvancedCommand extends AdvancedCommand {
 
@@ -20,8 +17,7 @@ public class IfElseAdvancedCommand extends AdvancedCommand {
 		String falseCommands = interpreter.readBrackets();
 		if(isTrue) {
 			interpreter.interpret(trueCommands);
-		}
-		else {
+		} else {
 			interpreter.interpret(falseCommands);
 		}
 		return 0;

@@ -17,8 +17,7 @@ public class RepeatAdvancedCommand extends AdvancedCommand {
 	}
 
 	@Override
-	public double execute(Object o) throws Exception
-	{
+	public double execute(Object o) throws Exception {
 		int multiple = parameters.get(0).intValue();
 		Interpreter interpreter = (Interpreter) o;
 		String bracketContents = interpreter.readBrackets();
