@@ -24,7 +24,6 @@ public class WorldsCollection {
 		return currentWorld;
 	}
 	public void switchCurrentWorld(int index){
-		System.out.println("Switched to World: " + index);
 		currentWorld = allWorlds.get(index);
 	}
 	

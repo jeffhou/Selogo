@@ -50,7 +50,6 @@ public class SlogoFrame extends JFrame{
 		tabbedPane.addChangeListener(new ChangeListener() {
 	        public void stateChanged(ChangeEvent e) {
 	            WorldsCollection.getInstance().switchCurrentWorld(tabbedPane.getSelectedIndex());
-	            System.out.println("Selected: " + tabbedPane.getSelectedIndex());
 	        }
 	    });
 		
