@@ -10,6 +10,7 @@ import java.util.MissingResourceException;
 import commands.Command;
 import commands.CommandFactory;
 import commands.CommandInvoker;
+import commands.UserCommand;
 
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
