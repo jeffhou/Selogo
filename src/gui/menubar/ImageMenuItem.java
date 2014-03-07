@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import backend.WorldsCollection;
 import main.Runner;
 
 public class ImageMenuItem extends JMenuItem{
@@ -31,7 +32,8 @@ public class ImageMenuItem extends JMenuItem{
 				File chosenFile = chooser.getSelectedFile();
 				String pathOfFile = chosenFile.getAbsolutePath();
 					try {
-						SlogoFrame.getInstance().updateTurtleImage(pathOfFile);
+						WorldsCollection.getInstance().getCurrentWorld().updateTurtleImage(pathOfFile);
+						SlogoFrame.getInstance().repaint();
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}

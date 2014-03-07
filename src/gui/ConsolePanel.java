@@ -16,15 +16,11 @@ import backend.Interpreter;
 public class ConsolePanel extends JPanel {
 	public Interpreter interpreter;
 	private final static String newline = "\n";
-	protected  JPopupMenu popUp;
-
-	protected JTextArea userHistoryTextArea;
-	protected JTextArea inputTextArea, consoleOutputTextArea;
+	protected JTextArea inputTextArea, consoleOutputTextArea, userHistoryTextArea;
 
 	private JButton runButton;
 	public ConsolePanel() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super(new GridBagLayout());
-		
 		interpreter = new Interpreter();
 		addUserInputHistoryTextArea();
 		addUserInputTextArea();
