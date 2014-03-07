@@ -32,15 +32,20 @@ public class XMLReaderTest {
 		}
 	}
 
-	public String getCorrPosition(String filename) {
+	public String getCorrPosition(String filename, String nameOfTestFile) {
 
 		Document doc = this.makeDocumentFromFile(filename);
-		NodeList nList = doc.getElementsByTagName("filetest");
+		NodeList nList = doc.getElementsByTagName("testfile");
 		for (int i = 0; i < nList.getLength(); i++) {
 			Node nNode = nList.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-				return eElement.getAttribute("finturtlePosition") ;
+				System.out.println(eElement.getAttribute("filename"));
+				System.out.println(nameOfTestFile);
+				if (eElement.getAttribute("filename").equals(nameOfTestFile)) {
+					
+					return eElement.getAttribute("turtleposition") ;
+				}
 			}
 		}
 
@@ -48,14 +53,19 @@ public class XMLReaderTest {
 
 	}
 
-	public String getConsoleReading(String filename) {
+	public String getConsoleReading(String filename, String nameOfTestFile) {
 		Document doc = this.makeDocumentFromFile(filename);
-		NodeList nList = doc.getElementsByTagName("filetest");
+		NodeList nList = doc.getElementsByTagName("testfile");
 		for (int i = 0; i < nList.getLength(); i++) {
 			Node nNode = nList.item(i);
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-				return eElement.getAttribute("evalConsoleReading") ;
+				System.out.println(eElement.getAttribute("filename"));
+				if (eElement.getAttribute("filename").equals(nameOfTestFile)) {
+					System.out.println(eElement.getAttribute("filename"));
+					return eElement.getAttribute("consolereading") ;
+					
+				} 
 			}
 		}
 

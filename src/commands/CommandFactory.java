@@ -1,33 +1,40 @@
 package commands;
 
-import java.util.HashMap;
-
-import parser.XMLReader;
-import backend.Interpreter;
-import exceptions.InvalidCommandStringException;
+import java.util.ResourceBundle;
 
 public class CommandFactory {
+	public ResourceBundle myTranslations;
+	public ResourceBundle myCommands;
+	private static CommandFactory instance = new CommandFactory(); 
+	
+	
+	private static final String DEFAULT_RESOURCE_PACKAGE = "util/";
+	
+	private CommandFactory() {	
+		String language = "English";
+		myTranslations = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
+		myCommands= ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+"Command");
+	}
+	
+	private String getTranslatedCommand(String firstWord) {
+		return myTranslations.getString(firstWord);
+	}
+	
+	
+	public static CommandFactory getInstance() 
+	{
+		return instance;
+	}
+	
 
-	public HashMap<String, Command> commands = new HashMap<String, Command>();
-
-	public CommandFactory() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		populateCommands();
+	public Command createCommand(String firstWord) throws InstantiationException, IllegalAccessException, ClassNotFoundException
+		{
+		
+		String translatedCommand = getTranslatedCommand(firstWord); 
+		return (Command) Class.forName(myCommands.getString(translatedCommand))
+		.newInstance();
+		
 	}
 
-	public Command createCommand(String firstWord)
-			throws InvalidCommandStringException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException {
-		if (commands.containsKey(firstWord)) {
-			return commands.get(firstWord);
-		}
-		throw new InvalidCommandStringException();
-	}
-
-	public void populateCommands() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		XMLReader.read("assets/turtleCommands.xml", commands);
-		XMLReader.read("assets/mathCommands.xml", commands);
-		XMLReader.read("assets/boolCommands.xml", commands);
-		XMLReader.read("assets/advancedCommands.xml", commands);
-	}
-
+	
 }

@@ -46,18 +46,25 @@ public class ProgramTester {
 		testFiles = new ArrayList<String>();
 
 
-		testFiles.add("examples/loops/circle.logo");
-		//testFiles.add("examples/sums.txt");
+		//testFiles.add("examples/loops/circle.logo");
+		testFiles.add("examples/sums.txt");
+		
 
-		//testFiles.add("sum 5 6");
+		
 	}
 
 
 
 	@org.junit.Test
 	public void testFiles() throws InstantiationException, IllegalAccessException, ClassNotFoundException, InvalidSyntaxException, IOException, SlogoException {
+		XMLReaderTest testFileReader = new XMLReaderTest();
+		String resultsXML = "examples/testXML.xml";
+		
 		for (String file: testFiles) {
-			assertEquals(interpreter.interpret(readFile(file)), new ArrayList<Double>(Arrays.asList(2.0)));
+			
+			Double corrPosition = Double.parseDouble(testFileReader.getCorrPosition(resultsXML, file));
+			Double consoleReading = Double.parseDouble(testFileReader.getConsoleReading(resultsXML, file));
+			assertEquals(interpreter.interpret(readFile(testFiles.get(0))).get(0), consoleReading, 0.1);
 
 		}
 	}
