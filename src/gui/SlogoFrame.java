@@ -66,17 +66,12 @@ public class SlogoFrame extends JFrame{
 		tabbedPane.addTab("New Tab " + (WorldsCollection.getInstance().allWorlds.size() - 1), newTab);
 		tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 	}
-	
 //	public void actionPerformed(ActionEvent e) {
 //        int i = tabbedPane.indexOfTabComponent(ButtonTabComponent.this);
 //        if (i != -1) {
 //            tabbedPane.remove(i);
 //        }
 //    }
-
-	public void updateTurtleImage(String imagePath){
-		worldGraphicsPanel.updateTurtleImage(imagePath);
-	}
 
 
 }

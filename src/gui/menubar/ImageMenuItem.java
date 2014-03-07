@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import backend.WorldsCollection;
 import main.Runner;
 
 public class ImageMenuItem extends JMenuItem{
@@ -31,18 +32,9 @@ public class ImageMenuItem extends JMenuItem{
 				File chosenFile = chooser.getSelectedFile();
 				String absolutePath = chosenFile.getAbsolutePath();
 					try {
-						SlogoFrame.getInstance().updateTurtleImage(absolutePath);
-					} catch (InstantiationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IllegalAccessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+						WorldsCollection.getInstance().getCurrentWorld().updateTurtleImage(absolutePath);
+						SlogoFrame.getInstance().repaint();
+					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 			}
