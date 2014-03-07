@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +27,8 @@ public class ConsolePanel extends JPanel {
 		addUserInputTextArea();
 		addRunButton();
 		addConsoleOutputTextArea();
+		//setPreferredSize(new Dimension(259, 521));
+	
 	}
 	
 	private void addRunButton() {
@@ -66,23 +69,22 @@ public class ConsolePanel extends JPanel {
 		add(runButton, SlogoDefaultConstraints.getInstance());
 	}
 	private void addConsoleOutputTextArea() {
-		consoleOutputTextArea = new JTextArea(5, 20);
+		consoleOutputTextArea = new JTextArea(5, 18);
 		consoleOutputTextArea.setEditable(false);
-		consoleOutputTextArea.setMaximumSize(getMaximumSize());
+		
 		JScrollPane consoleScrollPane = new JScrollPane(consoleOutputTextArea);
 		add(consoleScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 	private void addUserInputTextArea() {
-		inputTextArea = new JTextArea(5, 20);
+		inputTextArea = new JTextArea(5, 18);
 		inputTextArea.setText("Enter code here...");
-		inputTextArea.setMaximumSize(getMaximumSize());
+		;
 		JScrollPane inputScrollPane = new JScrollPane(inputTextArea);
 		add(inputScrollPane, SlogoDefaultConstraints.getInstance());
 	}
 	private void addUserInputHistoryTextArea(){
 		userHistoryTextArea = new JTextArea(20, 20);
 		userHistoryTextArea.setEditable(false);
-		userHistoryTextArea.setMaximumSize(getMaximumSize());
 		JScrollPane userHistoryScrollPane = new JScrollPane(userHistoryTextArea);
 		add(userHistoryScrollPane, SlogoDefaultConstraints.getInstance());
 	}

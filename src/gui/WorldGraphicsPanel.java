@@ -43,6 +43,7 @@ public class WorldGraphicsPanel extends Component {
 		drawBorder();
 		drawTrails();
 		drawTurtle();
+		
 	}
 
 	void drawTurtle() {

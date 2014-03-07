@@ -18,6 +18,7 @@ public class SlogoFrame extends JFrame{
 	private static SlogoFrame instance;
 	private WorldGraphicsPanel worldGraphicsPanel;
 	private JTabbedPane tabbedPane;
+	
 
 	private SlogoFrame() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		super("Slogo!");

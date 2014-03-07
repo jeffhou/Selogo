@@ -1,6 +1,7 @@
 package gui;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.swing.*;
@@ -25,7 +26,9 @@ public class StatsPanel extends JPanel {
 		//this.setBorder(new LineBorder(Color.blue));
 		turtleStatsTextArea = new JTextArea(10, 15);
 		turtleStatsTextArea.setEditable(false);
-		turtleStatsTextArea.setMaximumSize(getMaximumSize());
+		
+	
+
 		JScrollPane turtleStatsScrollPane = new JScrollPane(turtleStatsTextArea);
 		add(turtleStatsScrollPane, SlogoDefaultConstraints.getInstance());
 		
@@ -33,6 +36,7 @@ public class StatsPanel extends JPanel {
 		variablesTextArea.setEditable(false);
 		variablesTextArea.setMaximumSize(getMaximumSize());
 		JScrollPane variablesScrollPane = new JScrollPane(variablesTextArea);
+		
 		add(variablesScrollPane, SlogoDefaultConstraints.getInstance());
 		
 		userCommandsTextArea = new JTextArea(10, 15);
@@ -64,14 +68,15 @@ public class StatsPanel extends JPanel {
 	public void paint(Graphics g) {
 		WorldModel currentWorld = WorldsCollection.getInstance().getCurrentWorld();
 		
-		turtleStatsTextArea.setText("Turtle Stats: \n" + currentWorld.toString());		
+		turtleStatsTextArea.setText("Turtle Stats: \n" + currentWorld.toString());	
+		
+		
 		
 		variablesTextArea.setText("Variables: \n" + getVariablesTextFromMap(currentWorld.getVariables()));
 			
 		userCommandsTextArea.setText("User Commands: \n" + getUserCommandsTextFromMap(currentWorld.getUserCommands()));
 	
 		
-			
 	}
 
 
