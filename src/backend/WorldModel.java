@@ -19,6 +19,8 @@ public class WorldModel {
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
 	
+	
+	
 	public WorldModel(){
 		turtle = new TurtleModel();
 		trails = new ArrayList<ArrayList<Tuple>>();
@@ -140,6 +142,7 @@ public class WorldModel {
 	public Color getPenColor() {
 		return penColor;
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public void setUserCommands(Object o) {

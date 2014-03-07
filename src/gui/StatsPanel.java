@@ -70,8 +70,6 @@ public class StatsPanel extends JPanel {
 		
 		turtleStatsTextArea.setText("Turtle Stats: \n" + currentWorld.toString());	
 		
-		
-		
 		variablesTextArea.setText("Variables: \n" + getVariablesTextFromMap(currentWorld.getVariables()));
 			
 		userCommandsTextArea.setText("User Commands: \n" + getUserCommandsTextFromMap(currentWorld.getUserCommands()));

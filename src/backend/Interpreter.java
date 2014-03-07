@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 import commands.Command;
 import commands.CommandFactory;
 import commands.CommandInvoker;
+import commands.CommandTranslator;
 import commands.UserCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
@@ -26,18 +28,23 @@ public class Interpreter {
 	 */
 	
 	
-
+	
 	private CommandFactory commandFactory;
 	private CommandInvoker commandInvoker;
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
 	private ArrayList<String> listOfWords;
-
-
+	CommandTranslator commandTranslator;
+	
+	
+	
+	
+	
 	public Interpreter() throws IOException, InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 		commandInvoker = new CommandInvoker(this);
 		commandFactory = new CommandFactory();
+		commandTranslator = new CommandTranslator();
 	}
 
 	private Double evaluateCommand(ArrayList<String> wordList) throws Exception {
@@ -48,7 +55,8 @@ public class Interpreter {
 		} else if (isCommand(firstWord)) {
 			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
-			Command newCommand = commandFactory.createCommand(firstWord);
+			
+			Command newCommand = commandFactory.createCommand(commandTranslator.translateCommand(firstWord));
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
 				if (wordList.size() > 0) {
 					parameters.add(evaluateCommand(wordList));
@@ -117,7 +125,9 @@ public class Interpreter {
 	private boolean isCommand(String word) {
 		//check if it is in our language resource bundle
 		try {
-			return !commandFactory.myTranslations.getString(word.toLowerCase()).equals(null);
+			String translatedWord = commandTranslator.translateCommand(word);
+			
+			return true;
 		}
 		catch (MissingResourceException c){
 			return false;
@@ -213,4 +223,9 @@ public class Interpreter {
 		userCommands.put(commandName, command);
 		return 1;
 	}
+	
+	
+	
+	
+	
 }

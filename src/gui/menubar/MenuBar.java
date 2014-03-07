@@ -7,5 +7,6 @@ public class MenuBar extends JMenuBar {
 		add(new FileMenu());
 		add(new TurtleMenu());
 		add(new HelpMenu());
+		add(new LanguageMenu());
 	}
 }
