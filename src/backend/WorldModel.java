@@ -85,7 +85,7 @@ public class WorldModel {
 		updateTrail();
 
 		turtle.setPosition(Tuple.subtract(onScreenPosition, displacement));
-		setPen(true);
+		
 
 		turtle.setPosition(onScreenPosition);
 		updateTrail();

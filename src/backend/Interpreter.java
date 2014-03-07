@@ -58,6 +58,7 @@ public class Interpreter {
 			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
 			Command newCommand = commandFactory.createCommand(firstWord);
+			
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
 				if (wordList.size() > 0) {
 					parameters.add(evaluateCommand(wordList));
