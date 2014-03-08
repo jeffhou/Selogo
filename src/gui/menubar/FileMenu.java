@@ -14,5 +14,7 @@ public class FileMenu extends JMenu {
 		addSeparator();
 		add(new SaveWorkspaceMenuItem());
 		add(new LoadWorkspaceMenuItem());
+		addSeparator();
+		add(new SetBackgroundMenuItem());
 	}
 }

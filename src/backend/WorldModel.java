@@ -40,6 +40,15 @@ public class WorldModel {
 			turtle.setImagePath(imagePath);
 		}
 	}
+	
+	/**
+	 * @param absolutePath
+	 * Sets the Background Image to the image indicated by the path string
+	 */
+	public void setBackgroundImage(String absolutePath) {
+		
+	}
+	
 	/**
 	 * Clears previously drawn trails
 	 */
