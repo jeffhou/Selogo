@@ -14,6 +14,7 @@ import commands.CommandTranslator;
 import commands.UserCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandStringException;
 import exceptions.InvalidSyntaxException;
 import exceptions.InvalidWordException;
 import exceptions.NotEnoughParametersException;
@@ -196,6 +197,7 @@ public class Interpreter {
 			}
 			ret.add(nextWord);
 		}
+
 		ret.remove(ret.size()-1);
 		return ret;
 	}
