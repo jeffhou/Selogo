@@ -15,9 +15,9 @@ public class ForAdvancedCommand extends AdvancedCommand {
 	@Override
 	public double execute(Object o) throws Exception {
 		Interpreter interpreter = (Interpreter) o;
-		ArrayList<String> variableAndLimit = interpreter.readBrackets();
-		String variable = variableAndLimit.get(0).substring(1);
 		try{
+			ArrayList<String> variableAndLimit = interpreter.readBrackets();
+			String variable = variableAndLimit.get(0).substring(1);
 			int start = Integer.parseInt(variableAndLimit.get(1));
 			int end = Integer.parseInt(variableAndLimit.get(2));
 			int increment = Integer.parseInt(variableAndLimit.get(3));

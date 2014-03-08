@@ -26,22 +26,22 @@ public class Interpreter {
 	 * TODO: Make documentation for all public methods and vars (all classes)
 	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
 	 */
-	
-	
-	
+
+
+
 	private CommandFactory commandFactory;
 	private CommandInvoker commandInvoker;
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
 	private ArrayList<String> listOfWords;
 	CommandTranslator commandTranslator;
-	
-	
-	
-	
-	
+
+
+
+
+
 	public Interpreter() throws IOException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException {
+	IllegalAccessException, ClassNotFoundException {
 		commandInvoker = new CommandInvoker(this);
 		commandFactory = new CommandFactory();
 		commandTranslator = new CommandTranslator();
@@ -55,7 +55,7 @@ public class Interpreter {
 		} else if (isCommand(firstWord)) {
 			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
-			
+
 			Command newCommand = commandFactory.createCommand(commandTranslator.translateCommand(firstWord));
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
 				if (wordList.size() > 0) {
@@ -93,7 +93,6 @@ public class Interpreter {
 		/**
 		 * TODO: Correctly implement return value
 		 */
-		
 		UserCommand command;
 		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
@@ -104,21 +103,25 @@ public class Interpreter {
 		}
 		try { // Set parameters to appropriate variables
 			ArrayList<Double> userCommandParameters = new ArrayList<Double>();
-			for(int i = 0; i < command.parameters.length; i++) {
+			for(int i = 0; i < command.parameters.size(); i++) {
 				if (listOfWords.size() > 0) {
-					userCommandParameters.add(evaluateCommand(listOfWords));
+					double temp = evaluateCommand(listOfWords);
+					userCommandParameters.add(temp);
 				}
 				else {
 					throw new NotEnoughParametersException();
 				}
 			}
-			for (int i = 0; i < command.parameters.length; i++) {
-				variables.put(command.parameters[i].substring(1), userCommandParameters.remove(0));
+			for (int i = 0; i < command.parameters.size(); i++) {
+				String temp1 = command.parameters.get(i).substring(1);
+				double temp2 = userCommandParameters.remove(0);
+				System.out.println(temp1 + " \n" + temp2);
+				variables.put(temp1, temp2);
 			}
 		} catch (Exception e) {
 			throw new InvalidSyntaxException();
 		}
-		interpret(command.commands);
+		addCommandToQueue(command.commands);
 		return 1;
 	}
 
@@ -126,7 +129,7 @@ public class Interpreter {
 		//check if it is in our language resource bundle
 		try {
 			String translatedWord = commandTranslator.translateCommand(word);
-			
+
 			return true;
 		}
 		catch (MissingResourceException c){
@@ -150,7 +153,7 @@ public class Interpreter {
 
 	private boolean isVariable(String word) throws SlogoException {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
-		
+
 		if (word.startsWith(":")) {
 			if (!variables.containsKey(word.substring(1))) {
 				throw new VariableNotFoundException();
@@ -179,7 +182,7 @@ public class Interpreter {
 		}
 		int bracketCounter = 1;
 		ArrayList<String> ret = new ArrayList<String>();
-		
+
 		while (bracketCounter != 0) {
 			String nextWord = listOfWords.remove(0);
 			if (nextWord.startsWith("[")) {
@@ -197,18 +200,18 @@ public class Interpreter {
 	public String readNextCommand() {
 		return listOfWords.remove(0);
 	}
-	
+
 	public void addCommandToQueue(ArrayList<String> commands) {
 		listOfWords.addAll(0, commands);
 	}
 
 	public double addVariable(String name) throws Exception {
-	Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
+		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		double value = evaluateCommand(listOfWords);
 		variables.put(name, value);
 		return value;
 	}
-	
+
 	public double addVariable(String name, double value) {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		variables.put(name, value);
@@ -229,9 +232,9 @@ public class Interpreter {
 		userCommands.put(commandName, command);
 		return 1;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }
