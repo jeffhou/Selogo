@@ -12,11 +12,13 @@ public class TurtleModel {
 	private Tuple position; // position
 	private boolean showing; // is turtle showing?
 	private BufferedImage image;
+	private static String id;
 	
-	public TurtleModel() {
+	public TurtleModel(String name) {
 		position = new Tuple();
 		heading = 0;
 		showing = true;
+		id = name;
 	}
 	
 	public double getHeading() {

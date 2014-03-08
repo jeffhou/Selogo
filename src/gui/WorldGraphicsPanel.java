@@ -43,25 +43,27 @@ public class WorldGraphicsPanel extends Component {
 		drawBorder();
 		drawTrails();
 		drawTurtle();
-		
+
 	}
 
 	void drawTurtle() {
-		TurtleModel turtle = WorldsCollection.getInstance().getCurrentWorld().getTurtle();
-		BufferedImage turtleImage = turtle.getImage();
-		if (turtle.isShowing()) {
-			Tuple center = getCenter();
-			double rotationAngle = Math.toRadians(turtle.getHeading());
-			AffineTransform tx = AffineTransform.getRotateInstance(
-					rotationAngle, turtleImage.getWidth(this) / 2,
-					turtleImage.getHeight(this) / 2);
-			AffineTransformOp op = new AffineTransformOp(tx,
-					AffineTransformOp.TYPE_BILINEAR);
-			graphicsEngine.drawImage(op.filter(turtleImage, null),
-					(int) (center.x + turtle.getPosition().x - turtleImage
-							.getWidth(this) / 2),
-							(int) (center.y - turtle.getPosition().y - turtleImage
-									.getHeight(this) / 2), null);
+		ArrayList<TurtleModel> turtlesList = WorldsCollection.getInstance().getCurrentWorld().getAllTurtles();
+		for(TurtleModel turtle : turtlesList) {
+			BufferedImage turtleImage = turtle.getImage();
+			if (turtle.isShowing()) {
+				Tuple center = getCenter();
+				double rotationAngle = Math.toRadians(turtle.getHeading());
+				AffineTransform tx = AffineTransform.getRotateInstance(
+						rotationAngle, turtleImage.getWidth(this) / 2,
+						turtleImage.getHeight(this) / 2);
+				AffineTransformOp op = new AffineTransformOp(tx,
+						AffineTransformOp.TYPE_BILINEAR);
+				graphicsEngine.drawImage(op.filter(turtleImage, null),
+						(int) (center.x + turtle.getPosition().x - turtleImage
+								.getWidth(this) / 2),
+								(int) (center.y - turtle.getPosition().y - turtleImage
+										.getHeight(this) / 2), null);
+			}
 		}
 	}
 
