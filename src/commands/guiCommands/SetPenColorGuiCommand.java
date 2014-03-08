@@ -1,7 +1,5 @@
 package commands.guiCommands;
 
-import java.awt.Color;
-
 import commands.GuiCommand;
 import exceptions.EndOfStackException;
 import exceptions.InvalidSyntaxException;
@@ -17,7 +15,8 @@ public class SetPenColorGuiCommand extends GuiCommand {
 	public double execute(Object o) throws InvalidSyntaxException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, SlogoException, EndOfStackException {
-		// TODO Auto-generated method stub
+		Double color = parameters.get(0);
+		
 		return 0;
 	}
 

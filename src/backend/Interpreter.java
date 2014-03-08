@@ -27,19 +27,12 @@ public class Interpreter {
 	 * TODO: Make documentation for all public methods and vars (all classes)
 	 * TODO: AdvancedCommands such as If and Repeat must return appropriate values
 	 */
-
-
-
 	private CommandFactory commandFactory;
 	private CommandInvoker commandInvoker;
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
 	private ArrayList<String> listOfWords;
 	CommandTranslator commandTranslator;
-
-
-
-
 
 	public Interpreter() throws IOException, InstantiationException,
 	IllegalAccessException, ClassNotFoundException {
@@ -48,6 +41,12 @@ public class Interpreter {
 		commandTranslator = new CommandTranslator();
 	}
 
+	/**
+	 * @param wordList
+	 * @return
+	 * @throws Exception
+	 * Parses the list of words that the user enters in the input text box
+	 */
 	private Double evaluateCommand(ArrayList<String> wordList) throws Exception {
 
 		String firstWord = wordList.remove(0);
@@ -75,6 +74,12 @@ public class Interpreter {
 		}
 	}
 
+	/**
+	 * @param text
+	 * @return
+	 * @throws Exception
+	 * Creates ArrayList of all evaluated commands
+	 */
 	public ArrayList<Double> interpret(String text) throws Exception {
 		text = text.trim();
 		listOutCommands(text);
@@ -89,6 +94,14 @@ public class Interpreter {
 		return evaluatedValues;
 	}
 
+	/**
+	 * @param commandName
+	 * @return
+	 * @throws Exception
+	 * Executes command inputed by the user
+	 * Creates two maps of strings to their respective commands
+	 * and strings to their respective variables
+	 */
 	private double getAndExecuteUserCommand(String commandName) throws Exception {
 		/**
 		 * TODO: Correctly implement return value
@@ -125,6 +138,11 @@ public class Interpreter {
 		return 1;
 	}
 
+	/**
+	 * @param word
+	 * @return
+	 * Checks if the string entered is a valid command
+	 */
 	private boolean isCommand(String word) {
 		//check if it is in our language resource bundle
 		try {
@@ -137,15 +155,29 @@ public class Interpreter {
 		}
 	}
 	
+	/**
+	 * @return
+	 * Returns the current world used by the tab
+	 */
 	public WorldModel getCurrentWorld() {
 		return WorldsCollection.getInstance().getCurrentWorld();
 	}
 
+	/**
+	 * @param word
+	 * @return
+	 * Checks if string is user defined command
+	 */
 	private boolean isUserCommand(String word) {
 		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
 		return userCommands.containsKey(word);
 	}
 
+	/**
+	 * @param word
+	 * @return
+	 * Checks if parameter is a constant value
+	 */
 	private boolean isConstantValue(String word) {
 		try {
 			Double.parseDouble(word);
@@ -155,6 +187,12 @@ public class Interpreter {
 		}
 	}
 
+	/**
+	 * @param word
+	 * @return
+	 * @throws SlogoException
+	 * Checks if entered paramter is a user created variable
+	 */
 	private boolean isVariable(String word) throws SlogoException {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 
@@ -168,6 +206,10 @@ public class Interpreter {
 		return false;
 	}
 
+	/**
+	 * @param commands
+	 * Adds all commands to a list
+	 */
 	public void listOutCommands(String commands) {
 		listOfWords = new ArrayList<String>();
 		String[] words = commands.split("[\\s\\n]+");
@@ -177,6 +219,11 @@ public class Interpreter {
 
 	}
 
+	/**
+	 * @return
+	 * @throws InvalidSyntaxException
+	 * Parses and evaluates the input between brackets
+	 */
 	public ArrayList<String> readBrackets() throws InvalidSyntaxException {
 		/**
 		 * TODO: Fix glitch with close bracket not being separated by a space
@@ -202,14 +249,29 @@ public class Interpreter {
 		return ret;
 	}
 
+	/**
+	 * @return
+	 * Removes the first index in the list of commands
+	 * so the next command is evaluated
+	 */
 	public String readNextCommand() {
 		return listOfWords.remove(0);
 	}
 
+	/**
+	 * @param commands
+	 * Adds commands to execute in a queue
+	 */
 	public void addCommandToQueue(ArrayList<String> commands) {
 		listOfWords.addAll(0, commands);
 	}
 
+	/**
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 * Creates a variable that the user defines in the map
+	 */
 	public double addVariable(String name) throws Exception {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		double value = evaluateCommand(listOfWords);
@@ -217,12 +279,24 @@ public class Interpreter {
 		return value;
 	}
 
+	/**
+	 * @param name
+	 * @param value
+	 * @return
+	 * Creates variable given the name of the variable and the value
+	 */
 	public double addVariable(String name, double value) {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		variables.put(name, value);
 		return value;
 	}
 
+	/**
+	 * @param s
+	 * @return
+	 * Returns the value of the variable if it
+	 * has been previously created by the user
+	 */
 	public double getVariable(String s) {
 		Map<String, Double> variables = WorldsCollection.getInstance().getCurrentWorld().getVariables();
 		if (variables.containsKey(s)) {
@@ -232,6 +306,12 @@ public class Interpreter {
 		}
 	}
 
+	/**
+	 * @param commandName
+	 * @param command
+	 * @return
+	 * Adds new user defined command
+	 */
 	public double addUserCommand(String commandName, UserCommand command) {
 		Map<String, UserCommand> userCommands = WorldsCollection.getInstance().getCurrentWorld().getUserCommands();
 		userCommands.put(commandName, command);

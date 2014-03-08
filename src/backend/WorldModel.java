@@ -21,6 +21,9 @@ public class WorldModel {
 	private ArrayList<TurtleModel> inactiveTurtles = new ArrayList<TurtleModel>();
 
 
+	/**
+	 * Sets initial state of the world
+	 */
 	public WorldModel(){
 		activeTurtles.add(new TurtleModel(0));
 		trails = new ArrayList<ArrayList<Tuple>>();
@@ -28,37 +31,68 @@ public class WorldModel {
 		setPenColor(Color.black);
 		updateTurtleImage("img/turtle.png");
 	}
+	/**
+	 * @param imagePath
+	 * Updates turtle image to the image indicated by the path parameter
+	 */
 	public void updateTurtleImage(String imagePath){
 		for(TurtleModel turtle : activeTurtles) {
 			turtle.setImagePath(imagePath);
 		}
 	}
+	/**
+	 * Clears previously drawn trails
+	 */
 	void clearTrails() {
 		trails.clear();
 		setPen(penDown);
 	}
 	
+	/**
+	 * @return
+	 * Returns turtle id
+	 */
 	public int getTurtleID() {
 		return activeTurtles.get(0).getID();
 	}
 
+	/**
+	 * @return
+	 * Clears trails and returns turtle to original position
+	 */
 	public double clear() {
 		clearTrails();
 		double distanceTraveled = home();
 		return distanceTraveled;
 	}
 
+	/**
+	 * @return
+	 * Returns all variables created by the user
+	 */
 	public Map<String, Double> getVariables() {	
 		return variables;
 	}
 
+	/**
+	 * @return
+	 * Returns all commands created by the user
+	 */
 	public Map<String, UserCommand> getUserCommands() {
 		return userCommands;	
 	}
 
+	/**
+	 * @return
+	 * Gets all of the paths drawn
+	 */
 	public ArrayList<ArrayList<Tuple>> getPaths() {
 		return trails;
 	}
+	/**
+	 * @return
+	 * Returns the pen state (up or down)
+	 */
 	public boolean getPenState() {
 		return penDown;
 	}
@@ -71,10 +105,18 @@ public class WorldModel {
 		myDetails += "Visibility: " + activeTurtles.get(0).isShowing() + '\n';
 		return myDetails;
 	}
+	/**
+	 * @return
+	 * Returns turtle to original position and direction
+	 */
 	public double home() {
 		setHeadingTo(0);
 		return moveTo(new Tuple());
 	}
+	/**
+	 * @param down
+	 * Sets the pen to up or down
+	 */
 	public void setPen(boolean down) {
 		penDown = down;
 		if (penDown) {
@@ -82,6 +124,8 @@ public class WorldModel {
 		}
 	}
 	/**
+	 * @param posChange
+	 * @return
 	 * Relative move in both directions based on turtle.getHeading().
 	 */
 	public double move(Tuple posChange) {
@@ -96,6 +140,8 @@ public class WorldModel {
 	}
 
 	/**
+	 * @param newPos
+	 * @return
 	 * Absolute move to turtle.getPosition().
 	 */
 	public double moveTo(Tuple newPos) {
@@ -121,6 +167,9 @@ public class WorldModel {
 		return distanceTraveled;
 	}
 
+	/**
+	 * Creates a new trail and adds that to ArrayList
+	 */
 	void newTrail() {
 		trails.add(new ArrayList<Tuple>());
 		updateTrail();
@@ -137,6 +186,11 @@ public class WorldModel {
 		}
 		return headingChange;
 	}
+	/**
+	 * @param newHeadingChange
+	 * @return
+	 * Rotates the turtle
+	 */
 	public double turnClockwise(double newHeadingChange) {
 		for(TurtleModel turtle : activeTurtles) {
 			setHeadingTo(turtle.getHeading() + newHeadingChange);
@@ -144,6 +198,9 @@ public class WorldModel {
 		return newHeadingChange;
 	}
 
+	/**
+	 * Updates the trail of the turtle
+	 */
 	void updateTrail() {
 		for(TurtleModel turtle : activeTurtles) {
 			if (penDown) {
@@ -151,27 +208,51 @@ public class WorldModel {
 			}
 		}
 	}
+	/**
+	 * @return
+	 * Returns a list of all active turtles
+	 */
 	public ArrayList<TurtleModel> getActiveTurtles() {
 		return activeTurtles;
 	}
+	/**
+	 * @return
+	 * Returns all turtles
+	 */
 	public ArrayList<TurtleModel> getAllTurtles() {
 		ArrayList<TurtleModel> allTurtles = new ArrayList<TurtleModel>();
 		allTurtles.addAll(inactiveTurtles);
 		allTurtles.addAll(activeTurtles);
 		return allTurtles;
 	}
+	/**
+	 * @param newColor
+	 * Sets the pen color to the color indicated by the parameter
+	 */
 	public void setPenColor(Color newColor) {
 		penColor = newColor;
 	}
+	/**
+	 * @return
+	 * Returns the current pen color
+	 */
 	public Color getPenColor() {
 		return penColor;
 	}
 
 
+	/**
+	 * @param o
+	 * Sets the UserCommands
+	 */
 	@SuppressWarnings("unchecked")
 	public void setUserCommands(Object o) {
 		userCommands = (Map<String, UserCommand>) o; 
 	}
+	/**
+	 * @param o
+	 * Sets the Variables
+	 */
 	@SuppressWarnings("unchecked")
 	public void setVariables(Object o) {
 		variables = (Map<String, Double>) o; 
