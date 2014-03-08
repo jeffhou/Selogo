@@ -9,8 +9,11 @@ public class UserCommand {
 	
 	public UserCommand() {}
 	
-	
-	
+	/**
+	 * @param parameterString
+	 * @param commandString
+	 * Creates user defined commands
+	 */
 	public UserCommand(ArrayList<String> parameterString, ArrayList<String> commandString) {
 		commands = commandString;
 		parameters = parameterString;

@@ -70,5 +70,4 @@ public class WorldsCollection {
 	public void updateLanguage(String userSelectedLanguage) {
 		language = userSelectedLanguage;
 	}
-
 }
