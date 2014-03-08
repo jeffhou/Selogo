@@ -55,7 +55,6 @@ public class Interpreter {
 		} else if (isCommand(firstWord)) {
 			firstWord = firstWord.toLowerCase();
 			ArrayList<Double> parameters = new ArrayList<Double>();
-
 			Command newCommand = commandFactory.createCommand(commandTranslator.translateCommand(firstWord));
 			for (int i = 0; i < newCommand.NUM_OF_PARAMETERS; i++) {
 				if (wordList.size() > 0) {
@@ -135,6 +134,10 @@ public class Interpreter {
 		catch (MissingResourceException c){
 			return false;
 		}
+	}
+	
+	public WorldModel getCurrentWorld() {
+		return WorldsCollection.getInstance().getCurrentWorld();
 	}
 
 	private boolean isUserCommand(String word) {

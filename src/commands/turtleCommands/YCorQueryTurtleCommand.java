@@ -13,7 +13,7 @@ public class YCorQueryTurtleCommand extends TurtleCommand {
 	@Override
 	public double execute(Object o) {
 		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.getTurtle().getPosition().y;
+		return t.getActiveTurtles().get(0).getPosition().y;
 	}
 
 }

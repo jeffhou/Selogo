@@ -13,7 +13,7 @@ public class ShowingQueryTurtleCommand extends TurtleCommand {
 	@Override
 	public double execute(Object o) {
 		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.getTurtle().isShowing() ? 1 : 0;
+		return t.getActiveTurtles().get(0).isShowing() ? 1 : 0;
 	}
 
 }

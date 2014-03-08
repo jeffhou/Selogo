@@ -17,13 +17,12 @@ public class WorldModel {
 	private Color penColor;
 	private Map<String, Double> variables = new HashMap<String, Double>();
 	private Map<String, UserCommand> userCommands = new HashMap<String, UserCommand>();
-	private ArrayList<TurtleModel> activeTurtles;
-	private ArrayList<TurtleModel> inactiveTurtles;
+	private ArrayList<TurtleModel> activeTurtles = new ArrayList<TurtleModel>();
+	private ArrayList<TurtleModel> inactiveTurtles = new ArrayList<TurtleModel>();
 
 
 	public WorldModel(){
-		System.out.println("creating new world");
-		activeTurtles.add(new TurtleModel("default"));
+		activeTurtles.add(new TurtleModel(0));
 		trails = new ArrayList<ArrayList<Tuple>>();
 		setPen(true);
 		setPenColor(Color.black);
@@ -37,6 +36,10 @@ public class WorldModel {
 	void clearTrails() {
 		trails.clear();
 		setPen(penDown);
+	}
+	
+	public int getTurtleID() {
+		return activeTurtles.get(0).getID();
 	}
 
 	public double clear() {

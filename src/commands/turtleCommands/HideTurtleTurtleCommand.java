@@ -1,7 +1,9 @@
 package commands.turtleCommands;
 
-import backend.WorldModel; import backend.WorldsCollection;
+import java.util.ArrayList;
 
+import backend.TurtleModel;
+import backend.WorldModel; import backend.WorldsCollection;
 import commands.TurtleCommand;
 
 public class HideTurtleTurtleCommand extends TurtleCommand {
@@ -13,8 +15,10 @@ public class HideTurtleTurtleCommand extends TurtleCommand {
 	@Override
 	public double execute(Object o) {
 		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		t.getTurtle().setShowing(false);
+		ArrayList<TurtleModel> turtleList = t.getActiveTurtles();
+		for(TurtleModel turtle : turtleList) {
+			turtle.setShowing(false);
+		}
 		return 0;
 	}
-
 }

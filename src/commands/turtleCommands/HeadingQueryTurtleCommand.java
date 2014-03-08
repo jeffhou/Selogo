@@ -13,7 +13,7 @@ public class HeadingQueryTurtleCommand extends TurtleCommand {
 	@Override
 	public double execute(Object o) {
 		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.getTurtle().getHeading();
+		return t.getActiveTurtles().get(0).getHeading();
 	}
 
 }

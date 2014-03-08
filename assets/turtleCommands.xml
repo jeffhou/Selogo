@@ -30,5 +30,6 @@
 	<command code="pendownp" commandClass="commands.turtleCommands.PenDownQueryTurtleCommand"/>
 	<command code="showing?" commandClass="commands.turtleCommands.ShowingQueryTurtleCommand"/>
 	<command code="showingp" commandClass="commands.turtleCommands.ShowingQueryTurtleCommand"/>
+	<command code="tell" commandClass="commands.turtleCommands.TellTurtleCommand"/>
 	
 </model>

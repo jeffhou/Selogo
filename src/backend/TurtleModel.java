@@ -12,9 +12,9 @@ public class TurtleModel {
 	private Tuple position; // position
 	private boolean showing; // is turtle showing?
 	private BufferedImage image;
-	private static String id;
+	private static int id;
 	
-	public TurtleModel(String name) {
+	public TurtleModel(int name) {
 		position = new Tuple();
 		heading = 0;
 		showing = true;
@@ -51,6 +51,10 @@ public class TurtleModel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public int getID() {
+		return id;
 	}
 
 	public BufferedImage getImage() {
