@@ -15,19 +15,25 @@ import commands.UserCommand;
 import backend.Interpreter;
 import backend.WorldModel; import backend.WorldsCollection;
 
+/**
+ * @author Cody Lieu
+ * This menu constantly updates with information about the turtle
+ * and shows all user defined variables and commands
+ */
 public class StatsPanel extends JPanel {
 	
 	private JTextArea turtleStatsTextArea;
 	private JTextArea variablesTextArea;
 	private JTextArea userCommandsTextArea;
 	
+	/**
+	 * Creates the text area that holds all of the turtle statistics
+	 */
 	StatsPanel() {
 		super(new GridBagLayout());
 		//this.setBorder(new LineBorder(Color.blue));
 		turtleStatsTextArea = new JTextArea(10, 15);
 		turtleStatsTextArea.setEditable(false);
-		
-	
 
 		JScrollPane turtleStatsScrollPane = new JScrollPane(turtleStatsTextArea);
 		add(turtleStatsScrollPane, SlogoDefaultConstraints.getInstance());
@@ -47,6 +53,11 @@ public class StatsPanel extends JPanel {
 	
 	}
 	
+	/**
+	 * @param variables
+	 * @return
+	 * Creates the strings that are printed to display user defined variables
+	 */
 	private String getVariablesTextFromMap(Map<String, Double> variables) {
 		String variablesText = "";
 		for (String i : variables.keySet()){
@@ -56,6 +67,11 @@ public class StatsPanel extends JPanel {
 	}
 
 
+	/**
+	 * @param userCommands
+	 * @return
+	 * Creates the strings that are printed to display the user defined commands
+	 */
 	private String getUserCommandsTextFromMap(Map<String, UserCommand> userCommands) {
 		String userCommandsText = "";
 		for (String i : userCommands.keySet()){

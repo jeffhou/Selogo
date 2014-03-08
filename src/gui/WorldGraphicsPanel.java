@@ -20,6 +20,10 @@ import util.Tuple;
 import backend.TurtleModel;
 import backend.WorldsCollection;
 
+/**
+ * @author Cody Lieu
+ * Handles the GUI aspects related to the animation of the turtle
+ */
 public class WorldGraphicsPanel extends Component {
 
 	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
@@ -46,6 +50,10 @@ public class WorldGraphicsPanel extends Component {
 
 	}
 
+	/**
+	 * Draws the turtle on the SlogoFrame
+	 * Keeps a list of turtles to have multiple turtles on the same tab
+	 */
 	void drawTurtle() {
 		ArrayList<TurtleModel> turtlesList = WorldsCollection.getInstance().getCurrentWorld().getAllTurtles();
 		for(TurtleModel turtle : turtlesList) {
@@ -71,11 +79,21 @@ public class WorldGraphicsPanel extends Component {
 		return SCREEN_DIMENSION;
 	}
 
+	/**
+	 * Draws the square border to separate the SlogoFrame
+	 * from the other menus
+	 */
 	void drawBorder() {
 		graphicsEngine.draw3DRect(0, 0, SCREEN_DIMENSION.width - 1,
 				SCREEN_DIMENSION.height - 1, true);
 	}
 
+	/**
+	 * Draws the trails of the Turtle when the turtle's
+	 * pen is set to down. graphicsEngine changes the color
+	 * when user selects color either using the ColorChooser
+	 * menu or the SetPenColor command
+	 */
 	void drawTrails() {
 		graphicsEngine.setColor(WorldsCollection.getInstance().getCurrentWorld().getPenColor());
 		Tuple center = getCenter();
@@ -89,6 +107,9 @@ public class WorldGraphicsPanel extends Component {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	Tuple getCenter() {
 		double centerX = SCREEN_DIMENSION.width / 2;
 		double centerY = SCREEN_DIMENSION.height / 2;

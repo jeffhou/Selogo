@@ -15,14 +15,16 @@ import backend.WorldsCollection;
 
 public class LanguageMenuItem extends JMenuItem {
 	String selectedLanguage;
+	/**
+	 * @param language
+	 * Changes the language for input commands based
+	 * off the parameter passed in
+	 */
 	LanguageMenuItem(String language){
 		super(language);
 		selectedLanguage = language;
 		addMouseListener(new ChangeLanguageMouseListener());
 	}
-	
-	
-	
 	
 	class ChangeLanguageMouseListener extends MouseAdapter{
 		public void mousePressed(MouseEvent e) {

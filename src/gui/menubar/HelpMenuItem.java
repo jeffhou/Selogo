@@ -10,6 +10,10 @@ import javax.swing.JMenuItem;
 
 
 public class HelpMenuItem extends JMenuItem {
+	/**
+	 * Adds a MouseListener that loads the documentation
+	 * html file in the user's default browser
+	 */
 	HelpMenuItem(){
 		super("Documentation");
 		addMouseListener(new LaunchDocumentationMouseListener());

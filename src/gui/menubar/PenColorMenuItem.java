@@ -8,6 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 
 public class PenColorMenuItem extends JMenuItem{
+	/**
+	 * Launches the ColorChooser menu for the user
+	 * to select which color they want the turtle to draw with
+	 */
 	PenColorMenuItem(){
 		super("Set Pen Color");
 		addMouseListener(new LaunchPenColorSelectorMouseListener());

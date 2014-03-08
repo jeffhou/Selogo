@@ -9,6 +9,9 @@ import java.io.IOException;
 import javax.swing.JMenuItem;
 
 public class CloseCurrentTabMenuItem extends JMenuItem {
+	/**
+	 * Adds a MouseListener that closes the current tab when pressed
+	 */
 	CloseCurrentTabMenuItem(){
 		super("Close Current Tab");
 		addMouseListener(new CloseCurrentTabMouseListener());

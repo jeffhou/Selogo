@@ -9,6 +9,10 @@ import backend.WorldsCollection;
 
 
 public class SaveWorkspaceMenuItem extends JMenuItem {
+	/**
+	 * Saves all current user defined variables and commands
+	 * which can be loaded later
+	 */
 	SaveWorkspaceMenuItem(){
 		super("Save Workspace");
 		addMouseListener(new LaunchNewTabMouseListener());

@@ -14,6 +14,10 @@ import backend.WorldsCollection;
 
 
 public class LoadWorkspaceMenuItem extends JMenuItem {
+	/**
+	 * Loads a workspace saved by the user that
+	 * contains user defined variables and commands
+	 */
 	LoadWorkspaceMenuItem(){
 		super("Load Workspace");
 		addMouseListener(new LaunchNewTabMouseListener());

@@ -237,9 +237,4 @@ public class Interpreter {
 		userCommands.put(commandName, command);
 		return 1;
 	}
-
-
-
-
-
 }

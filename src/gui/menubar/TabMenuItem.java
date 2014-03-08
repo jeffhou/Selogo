@@ -19,6 +19,9 @@ import javax.swing.JTabbedPane;
 
 
 public class TabMenuItem extends JMenuItem {
+	/**
+	 * Creates a new tab with its own world when pressed
+	 */
 	TabMenuItem(){
 		super("New Tab");
 		addMouseListener(new LaunchNewTabMouseListener());

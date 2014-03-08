@@ -16,6 +16,10 @@ import backend.WorldsCollection;
 import main.Runner;
 
 public class ImageMenuItem extends JMenuItem{
+	/**
+	 * Creates a JFileChooser that lets the user choose
+	 * which image file to use for the turtle
+	 */
 	ImageMenuItem(){
 		super("Set Turtle Image");
 		addMouseListener(new LaunchImageSelectorMouseListener());
