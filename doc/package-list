@@ -1,0 +1,14 @@
+backend
+commands
+commands.advancedCommands
+commands.booleanCommands
+commands.guiCommands
+commands.mathCommands
+commands.turtleCommands
+exceptions
+gui
+gui.menubar
+main
+parser
+slogo_tests
+util
