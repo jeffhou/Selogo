@@ -113,8 +113,4 @@ turtle.obey{
 
 
 We discussed various alternatives in coming up with this design. For example, we had initially discussed a method of moving the turtle forward that did not utilize the abstract turtle data structure for the class. Instead, we had initially thought it would be best to write a class for every command. However,  shown above, we ended up implementing a different method for Turtle Commands. Our initial idea was to have a ForwardCommand be created and then be added to a queue, and then the Engine would handle running that ForwardCommand to manipulte the TurtlePhysicalObject. Instead, we decided to implement a Turtle Data Structure that would be responsible for running a TurtleCommand. This TurtleCommand is based upon offsets. 
-We also altered the way that Advanced Commands are run, and instead of writing a class for each type of AdvancedCommand, we decided to utilize a method that would digest diverse advanced commands into queues of simple commands. We decided that this would allow us to have more elegant of a hierarchy, and also allow for much more flexibility in terms of being able to add new Turtle Commands and Advanced Commands easily. 
-
-Roles:_
-
-Zanele is responsible for developing the parser and working on the data structures. Dan is responsible for working on the data structures and the advanced commands (in the model). Jeff is responsible for working on the view (including the simple commands in the view) and testing. Cody is responsible for the UI and other aspects of the view.
+We also altered the way that Advanced Commands are run, and instead of writing a class for each type of AdvancedCommand, we decided to utilize a method that would digest diverse advanced commands into queues of simple commands. We decided that this would allow us to have more elegant of a hierarchy, and also allow for much more flexibility in terms of being able to add new Turtle Commands and Advanced Commands easily.
