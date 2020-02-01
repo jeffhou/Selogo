@@ -6,14 +6,14 @@ import commands.TurtleCommand;
 
 public class ShowingQueryTurtleCommand extends TurtleCommand {
 
-	public ShowingQueryTurtleCommand() {
-		super(0);
-	}
+  public ShowingQueryTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.getActiveTurtles().get(0).isShowing() ? 1 : 0;
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    return t.getActiveTurtles().get(0).isVisible ? 1 : 0;
+  }
 
 }

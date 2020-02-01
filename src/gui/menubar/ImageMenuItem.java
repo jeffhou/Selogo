@@ -16,32 +16,32 @@ import backend.WorldsCollection;
 import main.Runner;
 
 public class ImageMenuItem extends JMenuItem{
-	/**
-	 * Creates a JFileChooser that lets the user choose
-	 * which image file to use for the turtle
-	 */
-	ImageMenuItem(){
-		super("Set Turtle Image");
-		addMouseListener(new LaunchImageSelectorMouseListener());
-	}
-	class LaunchImageSelectorMouseListener extends MouseAdapter{
-		public void mousePressed(MouseEvent e) {
-			final JFileChooser chooser = new JFileChooser("img");
-			FileNameExtensionFilter filter = new FileNameExtensionFilter(
-					"JPG, GIF, and PNG images", "jpg", "gif", "png");
-			chooser.setFileFilter(filter);
-			int returnVal = chooser.showOpenDialog(null);
+  /**
+   * Creates a JFileChooser that lets the user choose
+   * which image file to use for the turtle
+   */
+  ImageMenuItem(){
+    super("Set Turtle Image");
+    addMouseListener(new LaunchImageSelectorMouseListener());
+  }
+  class LaunchImageSelectorMouseListener extends MouseAdapter{
+    public void mousePressed(MouseEvent e) {
+      final JFileChooser chooser = new JFileChooser("img");
+      FileNameExtensionFilter filter = new FileNameExtensionFilter(
+          "JPG, GIF, and PNG images", "jpg", "gif", "png");
+      chooser.setFileFilter(filter);
+      int returnVal = chooser.showOpenDialog(null);
 
-			if(returnVal == JFileChooser.APPROVE_OPTION) {
-				File chosenFile = chooser.getSelectedFile();
-				String absolutePath = chosenFile.getAbsolutePath();
-					try {
-						WorldsCollection.getInstance().getCurrentWorld().updateTurtleImage(absolutePath);
-						SlogoFrame.getInstance().repaint();
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-			}
-		}
-	}
+      if(returnVal == JFileChooser.APPROVE_OPTION) {
+        File chosenFile = chooser.getSelectedFile();
+        String absolutePath = chosenFile.getAbsolutePath();
+          try {
+            WorldsCollection.getCurrentWorld().updateTurtleImage(absolutePath);
+            SlogoFrame.getInstance().repaint();
+          } catch (Exception e1) {
+            e1.printStackTrace();
+          }
+      }
+    }
+  }
 }

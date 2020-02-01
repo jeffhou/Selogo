@@ -12,19 +12,19 @@ import exceptions.SlogoException;
 
 public class RepeatAdvancedCommand extends AdvancedCommand {
 
-	public RepeatAdvancedCommand() {
-		super(1);
-	}
+  public RepeatAdvancedCommand() {
+    super(1);
+  }
 
-	@Override
-	public double execute(Object o) throws Exception {
-		int multiple = parameters.get(0).intValue();
-		Interpreter interpreter = (Interpreter) o;
-		ArrayList<String> bracketContents = interpreter.readBrackets();
-	
-		for(int i = 0; i < multiple; i++) {
-			interpreter.addCommandToQueue(bracketContents);
-		}
-		return 0;
-	}
+  @Override
+  public double execute(Object o) throws Exception {
+    int multiple = parameters.get(0).intValue();
+    Interpreter interpreter = (Interpreter) o;
+    ArrayList<String> bracketContents = interpreter.readBrackets();
+
+    for(int i = 0; i < multiple; i++) {
+      interpreter.addCommandToQueue(bracketContents);
+    }
+    return 0;
+  }
 }

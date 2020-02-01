@@ -16,32 +16,32 @@ import backend.WorldsCollection;
 import main.Runner;
 
 public class SetBackgroundMenuItem extends JMenuItem{
-	/**
-	 * Creates a JFileChooser that lets the user choose
-	 * which image file to use for the turtle
-	 */
-	SetBackgroundMenuItem(){
-		super("Set Background");
-		addMouseListener(new SetBackgroundMouseListener());
-	}
-	class SetBackgroundMouseListener extends MouseAdapter{
-		public void mousePressed(MouseEvent e) {
-			final JFileChooser chooser = new JFileChooser("Background Images");
-			FileNameExtensionFilter filter = new FileNameExtensionFilter(
-					"JPG, GIF, and PNG images", "jpg", "gif", "png");
-			chooser.setFileFilter(filter);
-			int returnVal = chooser.showOpenDialog(null);
+  /**
+   * Creates a JFileChooser that lets the user choose
+   * which image file to use for the turtle
+   */
+  SetBackgroundMenuItem(){
+    super("Set Background");
+    addMouseListener(new SetBackgroundMouseListener());
+  }
+  class SetBackgroundMouseListener extends MouseAdapter{
+    public void mousePressed(MouseEvent e) {
+      final JFileChooser chooser = new JFileChooser("Background Images");
+      FileNameExtensionFilter filter = new FileNameExtensionFilter(
+          "JPG, GIF, and PNG images", "jpg", "gif", "png");
+      chooser.setFileFilter(filter);
+      int returnVal = chooser.showOpenDialog(null);
 
-			if(returnVal == JFileChooser.APPROVE_OPTION) {
-				File chosenFile = chooser.getSelectedFile();
-				String absolutePath = chosenFile.getAbsolutePath();
-				try {
-					WorldsCollection.getInstance().getCurrentWorld().setBackgroundImage(absolutePath);
-					SlogoFrame.getInstance().repaint();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-	}
+      if(returnVal == JFileChooser.APPROVE_OPTION) {
+        File chosenFile = chooser.getSelectedFile();
+        String absolutePath = chosenFile.getAbsolutePath();
+        try {
+          WorldsCollection.getCurrentWorld().setBackgroundImage(absolutePath);
+          SlogoFrame.getInstance().repaint();
+        } catch (Exception e1) {
+          e1.printStackTrace();
+        }
+      }
+    }
+  }
 }

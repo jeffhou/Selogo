@@ -8,92 +8,84 @@ import javax.imageio.ImageIO;
 import util.Tuple;
 
 public class TurtleModel {
-	private double heading; // angle, 0 is north, rotates clockwise
-	private Tuple position; // position
-	private boolean showing; // is turtle showing?
-	private BufferedImage image;
-	private static int id;
-	
-	public TurtleModel(int name) {
-		position = new Tuple();
-		heading = 0;
-		showing = true;
-		id = name;
-	}
-	
-	/**
-	 * @return
-	 * Returns heading of the turtle
-	 */
-	public double getHeading() {
-		return heading;
-	}
+  private double heading; // angle, 0 is north, rotates clockwise
+  private Tuple position; // position
+  public boolean isVisible;
+  private BufferedImage image;
+  private static int id;
 
-	/**
-	 * @param heading
-	 * Sets heading of the turtle
-	 */
-	public void setHeading(double heading) {
-		this.heading = heading;
-	}
+  public TurtleModel(int name) {
+    position = new Tuple();
+    heading = 0;
+    isVisible = true;
+    id = name;
+  }
 
-	/**
-	 * @return
-	 * Gets position of the turtle
-	 */
-	public Tuple getPosition() {
-		return position;
-	}
+  /**
+   * @return
+   * Returns heading of the turtle
+   */
+  public double getRotationOffset() {
+    return heading;
+  }
 
-	/**
-	 * @param position
-	 * Sets position of the turtle
-	 */
-	public void setPosition(Tuple position) {
-		this.position = position;
-	}
+  /**
+   * @param heading
+   * Sets heading of the turtle
+   */
+  public void setHeading(double heading) {
+    this.heading = heading;
+  }
 
-	/**
-	 * @return
-	 * Returns true if the turtle is showing
-	 */
-	public boolean isShowing() {
-		return showing;
-	}
+  /**
+   * @return
+   * Gets position of the turtle
+   */
+  public Tuple getPosition() {
+    return position;
+  }
 
-	/**
-	 * @param showing
-	 * Sets whether or not the turtle is showing
-	 */
-	public void setShowing(boolean showing) {
-		this.showing = showing;
-	}
+  /**
+   * @param position
+   * Sets position of the turtle
+   */
+  public void setPosition(Tuple position) {
+    this.position = position;
+  }
 
-	/**
-	 * @param imagePath
-	 * Sets the image used for the turtle
-	 */
-	public void setImagePath(String imagePath) {
-		try {
-			image = ImageIO.read(new File(imagePath));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * @return
-	 * Returns unique id of each turtle
-	 */
-	public int getID() {
-		return id;
-	}
+  public void hide() {
+    this.isVisible = false;
+  }
 
-	/**
-	 * @return
-	 * Gets the image currently used by the turtle
-	 */
-	public BufferedImage getImage() {
-		return image;
-	}
+  public void show() {
+    this.isVisible = true;
+  }
+
+  /**
+   * @param imagePath
+   * Sets the image used for the turtle
+   */
+  public void setImagePath(String imagePath) {
+    try {
+      image = ImageIO.read(new File(imagePath));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * @return
+   * Returns unique id of each turtle
+   */
+  public int getID() {
+    return id;
+  }
+
+  /**
+   * @return
+   * Gets the image currently used by the turtle
+   */
+  public BufferedImage getImage() {
+    return image;
+  }
 }

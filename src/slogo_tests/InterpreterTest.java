@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package slogo_tests;
 
@@ -24,54 +24,54 @@ import exceptions.VariableNotFoundException;
 
 /**
  * @author jeffhou
- * 
+ *
  */
 public class InterpreterTest {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+  /**
+   * @throws java.lang.Exception
+   */
+  @BeforeClass
+  public static void setUpBeforeClass() throws Exception {
 
-	}
+  }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+  /**
+   * @throws java.lang.Exception
+   */
+  @AfterClass
+  public static void tearDownAfterClass() throws Exception {
+  }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	Interpreter interpreter;
+  /**
+   * @throws java.lang.Exception
+   */
+  Interpreter interpreter;
 
-	@Before
-	public void setUp() throws Exception {
-		interpreter = new Interpreter();
-	}
+  @Before
+  public void setUp() throws Exception {
+    interpreter = new Interpreter();
+  }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
+  /**
+   * @throws java.lang.Exception
+   */
+  @After
+  public void tearDown() throws Exception {
+  }
 
-	/**
-	 * Test method for forward.logo
-	 * @throws Exception 
-	 */
-	@Test
-	public void testForward() throws Exception {
-		assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
-	}
+  /**
+   * Test method for forward.logo
+   * @throws Exception
+   */
+  @Test
+  public void testForward() throws Exception {
+    assertEquals(interpreter.interpret("fd 50").get(0), 50.0, 0.1);
+  }
 
-	@Test
-	public void testForwardForward() throws Exception {
-		assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
-	}
+  @Test
+  public void testForwardForward() throws Exception {
+    assertEquals(interpreter.interpret("fd fd 50").get(0), 50.0, 0.1);
+  }
 
 }

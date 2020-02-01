@@ -14,33 +14,33 @@ import backend.WorldsCollection;
 
 
 public class LoadWorkspaceMenuItem extends JMenuItem {
-	/**
-	 * Loads a workspace saved by the user that
-	 * contains user defined variables and commands
-	 */
-	LoadWorkspaceMenuItem(){
-		super("Load Workspace");
-		addMouseListener(new LaunchNewTabMouseListener());
-	}
-	class LaunchNewTabMouseListener extends MouseAdapter{
-		public void mousePressed(MouseEvent e) {
-			final JFileChooser chooser = new JFileChooser("serializedFiles");
-			FileNameExtensionFilter filter = new FileNameExtensionFilter(
-					"Serialization Files", "ser");
-			chooser.setFileFilter(filter);
-			int returnVal = chooser.showOpenDialog(null);
+  /**
+   * Loads a workspace saved by the user that
+   * contains user defined variables and commands
+   */
+  LoadWorkspaceMenuItem(){
+    super("Load Workspace");
+    addMouseListener(new LaunchNewTabMouseListener());
+  }
+  class LaunchNewTabMouseListener extends MouseAdapter{
+    public void mousePressed(MouseEvent e) {
+      final JFileChooser chooser = new JFileChooser("serializedFiles");
+      FileNameExtensionFilter filter = new FileNameExtensionFilter(
+          "Serialization Files", "ser");
+      chooser.setFileFilter(filter);
+      int returnVal = chooser.showOpenDialog(null);
 
-			if(returnVal == JFileChooser.APPROVE_OPTION) {
-				File chosenFile = chooser.getSelectedFile();
-				String absolutePath = chosenFile.getAbsolutePath();
-				try {
-					WorldsCollection.getInstance().getCurrentWorld().setUserCommands(Serializer.deserialize(absolutePath));
-					WorldsCollection.getInstance().getCurrentWorld().setVariables(Serializer.deserialize(absolutePath + "v"));
-					SlogoFrame.getInstance().repaint();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-	}
+      if(returnVal == JFileChooser.APPROVE_OPTION) {
+        File chosenFile = chooser.getSelectedFile();
+        String absolutePath = chosenFile.getAbsolutePath();
+        try {
+          WorldsCollection.getCurrentWorld().setUserCommands(Serializer.deserialize(absolutePath));
+          WorldsCollection.getCurrentWorld().setVariables(Serializer.deserialize(absolutePath + "v"));
+          SlogoFrame.getInstance().repaint();
+        } catch (Exception e1) {
+          e1.printStackTrace();
+        }
+      }
+    }
+  }
 }

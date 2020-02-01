@@ -6,14 +6,14 @@ import commands.TurtleCommand;
 
 public class ClearScreenTurtleCommand extends TurtleCommand {
 
-	public ClearScreenTurtleCommand() {
-		super(0);
-	}
+  public ClearScreenTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.clear();
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    return t.clear();
+  }
 
 }

@@ -1,13 +1,13 @@
 <model>
-	<command code="repeat" commandClass="commands.advancedCommands.RepeatAdvancedCommand" />
-	<command code="make"
-		commandClass="commands.advancedCommands.AddVariableAdvancedCommand" />
-	<command code="set"
-		commandClass="commands.advancedCommands.AddVariableAdvancedCommand" />
-	<command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand" />
-	<command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand" />
-	<command code="dotimes"
-		commandClass="commands.advancedCommands.DoTimesAdvancedCommand" />
-	<command code="for" commandClass="commands.advancedCommands.ForAdvancedCommand" />
-	<command code="to" commandClass="commands.advancedCommands.ToAdvancedCommand" />
+  <command code="repeat" commandClass="commands.advancedCommands.RepeatAdvancedCommand" />
+  <command code="make"
+    commandClass="commands.advancedCommands.AddVariableAdvancedCommand" />
+  <command code="set"
+    commandClass="commands.advancedCommands.AddVariableAdvancedCommand" />
+  <command code="if" commandClass="commands.advancedCommands.IfAdvancedCommand" />
+  <command code="ifelse" commandClass="commands.advancedCommands.IfElseAdvancedCommand" />
+  <command code="dotimes"
+    commandClass="commands.advancedCommands.DoTimesAdvancedCommand" />
+  <command code="for" commandClass="commands.advancedCommands.ForAdvancedCommand" />
+  <command code="to" commandClass="commands.advancedCommands.ToAdvancedCommand" />
 </model>

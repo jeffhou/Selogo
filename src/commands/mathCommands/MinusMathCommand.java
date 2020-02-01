@@ -4,14 +4,14 @@ import commands.MathCommand;
 
 public class MinusMathCommand extends MathCommand {
 
-	public MinusMathCommand() {
-		super(1);
-	}
+  public MinusMathCommand() {
+    super(1);
+  }
 
-	@Override
-	public double execute(Object o) {
+  @Override
+  public double execute(Object o) {
 
-		return -parameters.get(0);
-	}
+    return -parameters.get(0);
+  }
 
 }

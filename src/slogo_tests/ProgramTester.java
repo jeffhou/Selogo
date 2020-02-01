@@ -33,46 +33,46 @@ import backend.Interpreter;
 
 public class ProgramTester {
 
-	ArrayList<String> testFiles;
-	Interpreter interpreter;
+  ArrayList<String> testFiles;
+  Interpreter interpreter;
 
-	@Before
-	public void setUp() throws Exception {
+  @Before
+  public void setUp() throws Exception {
 
-		interpreter = new Interpreter();
-		testFiles = new ArrayList<String>();
+    interpreter = new Interpreter();
+    testFiles = new ArrayList<String>();
 
-		//testFiles.add("examples/loops/circle.logo");
-		testFiles.add("examples/sums.txt");
-	}
-	
-	@org.junit.Test
-	public void testFiles() throws Exception {
-		XMLReaderTest testFileReader = new XMLReaderTest();
-		String resultsXML = "examples/testXML.xml";
-		
-		for (String file: testFiles) {
-			
-			Double corrPosition = Double.parseDouble(testFileReader.getCorrPosition(resultsXML, file));
-			Double consoleReading = Double.parseDouble(testFileReader.getConsoleReading(resultsXML, file));
-			assertEquals(interpreter.interpret(readFile(testFiles.get(0))).get(0), consoleReading, 0.1);
+    //testFiles.add("examples/loops/circle.logo");
+    testFiles.add("examples/sums.txt");
+  }
 
-		}
-	}
+  @org.junit.Test
+  public void testFiles() throws Exception {
+    XMLReaderTest testFileReader = new XMLReaderTest();
+    String resultsXML = "examples/testXML.xml";
 
-	private String readFile( String file ) throws IOException {
-		BufferedReader reader = new BufferedReader( new FileReader (file));
-		String         line = null;
-		StringBuilder  stringBuilder = new StringBuilder();
-		String         ls = System.getProperty("line.separator");
+    for (String file: testFiles) {
 
-		while( ( line = reader.readLine() ) != null ) {
-			stringBuilder.append( line );
-			stringBuilder.append( ls );
-		}
+      Double corrPosition = Double.parseDouble(testFileReader.getCorrPosition(resultsXML, file));
+      Double consoleReading = Double.parseDouble(testFileReader.getConsoleReading(resultsXML, file));
+      assertEquals(interpreter.interpret(readFile(testFiles.get(0))).get(0), consoleReading, 0.1);
 
-		return stringBuilder.toString();
-	}
+    }
+  }
+
+  private String readFile( String file ) throws IOException {
+    BufferedReader reader = new BufferedReader( new FileReader (file));
+    String         line = null;
+    StringBuilder  stringBuilder = new StringBuilder();
+    String         ls = System.getProperty("line.separator");
+
+    while( ( line = reader.readLine() ) != null ) {
+      stringBuilder.append( line );
+      stringBuilder.append( ls );
+    }
+
+    return stringBuilder.toString();
+  }
 
 
 }

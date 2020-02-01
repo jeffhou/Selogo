@@ -6,14 +6,14 @@ import commands.TurtleCommand;
 
 public class GotoTurtleCommand extends TurtleCommand {
 
-	public GotoTurtleCommand() {
-		super(2);
-	}
+  public GotoTurtleCommand() {
+    super(2);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.moveTo(new Tuple(parameters.get(0), parameters.get(1)));
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    return t.moveTo(new Tuple(parameters.get(0), parameters.get(1)));
+  }
 
 }

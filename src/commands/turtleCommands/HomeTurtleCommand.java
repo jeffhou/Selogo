@@ -6,14 +6,14 @@ import commands.TurtleCommand;
 
 public class HomeTurtleCommand extends TurtleCommand {
 
-	public HomeTurtleCommand() {
-		super(0);
-	}
+  public HomeTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.home();
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    return t.home();
+  }
 
 }

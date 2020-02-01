@@ -1,24 +1,24 @@
 <model>
     <command code="sum" commandClass="commands.mathCommands.SumMathCommand"/>
-	<command code="+" commandClass="commands.mathCommands.SumMathCommand"/>
-	<command code="difference" commandClass="commands.mathCommands.DifferenceMathCommand"/>
-	<command code="-" commandClass="commands.mathCommands.DifferenceMathCommand"/>
-	<command code="product" commandClass="commands.mathCommands.ProductMathCommand"/>
-	<command code="*" commandClass="commands.mathCommands.ProductMathCommand"/>
-	<command code="quotient" commandClass="commands.mathCommands.QuotientMathCommand"/>
-	<command code="/" commandClass="commands.mathCommands.QuotientMathCommand"/>
-	<command code="remainder" commandClass="commands.mathCommands.RemainderMathCommand"/>
-	<command code="%" commandClass="commands.mathCommands.RemainderMathCommand"/>
-	<command code="minus" commandClass="commands.mathCommands.MinusMathCommand"/>
-	<command code="~" commandClass="commands.mathCommands.MinusMathCommand"/>
-	<command code="random" commandClass="commands.mathCommands.RandomMathCommand"/>
-	<command code="sin" commandClass="commands.mathCommands.SinMathCommand"/>
-	<command code="cos" commandClass="commands.mathCommands.CosMathCommand"/>
-	<command code="tan" commandClass="commands.mathCommands.TanMathCommand"/>
-	<command code="atan" commandClass="commands.mathCommands.ATanMathCommand"/>
-	<command code="log" commandClass="commands.mathCommands.LogMathCommand"/>
-	<command code="pow" commandClass="commands.mathCommands.PowMathCommand"/>
-	
-	
+  <command code="+" commandClass="commands.mathCommands.SumMathCommand"/>
+  <command code="difference" commandClass="commands.mathCommands.DifferenceMathCommand"/>
+  <command code="-" commandClass="commands.mathCommands.DifferenceMathCommand"/>
+  <command code="product" commandClass="commands.mathCommands.ProductMathCommand"/>
+  <command code="*" commandClass="commands.mathCommands.ProductMathCommand"/>
+  <command code="quotient" commandClass="commands.mathCommands.QuotientMathCommand"/>
+  <command code="/" commandClass="commands.mathCommands.QuotientMathCommand"/>
+  <command code="remainder" commandClass="commands.mathCommands.RemainderMathCommand"/>
+  <command code="%" commandClass="commands.mathCommands.RemainderMathCommand"/>
+  <command code="minus" commandClass="commands.mathCommands.MinusMathCommand"/>
+  <command code="~" commandClass="commands.mathCommands.MinusMathCommand"/>
+  <command code="random" commandClass="commands.mathCommands.RandomMathCommand"/>
+  <command code="sin" commandClass="commands.mathCommands.SinMathCommand"/>
+  <command code="cos" commandClass="commands.mathCommands.CosMathCommand"/>
+  <command code="tan" commandClass="commands.mathCommands.TanMathCommand"/>
+  <command code="atan" commandClass="commands.mathCommands.ATanMathCommand"/>
+  <command code="log" commandClass="commands.mathCommands.LogMathCommand"/>
+  <command code="pow" commandClass="commands.mathCommands.PowMathCommand"/>
+
+
 </model>
 

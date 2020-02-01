@@ -6,14 +6,14 @@ import commands.TurtleCommand;
 
 public class XCorQueryTurtleCommand extends TurtleCommand {
 
-	public XCorQueryTurtleCommand() {
-		super(0);
-	}
+  public XCorQueryTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		return t.getActiveTurtles().get(0).getPosition().x;
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    return t.getActiveTurtles().get(0).getPosition().x;
+  }
 
 }

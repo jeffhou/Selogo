@@ -8,17 +8,17 @@ import commands.TurtleCommand;
 
 public class HideTurtleTurtleCommand extends TurtleCommand {
 
-	public HideTurtleTurtleCommand() {
-		super(0);
-	}
+  public HideTurtleTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		ArrayList<TurtleModel> turtleList = t.getActiveTurtles();
-		for(TurtleModel turtle : turtleList) {
-			turtle.setShowing(false);
-		}
-		return 0;
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    ArrayList<TurtleModel> turtleList = t.getActiveTurtles();
+    for(TurtleModel turtle : turtleList) {
+      turtle.hide();
+    }
+    return 0;
+  }
 }

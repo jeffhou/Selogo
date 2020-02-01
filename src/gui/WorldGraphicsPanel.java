@@ -1,5 +1,9 @@
 package gui;
 
+import backend.TurtleModel;
+import backend.WorldModel;
+import backend.WorldsCollection;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,110 +13,128 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
+import java.util.List;
 import javax.swing.JTextArea;
 
 import util.Tuple;
-import backend.TurtleModel;
-import backend.WorldsCollection;
 
 /**
- * @author Cody Lieu
  * Handles the GUI aspects related to the animation of the turtle
  */
 public class WorldGraphicsPanel extends Component {
 
-	public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
-	Graphics2D graphicsEngine;
-	protected JTextArea historyTextArea;
-	protected JTextArea inputTextArea, consoleOutputTextArea;
+  public static final Dimension SCREEN_DIMENSION = new Dimension(533, 533);
+  private static final Tuple CENTER = new Tuple(
+      SCREEN_DIMENSION.width / 2,
+      SCREEN_DIMENSION.height / 2);
 
-	/**
-	 * TODO: Should read image path and path color from file
-	 */
+  Graphics2D graphicsEngine;
+  protected JTextArea historyTextArea;
+  protected JTextArea inputTextArea, consoleOutputTextArea;
 
-	public WorldGraphicsPanel() {
-		super();
-	}
+  public WorldGraphicsPanel() {
+    super();
+  }
 
-	public void paint(Graphics g) {
-		graphicsEngine = (Graphics2D) g;
-		graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
+  @Override
+  public Dimension getPreferredSize() {
+    return SCREEN_DIMENSION;
+  }
 
-		drawBorder();
-		drawTrails();
-		drawTurtle();
+  public void paint(Graphics g) {
+    graphicsEngine = (Graphics2D) g;
+    graphicsEngine.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+        RenderingHints.VALUE_ANTIALIAS_ON);
 
-	}
+    drawBorder();
+    drawTrails();
+    drawTurtles();
+  }
 
-	/**
-	 * Draws the turtle on the SlogoFrame
-	 * Keeps a list of turtles to have multiple turtles on the same tab
-	 */
-	void drawTurtle() {
-		ArrayList<TurtleModel> turtlesList = WorldsCollection.getInstance().getCurrentWorld().getAllTurtles();
-		for(TurtleModel turtle : turtlesList) {
-			BufferedImage turtleImage = turtle.getImage();
-			if (turtle.isShowing()) {
-				Tuple center = getCenter();
-				double rotationAngle = Math.toRadians(turtle.getHeading());
-				AffineTransform tx = AffineTransform.getRotateInstance(
-						rotationAngle, turtleImage.getWidth(this) / 2,
-						turtleImage.getHeight(this) / 2);
-				AffineTransformOp op = new AffineTransformOp(tx,
-						AffineTransformOp.TYPE_BILINEAR);
-				graphicsEngine.drawImage(op.filter(turtleImage, null),
-						(int) (center.x + turtle.getPosition().x - turtleImage
-								.getWidth(this) / 2),
-								(int) (center.y - turtle.getPosition().y - turtleImage
-										.getHeight(this) / 2), null);
-			}
-		}
-	}
+  /**
+   * Draws the turtle on the SlogoFrame
+   * Keeps a list of turtles to have multiple turtles on the same tab
+   */
+  void drawTurtles() {
+    List<TurtleModel> turtleModels = getWorld().getAllTurtles();
+    for (TurtleModel turtleModel : turtleModels) {
+      drawTurtle(turtleModel);
+    }
+  }
 
-	public Dimension getPreferredSize() {
-		return SCREEN_DIMENSION;
-	}
+  private void drawTurtle(TurtleModel turtleModel) {
+    if (turtleModel.isVisible) {
+      BufferedImage rotatedTurtleImage = getRotatedImage(
+          turtleModel.getImage(),
+          turtleModel.getRotationOffset());
 
-	/**
-	 * Draws the square border to separate the SlogoFrame
-	 * from the other menus
-	 */
-	void drawBorder() {
-		graphicsEngine.draw3DRect(0, 0, SCREEN_DIMENSION.width - 1,
-				SCREEN_DIMENSION.height - 1, true);
-	}
+      Tuple offsetPosition = calculateOffset(turtleModel.getPosition());
+      graphicsEngine.drawImage(
+          rotatedTurtleImage,
+          (int) (offsetPosition.x - rotatedTurtleImage.getWidth(this) / 2),
+          (int) (offsetPosition.y - rotatedTurtleImage.getHeight(this) / 2),
+          null);
+    }
+  }
 
-	/**
-	 * Draws the trails of the Turtle when the turtle's
-	 * pen is set to down. graphicsEngine changes the color
-	 * when user selects color either using the ColorChooser
-	 * menu or the SetPenColor command
-	 */
-	void drawTrails() {
-		graphicsEngine.setColor(WorldsCollection.getInstance().getCurrentWorld().getPenColor());
-		Tuple center = getCenter();
-		for (ArrayList<Tuple> path : WorldsCollection.getInstance().getCurrentWorld().getPaths()) {
-			for (int i = 0; i < (path.size() - 1); i++) {
-				graphicsEngine.draw(new Line2D.Double(path.get(i).x + center.x,
-						-path.get(i).y + center.y,
-						path.get(i + 1).x + center.x, -path.get(i + 1).y
-						+ center.y));
-			}
-		}
-	}
+  private BufferedImage getRotatedImage(BufferedImage image, double angle) {
+    double rotationAngle = Math.toRadians(angle);
+    AffineTransform rotationalTransform = AffineTransform.getRotateInstance(
+        rotationAngle,
+        image.getWidth(this) / 2,
+        image.getHeight(this) / 2);
+    AffineTransformOp transformOperator = new AffineTransformOp(
+        rotationalTransform, AffineTransformOp.TYPE_BILINEAR);
 
-	/**
-	 * @return
-	 */
-	Tuple getCenter() {
-		double centerX = SCREEN_DIMENSION.width / 2;
-		double centerY = SCREEN_DIMENSION.height / 2;
-		return new Tuple(centerX, centerY);
-	}
+    return transformOperator.filter(image, null);
+  }
+
+  /**
+   * Draws the square border to separate the SlogoFrame
+   * from the other menus
+   */
+  private void drawBorder() {
+    graphicsEngine.draw3DRect(
+        0, 0,
+        SCREEN_DIMENSION.width - 1, SCREEN_DIMENSION.height - 1,
+        true);
+  }
+
+  /**
+   * Draws the trails of the Turtle when the turtle's
+   * pen is set to `down`. graphicsEngine changes the color
+   * when user selects color either using the ColorChooser
+   * menu or the SetPenColor command
+   */
+  private void drawTrails() {
+    graphicsEngine.setColor(getWorld().getPenColor());
+    for (List<Tuple> path : getWorld().getPaths()) {
+      drawTrail(path);
+    }
+  }
+
+  private void drawTrail(List<Tuple> path) {
+    for (int i = 0; i < path.size() - 1; i++) {
+      graphicsEngine.draw(getLine(path.get(i), path.get(i + 1)));
+    }
+  }
+
+  private static Tuple calculateOffset(Tuple point) {
+    // multiply y by -1 to flip direction since y-axis is flipped
+    // during render
+    return new Tuple(point.x + CENTER.x, -1 * point.y + CENTER.y);
+  }
+
+  private static Line2D.Double getLine(Tuple start, Tuple end) {
+    start = calculateOffset(start);
+    end = calculateOffset(end);
+
+    return new Line2D.Double(
+        start.x, start.y,
+        end.x, end.y);
+  }
+
+  private static WorldModel getWorld() {
+    return WorldsCollection.getCurrentWorld();
+  }
 }

@@ -6,15 +6,15 @@ import commands.TurtleCommand;
 
 public class PenDownTurtleCommand extends TurtleCommand {
 
-	public PenDownTurtleCommand() {
-		super(0);
-	}
+  public PenDownTurtleCommand() {
+    super(0);
+  }
 
-	@Override
-	public double execute(Object o) {
-		WorldModel t = WorldsCollection.getInstance().getCurrentWorld();
-		t.setPen(true);
-		return 1;
-	}
+  @Override
+  public double execute(Object o) {
+    WorldModel t = WorldsCollection.getCurrentWorld();
+    t.setPen(true);
+    return 1;
+  }
 
 }
